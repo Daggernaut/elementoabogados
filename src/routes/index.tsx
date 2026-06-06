@@ -508,25 +508,47 @@ function CTA() {
           La confianza legal,<br />
           <span className="italic text-white/70">detrás de decisiones importantes.</span>
         </motion.h2>
-        <p className="mx-auto mt-8 max-w-xl text-white/70">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="mx-auto mt-8 max-w-xl text-white/70"
+        >
           Cuéntanos tu caso. Agenda una primera consulta sin costo y descubre cómo podemos ayudarte.
-        </p>
-        <div className="mt-12 flex flex-wrap justify-center gap-4">
-          <a
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.4 }}
+          className="mt-12 flex flex-wrap justify-center gap-4"
+        >
+          <motion.a
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.97 }}
             href="mailto:contacto@elementoabogados.com"
-            className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-4 text-sm font-semibold text-primary-deep transition-all hover:shadow-glow hover:-translate-y-0.5"
+            className="group inline-flex items-center gap-2 rounded-full bg-white px-7 py-4 text-sm font-semibold text-primary-deep shadow-lg transition-shadow hover:shadow-glow"
           >
-            <Mail className="h-4 w-4" /> Escríbenos
-          </a>
-          <a
+            <Mail className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" /> Escríbenos
+          </motion.a>
+          <motion.a
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.97 }}
             href="tel:+50200000000"
-            className="inline-flex items-center gap-2 rounded-full border border-white/25 px-7 py-4 text-sm font-medium text-white hover:bg-white/10 transition-colors"
+            className="group inline-flex items-center gap-2 rounded-full border border-white/25 px-7 py-4 text-sm font-medium text-white backdrop-blur transition-colors hover:bg-white/10 hover:border-white/40"
           >
-            <Phone className="h-4 w-4" /> Llámanos
-          </a>
-        </div>
+            <Phone className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" /> Llámanos
+          </motion.a>
+        </motion.div>
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-3">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="mt-16 grid gap-6 sm:grid-cols-3"
+        >
           {[
             { Icon: Phone, k: "Teléfono", v: "+502 0000 0000" },
             { Icon: Mail, k: "Correo", v: "contacto@elementoabogados.com" },
@@ -538,7 +560,7 @@ function CTA() {
               <div className="mt-1 text-sm">{v}</div>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
