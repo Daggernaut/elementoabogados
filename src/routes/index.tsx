@@ -182,7 +182,7 @@ function Hero() {
           >
             <a
               href="#contact"
-              className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-primary-deep transition-all hover:shadow-glow hover:-translate-y-0.5"
+              className="group inline-flex items-center gap-2 rounded-full bg-gradient-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-elegant transition-all hover:shadow-glow hover:-translate-y-0.5"
             >
               Agenda una consulta
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -375,7 +375,7 @@ function Services() {
               viewport={{ once: true, margin: "-50px" }}
               custom={i * 0.3}
               variants={fadeUp}
-              className="group relative flex flex-col gap-4 bg-card p-8 transition-all hover:bg-gradient-primary"
+              className="group relative flex flex-col gap-4 bg-card p-8 transition-colors duration-300 hover:bg-primary"
             >
               <div className="flex items-center justify-between">
                 <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-white/15 group-hover:text-white">
@@ -383,10 +383,10 @@ function Services() {
                 </span>
                 <ArrowUpRight className="h-5 w-5 text-muted-foreground transition-all group-hover:text-white group-hover:rotate-45" />
               </div>
-              <h3 className="font-display text-2xl leading-tight transition-colors group-hover:text-white">
+              <h3 className="font-display text-2xl leading-tight text-foreground transition-colors duration-300 group-hover:text-primary-foreground">
                 {s.title}
               </h3>
-              <p className="text-sm text-muted-foreground transition-colors group-hover:text-white/80">
+              <p className="text-sm text-muted-foreground transition-colors duration-300 group-hover:text-primary-foreground/85">
                 {s.desc}
               </p>
             </motion.a>
@@ -528,7 +528,7 @@ function CTA() {
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.97 }}
             href="mailto:contacto@elementoabogados.com"
-            className="group inline-flex items-center gap-2 rounded-full bg-white px-7 py-4 text-sm font-semibold text-primary-deep shadow-lg transition-shadow hover:shadow-glow"
+            className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary-glow to-white px-7 py-4 text-sm font-semibold text-primary-deep shadow-lg transition-shadow hover:shadow-glow"
           >
             <Mail className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" /> Escríbenos
           </motion.a>
