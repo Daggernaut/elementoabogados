@@ -1,9 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
+import { motion } from "motion/react";
+import { useState, type FormEvent } from "react";
 import {
   ArrowUpRight,
-  Scale,
   Building2,
   Home,
   Handshake,
@@ -21,12 +20,14 @@ import {
   Phone,
   Mail,
   MapPin,
+  Linkedin,
+  Twitter,
+  Download,
+  Plus,
+  Minus,
+  LogIn,
 } from "lucide-react";
-import heroImg from "@/assets/hero.jpg";
-import aboutImg from "@/assets/about.jpg";
-import attorney1 from "@/assets/attorney1.jpg";
-import attorney2 from "@/assets/attorney2.jpg";
-import attorney3 from "@/assets/attorney3.jpg";
+import logoAsset from "@/assets/logo-ea.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -44,6 +45,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+// TODO: reemplazar con textos revisados por el cliente.
 const services = [
   { icon: Building2, title: "Derecho corporativo", desc: "Asesoría empresarial integral para crecer con seguridad jurídica." },
   { icon: Home, title: "Derecho inmobiliario", desc: "Operaciones inmobiliarias seguras en mercados dinámicos." },
@@ -70,77 +72,72 @@ const fadeUp = {
 
 function Nav() {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 backdrop-blur-xl bg-background/70 border-b border-border/60">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <a href="#top" className="flex items-center gap-2 font-display text-xl tracking-tight">
-          <span className="grid h-9 w-9 place-items-center rounded-lg bg-gradient-primary text-primary-foreground shadow-elegant">
-            <Scale className="h-4 w-4" />
-          </span>
-          <span className="font-semibold">
-            Elemento<span className="text-gradient"> Abogados</span>
-          </span>
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3.5">
+        <a href="#top" className="flex items-center gap-2">
+          <img src={logoAsset.url} alt="Elemento Abogados" className="h-9 w-auto" />
         </a>
-        <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
+        <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
           {[
             ["Nosotros", "#about"],
             ["Servicios", "#services"],
             ["Equipo", "#team"],
+            ["FAQ", "#faq"],
             ["Contacto", "#contact"],
           ].map(([label, href]) => (
-            <a key={href} href={href} className="hover:text-foreground transition-colors">
+            <a key={href} href={href} className="transition-colors hover:text-foreground">
               {label}
             </a>
           ))}
         </nav>
-        <a
-          href="#contact"
-          className="group inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-all hover:bg-primary"
-        >
-          Contáctanos
-          <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        </a>
+        <div className="flex items-center gap-2">
+          <a
+            href="#signin"
+            title="Portal de clientes — próximamente"
+            className="hidden items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary sm:inline-flex"
+          >
+            <LogIn className="h-4 w-4" /> Portal clientes
+          </a>
+          <a
+            href="#contact"
+            className="group inline-flex items-center gap-2 rounded-full bg-primary-deep px-5 py-2.5 text-sm font-medium text-primary-foreground transition-all hover:bg-primary"
+          >
+            Contáctanos
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </a>
+        </div>
       </div>
     </header>
   );
 }
 
 function Hero() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
-
   return (
-    <section id="top" ref={ref} className="relative isolate min-h-screen overflow-hidden bg-gradient-hero pt-28">
-      <motion.div style={{ scale, y }} className="absolute inset-0 -z-10">
-        <img
-          src={heroImg}
-          alt="Abogado profesional en oficina moderna"
-          className="h-full w-full object-cover opacity-40 mix-blend-luminosity"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[oklch(0.16_0.08_265)] via-transparent to-[oklch(0.16_0.08_265)]/40" />
-      </motion.div>
+    <section id="top" className="relative isolate overflow-hidden bg-gradient-hero pt-32 text-primary-foreground">
+      <div className="absolute inset-0 grid-pattern opacity-40" aria-hidden />
+      <div className="absolute -right-40 top-20 h-[420px] w-[420px] rounded-full bg-primary-glow/25 blur-[140px]" aria-hidden />
+      <div className="absolute -left-40 bottom-0 h-[420px] w-[420px] rounded-full bg-[color:var(--accent-orange)]/15 blur-[160px]" aria-hidden />
 
-      <div className="mx-auto grid max-w-7xl gap-12 px-6 pb-24 pt-12 lg:grid-cols-12 lg:gap-8">
-        <div className="lg:col-span-8 text-primary-foreground">
+      <div className="relative mx-auto grid max-w-7xl gap-12 px-6 pb-24 pt-12 lg:grid-cols-12 lg:gap-10">
+        <div className="lg:col-span-8">
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-white/80 backdrop-blur"
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-primary-glow animate-pulse" />
-            Tu caso, nuestra prioridad
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[color:var(--accent-orange)]" />
+            Firma legal en Guatemala
           </motion.span>
 
-          <h1 className="mt-8 font-display text-5xl leading-[0.95] tracking-tight sm:text-7xl lg:text-[5.5rem]">
-            {"Asesoría legal".split(" ").map((w, i) => (
+          <h1 className="mt-8 font-display text-5xl font-bold leading-[0.95] tracking-tight sm:text-7xl lg:text-[5.75rem]">
+            {"Más que abogados,".split(" ").map((w, i) => (
               <motion.span
                 key={i}
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.15 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                className="inline-block mr-4"
+                className="mr-4 inline-block"
               >
                 {w}
               </motion.span>
@@ -149,18 +146,10 @@ function Hero() {
             <motion.span
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="italic font-display text-white/70"
+              transition={{ duration: 0.8, delay: 0.45 }}
+              className="text-white/60"
             >
-              cercana
-            </motion.span>{" "}
-            <motion.span
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="inline-block"
-            >
-              & estratégica.
+              aliados estratégicos.
             </motion.span>
           </h1>
 
@@ -168,10 +157,10 @@ function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.7 }}
-            className="mt-8 max-w-xl text-lg text-white/70"
+            className="mt-8 max-w-xl text-lg text-white/75"
           >
-            Acompañamos a empresas, familias y personas con soluciones legales diseñadas a la medida —
-            respuestas claras, ética y resultados sostenibles.
+            Acompañamos a empresas, familias e individuos con asesoría legal integral —
+            respuestas claras, criterio corporativo y resultados sostenibles.
           </motion.p>
 
           <motion.div
@@ -182,16 +171,18 @@ function Hero() {
           >
             <a
               href="#contact"
-              className="group inline-flex items-center gap-2 rounded-full bg-gradient-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-elegant transition-all hover:shadow-glow hover:-translate-y-0.5"
+              className="group inline-flex items-center gap-2 rounded-full bg-[color:var(--accent-orange)] px-6 py-3.5 text-sm font-semibold text-primary-deep shadow-lg transition-all hover:-translate-y-0.5 hover:shadow-glow"
             >
               Agenda una consulta
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
             <a
-              href="#services"
-              className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-medium text-white hover:bg-white/10 transition-colors"
+              href="/presentacion.pdf"
+              download
+              className="group inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-white/10"
             >
-              Nuestros servicios
+              <Download className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
+              Descargar presentación
             </a>
           </motion.div>
         </div>
@@ -200,32 +191,32 @@ function Hero() {
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9, delay: 0.6 }}
-          className="lg:col-span-4 self-end"
+          className="self-end lg:col-span-4"
         >
-          <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md">
+          <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-md">
             {[
               ["+10", "Años de experiencia"],
               ["12", "Áreas del derecho"],
               ["98%", "Satisfacción clientes"],
               ["500+", "Casos resueltos"],
             ].map(([k, v]) => (
-              <div key={k} className="bg-[oklch(0.18_0.08_265)]/40 p-6 text-primary-foreground">
-                <div className="font-display text-4xl">{k}</div>
-                <div className="mt-1 text-xs uppercase tracking-wider text-white/60">{v}</div>
+              <div key={k} className="bg-primary-deep/40 p-6">
+                <div className="font-display text-4xl font-semibold">{k}</div>
+                <div className="mt-1 text-xs uppercase tracking-wider text-white/55">{v}</div>
               </div>
             ))}
           </div>
         </motion.div>
       </div>
 
-      <div className="relative border-y border-white/10 bg-[oklch(0.14_0.06_265)]/60 py-6 overflow-hidden">
-        <div className="marquee-track flex w-max gap-12 whitespace-nowrap font-display text-3xl text-white/40 sm:text-5xl">
+      <div className="relative overflow-hidden border-y border-white/10 bg-primary-deep/60 py-6">
+        <div className="marquee-track flex w-max gap-12 whitespace-nowrap font-display text-3xl font-semibold text-white/40 sm:text-5xl">
           {Array.from({ length: 2 }).map((_, i) => (
             <div key={i} className="flex items-center gap-12">
               {["Corporativo", "Inmobiliario", "M&A", "Tributario", "Penal", "Compliance", "Patrimonial"].map((s) => (
                 <span key={s} className="flex items-center gap-12">
                   {s}
-                  <span className="text-primary-glow">✦</span>
+                  <span className="text-[color:var(--accent-orange)]">✦</span>
                 </span>
               ))}
             </div>
@@ -255,10 +246,10 @@ function Pillars() {
             variants={fadeUp}
             className="group relative bg-background p-10 transition-colors hover:bg-secondary"
           >
-            <div className="font-display text-5xl text-primary/20 transition-colors group-hover:text-primary">
+            <div className="font-display text-5xl font-semibold text-primary/25 transition-colors group-hover:text-primary">
               0{i + 1}
             </div>
-            <h3 className="mt-4 text-xl font-semibold">{it.title}</h3>
+            <h3 className="mt-4 font-display text-xl font-semibold">{it.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{it.desc}</p>
           </motion.div>
         ))}
@@ -280,26 +271,46 @@ function About() {
   ];
   return (
     <section id="about" className="relative overflow-hidden bg-gradient-soft py-28">
-      <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-2 lg:items-center">
+      <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-12 lg:items-center">
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="relative"
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          className="relative lg:col-span-5"
         >
-          <div className="absolute -inset-4 -z-10 rounded-3xl bg-gradient-primary opacity-20 blur-2xl" />
-          <div className="overflow-hidden rounded-3xl shadow-elegant">
-            <img src={aboutImg} alt="Equipo de Elemento Abogados en reunión" loading="lazy" className="h-full w-full object-cover" />
-          </div>
-          <div className="absolute -bottom-6 -right-6 hidden rounded-2xl bg-background p-5 shadow-elegant md:block">
-            <div className="font-display text-4xl text-gradient">+10 años</div>
-            <div className="text-xs uppercase tracking-wider text-muted-foreground">de experiencia</div>
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-primary p-8 text-primary-foreground shadow-elegant">
+            <div className="absolute inset-0 grid-pattern opacity-25" aria-hidden />
+            <div className="relative flex flex-col gap-6">
+              <div>
+                <div className="font-display text-7xl font-bold leading-none">+10</div>
+                <div className="mt-2 text-xs uppercase tracking-[0.25em] text-white/70">años de experiencia</div>
+              </div>
+              <div className="h-px w-full bg-white/15" />
+              <div className="grid grid-cols-2 gap-6">
+                <div>
+                  <div className="font-display text-3xl font-semibold">12</div>
+                  <div className="text-xs uppercase tracking-wider text-white/60">áreas</div>
+                </div>
+                <div>
+                  <div className="font-display text-3xl font-semibold">500+</div>
+                  <div className="text-xs uppercase tracking-wider text-white/60">casos resueltos</div>
+                </div>
+                <div>
+                  <div className="font-display text-3xl font-semibold">98%</div>
+                  <div className="text-xs uppercase tracking-wider text-white/60">satisfacción</div>
+                </div>
+                <div>
+                  <div className="font-display text-3xl font-semibold">GT</div>
+                  <div className="text-xs uppercase tracking-wider text-white/60">Guatemala</div>
+                </div>
+              </div>
+            </div>
           </div>
         </motion.div>
 
-        <div>
-          <motion.span variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">
+        <div className="lg:col-span-7">
+          <motion.span variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">
             Acerca de nosotros
           </motion.span>
           <motion.h2
@@ -307,9 +318,9 @@ function About() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="mt-4 font-display text-4xl leading-tight sm:text-5xl"
+            className="mt-4 font-display text-4xl font-semibold leading-tight sm:text-5xl"
           >
-            Somos <span className="text-gradient">Elemento Abogados</span>, con más de 10 años de experiencia.
+            Somos <span className="text-primary">Elemento Abogados</span>, con más de 10 años de experiencia.
           </motion.h2>
           <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-6 text-muted-foreground">
             Combinamos conocimiento jurídico, visión estratégica y compromiso para ofrecer soluciones
@@ -333,16 +344,6 @@ function About() {
               </motion.li>
             ))}
           </ul>
-          <motion.a
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            href="#contact"
-            className="mt-10 inline-flex items-center gap-2 rounded-full bg-gradient-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-elegant transition-transform hover:-translate-y-0.5"
-          >
-            Contáctanos <ArrowRight className="h-4 w-4" />
-          </motion.a>
         </div>
       </div>
     </section>
@@ -355,9 +356,9 @@ function Services() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-16 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
-            <span className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">Nuestros servicios</span>
-            <h2 className="mt-4 max-w-3xl font-display text-4xl leading-tight sm:text-6xl">
-              Servicios de primera con <span className="text-gradient italic">excelentes resultados</span>.
+            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">Nuestros servicios</span>
+            <h2 className="mt-4 max-w-3xl font-display text-4xl font-semibold leading-tight sm:text-6xl">
+              Áreas de práctica con <span className="text-primary">resultados comprobados</span>.
             </h2>
           </div>
           <p className="max-w-sm text-muted-foreground">
@@ -381,9 +382,9 @@ function Services() {
                 <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-white/15 group-hover:text-white">
                   <s.icon className="h-5 w-5" />
                 </span>
-                <ArrowUpRight className="h-5 w-5 text-muted-foreground transition-all group-hover:text-white group-hover:rotate-45" />
+                <ArrowUpRight className="h-5 w-5 text-muted-foreground transition-all group-hover:rotate-45 group-hover:text-white" />
               </div>
-              <h3 className="font-display text-2xl leading-tight text-foreground transition-colors duration-300 group-hover:text-primary-foreground">
+              <h3 className="font-display text-xl font-semibold leading-tight text-foreground transition-colors duration-300 group-hover:text-primary-foreground">
                 {s.title}
               </h3>
               <p className="text-sm text-muted-foreground transition-colors duration-300 group-hover:text-primary-foreground/85">
@@ -405,14 +406,15 @@ function WhyUs() {
   ];
   return (
     <section className="relative overflow-hidden bg-primary-deep py-28 text-primary-foreground">
-      <div className="absolute -right-32 top-1/3 h-96 w-96 rounded-full bg-primary-glow/30 blur-[120px]" />
-      <div className="absolute -left-32 bottom-0 h-96 w-96 rounded-full bg-primary/40 blur-[120px]" />
-      <div className="mx-auto max-w-7xl px-6">
-        <span className="text-xs uppercase tracking-[0.25em] text-primary-glow font-semibold">
+      <div className="absolute inset-0 grid-pattern opacity-20" aria-hidden />
+      <div className="absolute -right-32 top-1/3 h-96 w-96 rounded-full bg-primary-glow/25 blur-[120px]" />
+      <div className="absolute -left-32 bottom-0 h-96 w-96 rounded-full bg-[color:var(--accent-orange)]/20 blur-[120px]" />
+      <div className="relative mx-auto max-w-7xl px-6">
+        <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[color:var(--accent-orange)]">
           ¿Por qué colaborar con nosotros?
         </span>
-        <h2 className="mt-4 max-w-3xl font-display text-4xl leading-tight sm:text-6xl">
-          Más que abogados, <span className="italic text-white/70">aliados estratégicos</span> en tu causa.
+        <h2 className="mt-4 max-w-3xl font-display text-4xl font-semibold leading-tight sm:text-6xl">
+          Más que abogados, <span className="text-white/60">aliados estratégicos</span> en tu causa.
         </h2>
 
         <div className="mt-16 grid gap-8 md:grid-cols-3">
@@ -426,8 +428,8 @@ function WhyUs() {
               variants={fadeUp}
               className="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur transition-colors hover:bg-white/10"
             >
-              <div className="font-display text-5xl text-primary-glow">0{i + 1}</div>
-              <h3 className="mt-4 text-xl font-semibold">{it.title}</h3>
+              <div className="font-display text-5xl font-semibold text-[color:var(--accent-orange)]">0{i + 1}</div>
+              <h3 className="mt-4 font-display text-xl font-semibold">{it.title}</h3>
               <p className="mt-2 text-sm text-white/70">{it.desc}</p>
             </motion.div>
           ))}
@@ -437,53 +439,99 @@ function WhyUs() {
   );
 }
 
+function PersonCard({ name, role, size = "lg" }: { name: string; role: string; size?: "lg" | "md" }) {
+  const initials = name.split(" ").map((n) => n[0]).slice(0, 2).join("");
+  return (
+    <div className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all hover:-translate-y-1 hover:shadow-elegant">
+      <div className={`relative ${size === "lg" ? "aspect-[4/5]" : "aspect-[4/4]"} overflow-hidden bg-gradient-primary`}>
+        <div className="absolute inset-0 grid-pattern opacity-20" aria-hidden />
+        <div className="absolute inset-0 grid place-items-center">
+          <span className="font-display text-6xl font-semibold text-white/80">{initials}</span>
+        </div>
+        <span className="absolute right-3 top-3 rounded-full bg-white/15 px-2.5 py-1 text-[10px] uppercase tracking-wider text-white backdrop-blur">
+          Foto pendiente
+        </span>
+      </div>
+      <div className="flex flex-1 flex-col gap-3 p-6">
+        <div>
+          <h3 className="font-display text-xl font-semibold">{name}</h3>
+          <p className="text-sm text-muted-foreground">{role}</p>
+        </div>
+        <div className="mt-auto flex items-center gap-2 pt-2">
+          <a
+            href="#"
+            aria-label={`LinkedIn de ${name}`}
+            className="grid h-8 w-8 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
+          >
+            <Linkedin className="h-3.5 w-3.5" />
+          </a>
+          <a
+            href="#"
+            aria-label={`Twitter de ${name}`}
+            className="grid h-8 w-8 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
+          >
+            <Twitter className="h-3.5 w-3.5" />
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Team() {
-  const team = [
-    { name: "Luis Pedro Guerra", role: "Socio", img: attorney1 },
-    { name: "Carlos Moscoso", role: "Socio", img: attorney2 },
-    { name: "Jorge Molina", role: "Socio", img: attorney3 },
+  // TODO: reemplazar con perfiles reales (foto, bio, LinkedIn, Twitter).
+  const socios = [
+    { name: "Carlos Moscoso", role: "Socio" },
+    { name: "Jorge Molina", role: "Socio" },
+    { name: "Luis Guerra", role: "Socio" },
+  ];
+  const asociados = [
+    { name: "Asociado Pendiente", role: "Asociado" },
+    { name: "Asociado Pendiente", role: "Asociado" },
+    { name: "Asociado Pendiente", role: "Asociado" },
+    { name: "Asociado Pendiente", role: "Asociado" },
+  ];
+  const ofCounsel = [
+    { name: "Of Counsel Pendiente", role: "Of Counsel · Asesor externo" },
+    { name: "Of Counsel Pendiente", role: "Of Counsel · Asesor interno" },
   ];
   return (
     <section id="team" className="bg-background py-28">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-16 max-w-3xl">
-          <span className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">Expertos que defienden tu causa</span>
-          <h2 className="mt-4 font-display text-4xl leading-tight sm:text-6xl">
-            Nuestros abogados están listos para ayudarte a tomar <span className="text-gradient italic">decisiones clave</span>.
+        <div className="mb-14 max-w-3xl">
+          <span className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">Nuestro equipo</span>
+          <h2 className="mt-4 font-display text-4xl font-semibold leading-tight sm:text-6xl">
+            Los <span className="text-primary">profesionales</span> detrás de cada decisión.
           </h2>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-3">
-          {team.map((m, i) => (
-            <motion.a
-              key={m.name}
-              href="#contact"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              custom={i}
-              variants={fadeUp}
-              className="group block"
-            >
-              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
-                <img
-                  src={m.img}
-                  alt={m.name}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[oklch(0.18_0.08_265)]/95 via-[oklch(0.18_0.08_265)]/20 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-6 text-primary-foreground">
-                  <div>
-                    <h3 className="font-display text-2xl">{m.name}</h3>
-                    <p className="text-sm text-white/70">{m.role}</p>
-                  </div>
-                  <span className="grid h-10 w-10 place-items-center rounded-full bg-white/10 backdrop-blur transition-all group-hover:bg-white group-hover:text-primary-deep">
-                    <ArrowUpRight className="h-4 w-4" />
-                  </span>
-                </div>
-              </div>
-            </motion.a>
+        <div className="mb-4 flex items-center gap-3">
+          <span className="h-px w-8 bg-primary" />
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Socios</span>
+        </div>
+        <div className="grid gap-6 md:grid-cols-3">
+          {socios.map((m) => (
+            <PersonCard key={m.name} name={m.name} role={m.role} size="lg" />
+          ))}
+        </div>
+
+        <div className="mt-16 mb-4 flex items-center gap-3">
+          <span className="h-px w-8 bg-primary" />
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Asociados</span>
+        </div>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {asociados.map((m, i) => (
+            <PersonCard key={`${m.name}-${i}`} name={m.name} role={m.role} size="md" />
+          ))}
+        </div>
+
+        <div className="mt-16 mb-4 flex items-center gap-3">
+          <span className="h-px w-8 bg-primary" />
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Of Counsel</span>
+        </div>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {ofCounsel.map((m, i) => (
+            <PersonCard key={`${m.name}-${i}`} name={m.name} role={m.role} size="md" />
           ))}
         </div>
       </div>
@@ -491,76 +539,223 @@ function Team() {
   );
 }
 
-function CTA() {
+function FAQ() {
+  // TODO: preguntas finales las filtrará el cliente.
+  const faqs = [
+    { q: "¿Ofrecen una primera consulta sin costo?", a: "Sí. La primera cita es de cortesía para entender tu caso y determinar cómo podemos ayudarte." },
+    { q: "¿Trabajan con empresas o también con personas individuales?", a: "Ambos. Acompañamos empresas, familias y personas naturales en múltiples áreas del derecho." },
+    { q: "¿Cómo se manejan los honorarios profesionales?", a: "Los honorarios se acuerdan de forma transparente al inicio del proceso, sin costos ocultos." },
+    { q: "¿Pueden asesorar en operaciones fuera de Guatemala?", a: "Sí. Contamos con una red de firmas aliadas en la región para atender operaciones internacionales." },
+    { q: "¿Cuánto tiempo tarda un proceso legal típico?", a: "Depende de la materia y complejidad. En la primera reunión te damos una estimación realista." },
+    { q: "¿Existe portal en línea para clientes?", a: "Sí, próximamente lanzaremos un portal para consulta de documentos y estado de tus casos." },
+  ];
+  const [open, setOpen] = useState<number | null>(0);
   return (
-    <section id="contact" className="relative overflow-hidden bg-gradient-hero py-32 text-primary-foreground">
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary-glow blur-[160px]" />
-      </div>
-      <div className="relative mx-auto max-w-5xl px-6 text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="font-display text-5xl leading-[1] sm:text-7xl lg:text-8xl"
-        >
-          La confianza legal,<br />
-          <span className="italic text-white/70">detrás de decisiones importantes.</span>
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="mx-auto mt-8 max-w-xl text-white/70"
-        >
-          Cuéntanos tu caso. Agenda una primera consulta sin costo y descubre cómo podemos ayudarte.
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-          className="mt-12 flex flex-wrap justify-center gap-4"
-        >
-          <motion.a
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.97 }}
-            href="mailto:contacto@elementoabogados.com"
-            className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary-glow to-white px-7 py-4 text-sm font-semibold text-primary-deep shadow-lg transition-shadow hover:shadow-glow"
-          >
-            <Mail className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" /> Escríbenos
-          </motion.a>
-          <motion.a
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.97 }}
-            href="tel:+50200000000"
-            className="group inline-flex items-center gap-2 rounded-full border border-white/25 px-7 py-4 text-sm font-medium text-white backdrop-blur transition-colors hover:bg-white/10 hover:border-white/40"
-          >
-            <Phone className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" /> Llámanos
-          </motion.a>
-        </motion.div>
+    <section id="faq" className="bg-gradient-soft py-28">
+      <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-12">
+        <div className="lg:col-span-5">
+          <span className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">Preguntas frecuentes</span>
+          <h2 className="mt-4 font-display text-4xl font-semibold leading-tight sm:text-5xl">
+            Resolvemos <span className="text-primary">tus dudas</span> antes de empezar.
+          </h2>
+          <p className="mt-6 text-muted-foreground">
+            Reunimos las preguntas más frecuentes de nuestros clientes. Si no encuentras la respuesta que buscas,
+            escríbenos y te contactaremos en menos de 24 horas.
+          </p>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-16 grid gap-6 sm:grid-cols-3"
-        >
-          {[
-            { Icon: Phone, k: "Teléfono", v: "+502 0000 0000" },
-            { Icon: Mail, k: "Correo", v: "contacto@elementoabogados.com" },
-            { Icon: MapPin, k: "Oficina", v: "Ciudad de Guatemala" },
-          ].map(({ Icon, k, v }) => (
-            <div key={k} className="rounded-2xl border border-white/10 bg-white/5 p-6 text-left backdrop-blur">
-              <Icon className="h-5 w-5 text-primary-glow" />
-              <div className="mt-3 text-xs uppercase tracking-wider text-white/50">{k}</div>
-              <div className="mt-1 text-sm">{v}</div>
+        <div className="lg:col-span-7">
+          <ul className="divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card">
+            {faqs.map((f, i) => {
+              const isOpen = open === i;
+              return (
+                <li key={f.q}>
+                  <button
+                    type="button"
+                    onClick={() => setOpen(isOpen ? null : i)}
+                    className="flex w-full items-center justify-between gap-6 px-6 py-5 text-left transition-colors hover:bg-secondary/60"
+                    aria-expanded={isOpen}
+                  >
+                    <span className="font-display text-lg font-semibold">{f.q}</span>
+                    <span className="grid h-8 w-8 flex-none place-items-center rounded-full border border-border text-primary">
+                      {isOpen ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
+                    </span>
+                  </button>
+                  {isOpen && (
+                    <div className="px-6 pb-6 text-sm leading-relaxed text-muted-foreground">{f.a}</div>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AskUs() {
+  const [status, setStatus] = useState<"idle" | "sent">("idle");
+  function onSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const f = new FormData(e.currentTarget);
+    const name = String(f.get("name") ?? "").slice(0, 100);
+    const email = String(f.get("email") ?? "").slice(0, 200);
+    const message = String(f.get("message") ?? "").slice(0, 2000);
+    const subject = encodeURIComponent(`Pregunta desde el sitio — ${name}`);
+    const body = encodeURIComponent(`Nombre: ${name}\nCorreo: ${email}\n\n${message}`);
+    window.location.href = `mailto:info@elementoabogados.com?subject=${subject}&body=${body}`;
+    setStatus("sent");
+  }
+  return (
+    <section className="bg-background py-28">
+      <div className="mx-auto grid max-w-6xl gap-10 px-6 lg:grid-cols-12">
+        <div className="lg:col-span-5">
+          <span className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">Haznos una pregunta</span>
+          <h2 className="mt-4 font-display text-4xl font-semibold leading-tight sm:text-5xl">
+            ¿Tienes una duda específica?
+          </h2>
+          <p className="mt-6 text-muted-foreground">
+            Cuéntanos brevemente tu situación. Un abogado te responderá directamente por correo.
+          </p>
+          <div className="mt-8 flex items-center gap-3 rounded-2xl border border-border bg-secondary/60 p-4 text-sm">
+            <span className="grid h-9 w-9 place-items-center rounded-full bg-primary/10 text-primary">
+              <Mail className="h-4 w-4" />
+            </span>
+            <div>
+              <div className="text-xs uppercase tracking-wider text-muted-foreground">Escríbenos a</div>
+              <div className="font-medium">info@elementoabogados.com</div>
             </div>
-          ))}
-        </motion.div>
+          </div>
+        </div>
+        <form onSubmit={onSubmit} className="lg:col-span-7 rounded-2xl border border-border bg-card p-8 shadow-sm">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <label className="flex flex-col gap-2 text-sm">
+              <span className="font-medium">Nombre</span>
+              <input
+                required
+                maxLength={100}
+                name="name"
+                className="rounded-lg border border-input bg-background px-3 py-2.5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
+                placeholder="Tu nombre completo"
+              />
+            </label>
+            <label className="flex flex-col gap-2 text-sm">
+              <span className="font-medium">Correo</span>
+              <input
+                required
+                type="email"
+                maxLength={200}
+                name="email"
+                className="rounded-lg border border-input bg-background px-3 py-2.5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
+                placeholder="tu@correo.com"
+              />
+            </label>
+          </div>
+          <label className="mt-4 flex flex-col gap-2 text-sm">
+            <span className="font-medium">Tu pregunta</span>
+            <textarea
+              required
+              maxLength={2000}
+              name="message"
+              rows={5}
+              className="resize-none rounded-lg border border-input bg-background px-3 py-2.5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
+              placeholder="Describe brevemente tu situación..."
+            />
+          </label>
+          <div className="mt-6 flex items-center justify-between gap-4">
+            <p className="text-xs text-muted-foreground">
+              {status === "sent" ? "Se abrió tu cliente de correo. ¡Gracias!" : "Al enviar, se abrirá tu cliente de correo."}
+            </p>
+            <button
+              type="submit"
+              className="group inline-flex items-center gap-2 rounded-full bg-primary-deep px-6 py-3 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary"
+            >
+              Enviar pregunta
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  );
+}
+
+function Contact() {
+  return (
+    <section id="contact" className="relative overflow-hidden bg-gradient-hero py-28 text-primary-foreground">
+      <div className="absolute inset-0 grid-pattern opacity-20" aria-hidden />
+      <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary-glow/20 blur-[160px]" aria-hidden />
+      <div className="relative mx-auto max-w-7xl px-6">
+        <div className="grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-6">
+            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[color:var(--accent-orange)]">Contacto</span>
+            <h2 className="mt-4 font-display text-4xl font-semibold leading-[1.05] sm:text-6xl">
+              Estamos a una<br />conversación de distancia.
+            </h2>
+            <p className="mt-6 max-w-md text-white/70">
+              Agenda una primera consulta o visítanos en nuestra oficina en la Ciudad de Guatemala.
+            </p>
+
+            <div className="mt-10 grid gap-4 sm:grid-cols-2">
+              {[
+                { Icon: Phone, k: "Teléfono", v: "+(502) 2339 - 1922", href: "tel:+50223391922" },
+                { Icon: Mail, k: "Correo", v: "info@elementoabogados.com", href: "mailto:info@elementoabogados.com" },
+                { Icon: MapPin, k: "Oficina", v: "Ciudad de Guatemala" },
+                { Icon: Users, k: "Horario", v: "Lun–Vie · 8:00 – 17:00" },
+              ].map(({ Icon, k, v, href }) => {
+                const content = (
+                  <>
+                    <Icon className="h-5 w-5 text-[color:var(--accent-orange)]" />
+                    <div className="mt-3 text-xs uppercase tracking-wider text-white/50">{k}</div>
+                    <div className="mt-1 text-sm">{v}</div>
+                  </>
+                );
+                return href ? (
+                  <a
+                    key={k}
+                    href={href}
+                    className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur transition-colors hover:bg-white/10"
+                  >
+                    {content}
+                  </a>
+                ) : (
+                  <div key={k} className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+                    {content}
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              <a
+                href="mailto:info@elementoabogados.com"
+                className="group inline-flex items-center gap-2 rounded-full bg-[color:var(--accent-orange)] px-6 py-3.5 text-sm font-semibold text-primary-deep transition-all hover:-translate-y-0.5 hover:shadow-glow"
+              >
+                <Mail className="h-4 w-4" /> Escríbenos
+              </a>
+              <a
+                href="/presentacion.pdf"
+                download
+                className="group inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-white/10"
+              >
+                <Download className="h-4 w-4" /> Descargar presentación
+              </a>
+            </div>
+          </div>
+
+          <div className="lg:col-span-6">
+            <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-1 backdrop-blur">
+              <iframe
+                title="Ubicación Elemento Abogados"
+                src="https://www.google.com/maps?q=Ciudad%20de%20Guatemala&output=embed"
+                className="h-[420px] w-full rounded-[22px]"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -568,15 +763,36 @@ function CTA() {
 
 function Footer() {
   return (
-    <footer className="border-t border-border bg-background py-10">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 text-sm text-muted-foreground md:flex-row">
-        <div className="flex items-center gap-2">
-          <span className="grid h-7 w-7 place-items-center rounded-md bg-gradient-primary text-primary-foreground">
-            <Scale className="h-3 w-3" />
-          </span>
-          <span className="font-display text-base text-foreground">Elemento Abogados</span>
+    <footer className="border-t border-border bg-background py-12">
+      <div className="mx-auto grid max-w-7xl gap-8 px-6 md:grid-cols-3">
+        <div>
+          <img src={logoAsset.url} alt="Elemento Abogados" className="h-10 w-auto" />
+          <p className="mt-4 max-w-xs text-sm text-muted-foreground">
+            Firma legal en Guatemala. Más que abogados, aliados estratégicos en tu causa.
+          </p>
         </div>
-        <p>© {new Date().getFullYear()} Elemento Abogados. Todos los derechos reservados.</p>
+        <div className="text-sm">
+          <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Contacto</div>
+          <ul className="mt-3 space-y-2">
+            <li><a className="hover:text-primary" href="mailto:info@elementoabogados.com">info@elementoabogados.com</a></li>
+            <li><a className="hover:text-primary" href="tel:+50223391922">+(502) 2339 - 1922</a></li>
+            <li>Ciudad de Guatemala</li>
+          </ul>
+        </div>
+        <div className="text-sm">
+          <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Síguenos</div>
+          <div className="mt-3 flex items-center gap-2">
+            <a href="#" aria-label="LinkedIn" className="grid h-9 w-9 place-items-center rounded-full border border-border transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground">
+              <Linkedin className="h-4 w-4" />
+            </a>
+            <a href="#" aria-label="Twitter" className="grid h-9 w-9 place-items-center rounded-full border border-border transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground">
+              <Twitter className="h-4 w-4" />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div className="mx-auto mt-10 max-w-7xl px-6 text-xs text-muted-foreground">
+        © {new Date().getFullYear()} Elemento Abogados. Todos los derechos reservados.
       </div>
     </footer>
   );
@@ -584,7 +800,7 @@ function Footer() {
 
 function Index() {
   return (
-    <main className="min-h-screen bg-background text-foreground font-sans">
+    <main className="min-h-screen bg-background font-sans text-foreground">
       <Nav />
       <Hero />
       <Pillars />
@@ -592,7 +808,9 @@ function Index() {
       <Services />
       <WhyUs />
       <Team />
-      <CTA />
+      <FAQ />
+      <AskUs />
+      <Contact />
       <Footer />
     </main>
   );
