@@ -28,6 +28,10 @@ import {
   LogIn,
 } from "lucide-react";
 import logoAsset from "@/assets/logo-ea.png.asset.json";
+import photoCM from "@/assets/abo-cm.png.asset.json";
+import photoJL from "@/assets/abo-jl.png.asset.json";
+import photoLP from "@/assets/abo-lp.png.asset.json";
+import teamGroup from "@/assets/team-group.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -279,37 +283,34 @@ function About() {
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="relative lg:col-span-5"
         >
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-primary p-8 text-primary-foreground shadow-elegant">
-            <div className="absolute inset-0 grid-pattern opacity-25" aria-hidden />
-            <div className="relative flex flex-col gap-6">
-              <div>
-                <div className="font-display text-7xl font-bold leading-none">+10</div>
-                <div className="mt-2 text-xs uppercase tracking-[0.25em] text-white/70">años de experiencia</div>
-              </div>
-              <div className="h-px w-full bg-white/15" />
-              <div className="grid grid-cols-2 gap-6">
-                <div>
-                  <div className="font-display text-3xl font-semibold">12</div>
-                  <div className="text-xs uppercase tracking-wider text-white/60">áreas</div>
-                </div>
-                <div>
-                  <div className="font-display text-3xl font-semibold">500+</div>
-                  <div className="text-xs uppercase tracking-wider text-white/60">casos resueltos</div>
-                </div>
-                <div>
-                  <div className="font-display text-3xl font-semibold">98%</div>
-                  <div className="text-xs uppercase tracking-wider text-white/60">satisfacción</div>
-                </div>
-                <div>
-                  <div className="font-display text-3xl font-semibold">GT</div>
-                  <div className="text-xs uppercase tracking-wider text-white/60">Guatemala</div>
-                </div>
+          <div className="relative">
+            <div className="relative overflow-hidden rounded-3xl shadow-elegant">
+              <img
+                src={teamGroup.url}
+                alt="Socios de Elemento Abogados"
+                className="aspect-[4/5] w-full object-cover"
+              />
+              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-primary-deep/70 to-transparent" aria-hidden />
+            </div>
+            <div className="pointer-events-none absolute inset-x-4 -bottom-8 sm:inset-x-6 lg:-bottom-10">
+              <div className="pointer-events-auto grid grid-cols-4 gap-px overflow-hidden rounded-2xl border border-white/10 bg-primary-deep text-primary-foreground shadow-elegant">
+                {[
+                  ["+10", "años"],
+                  ["12", "áreas"],
+                  ["500+", "casos"],
+                  ["98%", "clientes"],
+                ].map(([k, v]) => (
+                  <div key={v} className="bg-primary-deep px-3 py-4 text-center sm:px-4">
+                    <div className="font-display text-2xl font-semibold leading-none sm:text-3xl">{k}</div>
+                    <div className="mt-1.5 text-[10px] uppercase tracking-[0.18em] text-white/60">{v}</div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </motion.div>
 
-        <div className="lg:col-span-7">
+        <div className="mt-10 lg:col-span-7 lg:mt-0">
           <motion.span variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">
             Acerca de nosotros
           </motion.span>
@@ -439,18 +440,28 @@ function WhyUs() {
   );
 }
 
-function PersonCard({ name, role, size = "lg" }: { name: string; role: string; size?: "lg" | "md" }) {
+function PersonCard({ name, role, photo, size = "lg" }: { name: string; role: string; photo?: string; size?: "lg" | "md" }) {
   const initials = name.split(" ").map((n) => n[0]).slice(0, 2).join("");
   return (
     <div className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all hover:-translate-y-1 hover:shadow-elegant">
       <div className={`relative ${size === "lg" ? "aspect-[4/5]" : "aspect-[4/4]"} overflow-hidden bg-gradient-primary`}>
-        <div className="absolute inset-0 grid-pattern opacity-20" aria-hidden />
-        <div className="absolute inset-0 grid place-items-center">
-          <span className="font-display text-6xl font-semibold text-white/80">{initials}</span>
-        </div>
-        <span className="absolute right-3 top-3 rounded-full bg-white/15 px-2.5 py-1 text-[10px] uppercase tracking-wider text-white backdrop-blur">
-          Foto pendiente
-        </span>
+        {photo ? (
+          <img
+            src={photo}
+            alt={name}
+            className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
+          />
+        ) : (
+          <>
+            <div className="absolute inset-0 grid-pattern opacity-20" aria-hidden />
+            <div className="absolute inset-0 grid place-items-center">
+              <span className="font-display text-6xl font-semibold text-white/80">{initials}</span>
+            </div>
+            <span className="absolute right-3 top-3 rounded-full bg-white/15 px-2.5 py-1 text-[10px] uppercase tracking-wider text-white backdrop-blur">
+              Foto pendiente
+            </span>
+          </>
+        )}
       </div>
       <div className="flex flex-1 flex-col gap-3 p-6">
         <div>
@@ -479,21 +490,10 @@ function PersonCard({ name, role, size = "lg" }: { name: string; role: string; s
 }
 
 function Team() {
-  // TODO: reemplazar con perfiles reales (foto, bio, LinkedIn, Twitter).
   const socios = [
-    { name: "Carlos Moscoso", role: "Socio" },
-    { name: "Jorge Molina", role: "Socio" },
-    { name: "Luis Guerra", role: "Socio" },
-  ];
-  const asociados = [
-    { name: "Asociado Pendiente", role: "Asociado" },
-    { name: "Asociado Pendiente", role: "Asociado" },
-    { name: "Asociado Pendiente", role: "Asociado" },
-    { name: "Asociado Pendiente", role: "Asociado" },
-  ];
-  const ofCounsel = [
-    { name: "Of Counsel Pendiente", role: "Of Counsel · Asesor externo" },
-    { name: "Of Counsel Pendiente", role: "Of Counsel · Asesor interno" },
+    { name: "Carlos Moscoso", role: "Socio", photo: photoCM.url },
+    { name: "Jorge Molina", role: "Socio", photo: photoJL.url },
+    { name: "Luis Guerra", role: "Socio", photo: photoLP.url },
   ];
   return (
     <section id="team" className="bg-background py-28">
@@ -511,27 +511,7 @@ function Team() {
         </div>
         <div className="grid gap-6 md:grid-cols-3">
           {socios.map((m) => (
-            <PersonCard key={m.name} name={m.name} role={m.role} size="lg" />
-          ))}
-        </div>
-
-        <div className="mt-16 mb-4 flex items-center gap-3">
-          <span className="h-px w-8 bg-primary" />
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Asociados</span>
-        </div>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {asociados.map((m, i) => (
-            <PersonCard key={`${m.name}-${i}`} name={m.name} role={m.role} size="md" />
-          ))}
-        </div>
-
-        <div className="mt-16 mb-4 flex items-center gap-3">
-          <span className="h-px w-8 bg-primary" />
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Of Counsel</span>
-        </div>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {ofCounsel.map((m, i) => (
-            <PersonCard key={`${m.name}-${i}`} name={m.name} role={m.role} size="md" />
+            <PersonCard key={m.name} name={m.name} role={m.role} photo={m.photo} size="lg" />
           ))}
         </div>
       </div>
