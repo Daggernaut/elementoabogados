@@ -28,6 +28,10 @@ import {
   LogIn,
 } from "lucide-react";
 import logoAsset from "@/assets/logo-ea.png.asset.json";
+import photoCM from "@/assets/abo-cm.png.asset.json";
+import photoJL from "@/assets/abo-jl.png.asset.json";
+import photoLP from "@/assets/abo-lp.png.asset.json";
+import teamGroup from "@/assets/team-group.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -439,18 +443,28 @@ function WhyUs() {
   );
 }
 
-function PersonCard({ name, role, size = "lg" }: { name: string; role: string; size?: "lg" | "md" }) {
+function PersonCard({ name, role, photo, size = "lg" }: { name: string; role: string; photo?: string; size?: "lg" | "md" }) {
   const initials = name.split(" ").map((n) => n[0]).slice(0, 2).join("");
   return (
     <div className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all hover:-translate-y-1 hover:shadow-elegant">
       <div className={`relative ${size === "lg" ? "aspect-[4/5]" : "aspect-[4/4]"} overflow-hidden bg-gradient-primary`}>
-        <div className="absolute inset-0 grid-pattern opacity-20" aria-hidden />
-        <div className="absolute inset-0 grid place-items-center">
-          <span className="font-display text-6xl font-semibold text-white/80">{initials}</span>
-        </div>
-        <span className="absolute right-3 top-3 rounded-full bg-white/15 px-2.5 py-1 text-[10px] uppercase tracking-wider text-white backdrop-blur">
-          Foto pendiente
-        </span>
+        {photo ? (
+          <img
+            src={photo}
+            alt={name}
+            className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
+          />
+        ) : (
+          <>
+            <div className="absolute inset-0 grid-pattern opacity-20" aria-hidden />
+            <div className="absolute inset-0 grid place-items-center">
+              <span className="font-display text-6xl font-semibold text-white/80">{initials}</span>
+            </div>
+            <span className="absolute right-3 top-3 rounded-full bg-white/15 px-2.5 py-1 text-[10px] uppercase tracking-wider text-white backdrop-blur">
+              Foto pendiente
+            </span>
+          </>
+        )}
       </div>
       <div className="flex flex-1 flex-col gap-3 p-6">
         <div>
@@ -479,21 +493,10 @@ function PersonCard({ name, role, size = "lg" }: { name: string; role: string; s
 }
 
 function Team() {
-  // TODO: reemplazar con perfiles reales (foto, bio, LinkedIn, Twitter).
   const socios = [
-    { name: "Carlos Moscoso", role: "Socio" },
-    { name: "Jorge Molina", role: "Socio" },
-    { name: "Luis Guerra", role: "Socio" },
-  ];
-  const asociados = [
-    { name: "Asociado Pendiente", role: "Asociado" },
-    { name: "Asociado Pendiente", role: "Asociado" },
-    { name: "Asociado Pendiente", role: "Asociado" },
-    { name: "Asociado Pendiente", role: "Asociado" },
-  ];
-  const ofCounsel = [
-    { name: "Of Counsel Pendiente", role: "Of Counsel · Asesor externo" },
-    { name: "Of Counsel Pendiente", role: "Of Counsel · Asesor interno" },
+    { name: "Carlos Moscoso", role: "Socio", photo: photoCM.url },
+    { name: "Jorge Molina", role: "Socio", photo: photoJL.url },
+    { name: "Luis Guerra", role: "Socio", photo: photoLP.url },
   ];
   return (
     <section id="team" className="bg-background py-28">
@@ -511,27 +514,7 @@ function Team() {
         </div>
         <div className="grid gap-6 md:grid-cols-3">
           {socios.map((m) => (
-            <PersonCard key={m.name} name={m.name} role={m.role} size="lg" />
-          ))}
-        </div>
-
-        <div className="mt-16 mb-4 flex items-center gap-3">
-          <span className="h-px w-8 bg-primary" />
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Asociados</span>
-        </div>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {asociados.map((m, i) => (
-            <PersonCard key={`${m.name}-${i}`} name={m.name} role={m.role} size="md" />
-          ))}
-        </div>
-
-        <div className="mt-16 mb-4 flex items-center gap-3">
-          <span className="h-px w-8 bg-primary" />
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Of Counsel</span>
-        </div>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {ofCounsel.map((m, i) => (
-            <PersonCard key={`${m.name}-${i}`} name={m.name} role={m.role} size="md" />
+            <PersonCard key={m.name} name={m.name} role={m.role} photo={m.photo} size="lg" />
           ))}
         </div>
       </div>
