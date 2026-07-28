@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "motion/react";
-import { useState, type FormEvent } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { useEffect, useState, type FormEvent } from "react";
 import {
   ArrowUpRight,
   Building2,
@@ -36,7 +36,7 @@ import teamGroup from "@/assets/team-group.jpg.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Elemento Abogados — Asesoría legal estratégica en Guatemala" },
+      { title: "Elemento Abogados | Asesoría legal estratégica en Guatemala" },
       {
         name: "description",
         content:
@@ -97,7 +97,7 @@ function Nav() {
         <div className="flex items-center gap-2">
           <a
             href="#signin"
-            title="Portal de clientes — próximamente"
+            title="Portal de clientes, próximamente"
             className="hidden items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary sm:inline-flex"
           >
             <LogIn className="h-4 w-4" /> Portal clientes
@@ -124,17 +124,7 @@ function Hero() {
 
       <div className="relative mx-auto grid max-w-7xl gap-12 px-6 pb-24 pt-12 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-8">
-          <motion.span
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-white/80 backdrop-blur"
-          >
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[color:var(--accent-orange)]" />
-            Firma legal en Guatemala
-          </motion.span>
-
-          <h1 className="mt-8 font-display text-5xl font-bold leading-[0.95] tracking-tight sm:text-7xl lg:text-[5.75rem]">
+          <h1 className="font-display text-5xl font-bold leading-[0.95] tracking-tight sm:text-7xl lg:text-[5.75rem]">
             {"Más que abogados,".split(" ").map((w, i) => (
               <motion.span
                 key={i}
@@ -163,8 +153,8 @@ function Hero() {
             transition={{ duration: 0.7, delay: 0.7 }}
             className="mt-8 max-w-xl text-lg text-white/75"
           >
-            Acompañamos a empresas, familias e individuos con asesoría legal integral —
-            respuestas claras, criterio corporativo y resultados sostenibles.
+            Acompañamos a empresas, familias y personas con asesoría legal integral.
+            Damos respuestas claras, con criterio profesional y resultados que se sostienen en el tiempo.
           </motion.p>
 
           <motion.div
@@ -257,6 +247,62 @@ function Pillars() {
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{it.desc}</p>
           </motion.div>
         ))}
+      </div>
+    </section>
+  );
+}
+
+const promises = [
+  {
+    title: "Atención personalizada en cada proceso",
+    body: "Nos enfocamos en entender tu situación para ofrecer respuestas claras y efectivas. Cada caso es único, y así lo tratamos: con dedicación, análisis y comunicación constante.",
+  },
+  {
+    title: "Experiencia legal con impacto real",
+    body: "Contamos con un equipo experto en diversas áreas del derecho. Nuestra visión integral permite anticipar riesgos y encontrar soluciones concretas, útiles y sostenibles.",
+  },
+];
+
+function PromiseCarousel() {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setI((p) => (p + 1) % promises.length), 6000);
+    return () => clearInterval(t);
+  }, []);
+  const active = promises[i];
+  return (
+    <section className="relative border-b border-border bg-background py-20">
+      <div className="mx-auto max-w-5xl px-6 text-center">
+        <span className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">Nuestro compromiso</span>
+        <h2 className="mt-4 font-display text-3xl font-semibold leading-tight sm:text-5xl">
+          Lo que puedes esperar al trabajar con nosotros
+        </h2>
+        <div className="relative mt-12 min-h-[220px]">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="mx-auto max-w-3xl"
+            >
+              <h3 className="font-display text-2xl font-semibold text-primary sm:text-3xl">{active.title}</h3>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">{active.body}</p>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+        <div className="mt-8 flex items-center justify-center gap-2">
+          {promises.map((_, idx) => (
+            <button
+              key={idx}
+              type="button"
+              aria-label={`Ir al mensaje ${idx + 1}`}
+              onClick={() => setI(idx)}
+              className={`h-1.5 rounded-full transition-all ${idx === i ? "w-10 bg-primary" : "w-4 bg-border hover:bg-primary/40"}`}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -582,7 +628,7 @@ function AskUs() {
     const name = String(f.get("name") ?? "").slice(0, 100);
     const email = String(f.get("email") ?? "").slice(0, 200);
     const message = String(f.get("message") ?? "").slice(0, 2000);
-    const subject = encodeURIComponent(`Pregunta desde el sitio — ${name}`);
+    const subject = encodeURIComponent(`Pregunta desde el sitio de ${name}`);
     const body = encodeURIComponent(`Nombre: ${name}\nCorreo: ${email}\n\n${message}`);
     window.location.href = `mailto:info@elementoabogados.com?subject=${subject}&body=${body}`;
     setStatus("sent");
@@ -682,7 +728,7 @@ function Contact() {
                 { Icon: Phone, k: "Teléfono", v: "+(502) 2339 - 1922", href: "tel:+50223391922" },
                 { Icon: Mail, k: "Correo", v: "info@elementoabogados.com", href: "mailto:info@elementoabogados.com" },
                 { Icon: MapPin, k: "Oficina", v: "Ciudad de Guatemala" },
-                { Icon: Users, k: "Horario", v: "Lun–Vie · 8:00 – 17:00" },
+              { Icon: Users, k: "Horario", v: "Lunes a viernes, 8:00 a 17:00" },
               ].map(({ Icon, k, v, href }) => {
                 const content = (
                   <>
@@ -784,6 +830,7 @@ function Index() {
       <Nav />
       <Hero />
       <Pillars />
+      <PromiseCarousel />
       <About />
       <Services />
       <WhyUs />
