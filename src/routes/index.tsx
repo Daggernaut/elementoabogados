@@ -252,6 +252,62 @@ function Pillars() {
   );
 }
 
+const promises = [
+  {
+    title: "Atención personalizada en cada proceso",
+    body: "Nos enfocamos en entender tu situación para ofrecer respuestas claras y efectivas. Cada caso es único, y así lo tratamos: con dedicación, análisis y comunicación constante.",
+  },
+  {
+    title: "Experiencia legal con impacto real",
+    body: "Contamos con un equipo experto en diversas áreas del derecho. Nuestra visión integral permite anticipar riesgos y encontrar soluciones concretas, útiles y sostenibles.",
+  },
+];
+
+function PromiseCarousel() {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setI((p) => (p + 1) % promises.length), 6000);
+    return () => clearInterval(t);
+  }, []);
+  const active = promises[i];
+  return (
+    <section className="relative border-b border-border bg-background py-20">
+      <div className="mx-auto max-w-5xl px-6 text-center">
+        <span className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">Nuestro compromiso</span>
+        <h2 className="mt-4 font-display text-3xl font-semibold leading-tight sm:text-5xl">
+          Lo que puedes esperar al trabajar con nosotros
+        </h2>
+        <div className="relative mt-12 min-h-[220px]">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="mx-auto max-w-3xl"
+            >
+              <h3 className="font-display text-2xl font-semibold text-primary sm:text-3xl">{active.title}</h3>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">{active.body}</p>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+        <div className="mt-8 flex items-center justify-center gap-2">
+          {promises.map((_, idx) => (
+            <button
+              key={idx}
+              type="button"
+              aria-label={`Ir al mensaje ${idx + 1}`}
+              onClick={() => setI(idx)}
+              className={`h-1.5 rounded-full transition-all ${idx === i ? "w-10 bg-primary" : "w-4 bg-border hover:bg-primary/40"}`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function About() {
   const bullets = [
     "Equipo legal especializado",
