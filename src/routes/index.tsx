@@ -830,6 +830,7 @@ function Index() {
       <Nav />
       <Hero />
       <Pillars />
+      <PromiseCarousel />
       <About />
       <Services />
       <WhyUs />
