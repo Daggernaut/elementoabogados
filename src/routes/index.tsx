@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "motion/react";
-import { useState, type FormEvent } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { useEffect, useState, type FormEvent } from "react";
 import {
   ArrowUpRight,
   Building2,
