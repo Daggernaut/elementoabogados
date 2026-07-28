@@ -52,7 +52,6 @@ export const Route = createFileRoute("/")({
 });
 
 // TODO: reemplazar con textos revisados por el cliente.
-const services = [
 export const services = [
   { icon: Building2, title: "Derecho corporativo", desc: "Asesoría empresarial integral para crecer con seguridad jurídica.", href: "#contact" as string },
   { icon: Home, title: "Derecho inmobiliario", desc: "Operaciones inmobiliarias seguras en mercados dinámicos.", href: "#contact" },
