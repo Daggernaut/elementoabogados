@@ -32,6 +32,7 @@ import photoCM from "@/assets/abo-cm.png.asset.json";
 import photoJL from "@/assets/abo-jl.png.asset.json";
 import photoLP from "@/assets/abo-lp.png.asset.json";
 import teamGroup from "@/assets/team-group.jpg.asset.json";
+import headerHero from "@/assets/header-hero.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -118,9 +119,14 @@ function Nav() {
 function Hero() {
   return (
     <section id="top" className="relative isolate overflow-hidden bg-gradient-hero pt-32 text-primary-foreground">
-      <div className="absolute inset-0 grid-pattern opacity-40" aria-hidden />
-      <div className="absolute -right-40 top-20 h-[420px] w-[420px] rounded-full bg-primary-glow/25 blur-[140px]" aria-hidden />
-      <div className="absolute -left-40 bottom-0 h-[420px] w-[420px] rounded-full bg-[color:var(--accent-orange)]/15 blur-[160px]" aria-hidden />
+      <img
+        src={headerHero.url}
+        alt=""
+        aria-hidden
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover object-right"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-primary-deep/85 via-primary-deep/40 to-transparent" aria-hidden />
+      <div className="absolute inset-0 grid-pattern opacity-20 mix-blend-overlay" aria-hidden />
 
       <div className="relative mx-auto grid max-w-7xl gap-12 px-6 pb-24 pt-12 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-8">
