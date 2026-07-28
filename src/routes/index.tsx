@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "motion/react";
 import { useEffect, useState, type FormEvent } from "react";
 import {
@@ -51,19 +52,19 @@ export const Route = createFileRoute("/")({
 });
 
 // TODO: reemplazar con textos revisados por el cliente.
-const services = [
-  { icon: Building2, title: "Derecho corporativo", desc: "Asesoría empresarial integral para crecer con seguridad jurídica." },
-  { icon: Home, title: "Derecho inmobiliario", desc: "Operaciones inmobiliarias seguras en mercados dinámicos." },
-  { icon: Handshake, title: "Fusiones y adquisiciones", desc: "Estrategias de M&A para expansión y consolidación." },
-  { icon: Lightbulb, title: "Propiedad intelectual", desc: "Protegemos las ideas, marcas e innovaciones que generan valor." },
-  { icon: Gavel, title: "Resolución de controversias", desc: "Negociación, arbitraje y litigio con visión estratégica." },
-  { icon: ShieldAlert, title: "Controversias penales", desc: "Defensa rigurosa en el ámbito penal empresarial y personal." },
-  { icon: Receipt, title: "Derecho tributario", desc: "Cumplimiento fiscal eficiente y mitigación de riesgos." },
-  { icon: Landmark, title: "Derecho constitucional", desc: "Defensa de derechos fundamentales y garantías." },
-  { icon: Banknote, title: "Banca y finanzas", desc: "Operaciones financieras alineadas a la regulación vigente." },
-  { icon: FileCheck2, title: "Compliance & gobierno", desc: "Programas de cumplimiento y gobierno corporativo." },
-  { icon: Plane, title: "Migratorio y laboral", desc: "Movilidad internacional y relaciones laborales." },
-  { icon: Users, title: "Patrimonial & sucesoria", desc: "Planificación patrimonial con visión a largo plazo." },
+export const services = [
+  { icon: Building2, title: "Derecho corporativo", desc: "Asesoría empresarial integral para crecer con seguridad jurídica.", href: "#contact" as string },
+  { icon: Home, title: "Derecho inmobiliario", desc: "Operaciones inmobiliarias seguras en mercados dinámicos.", href: "#contact" },
+  { icon: Handshake, title: "Fusiones y adquisiciones", desc: "Estrategias de M&A para expansión y consolidación.", href: "#contact" },
+  { icon: Lightbulb, title: "Propiedad intelectual", desc: "Protegemos las ideas, marcas e innovaciones que generan valor.", href: "#contact" },
+  { icon: Gavel, title: "Resolución de controversias", desc: "Negociación, arbitraje y litigio con visión estratégica.", href: "#contact" },
+  { icon: ShieldAlert, title: "Controversias penales", desc: "Defensa rigurosa en el ámbito penal empresarial y personal.", href: "#contact" },
+  { icon: Receipt, title: "Derecho tributario", desc: "Cumplimiento fiscal eficiente y mitigación de riesgos.", href: "#contact" },
+  { icon: Landmark, title: "Derecho constitucional", desc: "Defensa de derechos fundamentales y garantías.", href: "#contact" },
+  { icon: Banknote, title: "Banca y finanzas", desc: "Operaciones financieras alineadas a la regulación vigente.", href: "/servicios/banca-y-finanzas" },
+  { icon: FileCheck2, title: "Compliance & gobierno", desc: "Programas de cumplimiento y gobierno corporativo.", href: "#contact" },
+  { icon: Plane, title: "Migratorio y laboral", desc: "Movilidad internacional y relaciones laborales.", href: "#contact" },
+  { icon: Users, title: "Patrimonial & sucesoria", desc: "Planificación patrimonial con visión a largo plazo.", href: "#contact" },
 ];
 
 const fadeUp = {
@@ -75,25 +76,32 @@ const fadeUp = {
   }),
 };
 
-function Nav() {
+export function Nav() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3.5">
-        <a href="#top" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2">
           <img src={logoAsset.url} alt="Elemento Abogados" className="h-9 w-auto" />
-        </a>
+        </Link>
         <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
-          {[
-            ["Nosotros", "#about"],
-            ["Servicios", "#services"],
-            ["Equipo", "#team"],
-            ["FAQ", "#faq"],
-            ["Contacto", "#contact"],
-          ].map(([label, href]) => (
-            <a key={href} href={href} className="transition-colors hover:text-foreground">
-              {label}
+          <a href="/#about" className="transition-colors hover:text-foreground">Nosotros</a>
+          <div className="group relative">
+            <a href="/#services" className="inline-flex items-center gap-1 transition-colors hover:text-foreground">
+              Servicios
+              <svg className="h-3 w-3 transition-transform group-hover:rotate-180" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M2.5 4.5 6 8l3.5-3.5" /></svg>
             </a>
-          ))}
+            <div className="invisible absolute left-1/2 top-full z-50 w-64 -translate-x-1/2 translate-y-1 rounded-xl border border-border bg-background/95 p-2 opacity-0 shadow-elegant backdrop-blur transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+              <Link to="/servicios/banca-y-finanzas" className="block rounded-lg px-3 py-2 text-sm text-foreground hover:bg-secondary">
+                Banca y Finanzas
+              </Link>
+              <a href="/#services" className="block rounded-lg px-3 py-2 text-sm text-muted-foreground hover:bg-secondary">
+                Ver todas las áreas
+              </a>
+            </div>
+          </div>
+          <a href="/#team" className="transition-colors hover:text-foreground">Equipo</a>
+          <a href="/#faq" className="transition-colors hover:text-foreground">FAQ</a>
+          <a href="/#contact" className="transition-colors hover:text-foreground">Contacto</a>
         </nav>
         <div className="flex items-center gap-2">
           <a
@@ -104,7 +112,7 @@ function Nav() {
             <LogIn className="h-4 w-4" /> Portal clientes
           </a>
           <a
-            href="#contact"
+            href="/#contact"
             className="group inline-flex items-center gap-2 rounded-full bg-primary-deep px-5 py-2.5 text-sm font-medium text-primary-foreground transition-all hover:bg-primary"
           >
             Contáctanos
@@ -423,7 +431,7 @@ function Services() {
           {services.map((s, i) => (
             <motion.a
               key={s.title}
-              href="#contact"
+              href={s.href}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
@@ -793,7 +801,7 @@ function Contact() {
   );
 }
 
-function Footer() {
+export function Footer() {
   return (
     <footer className="border-t border-border bg-background py-12">
       <div className="mx-auto grid max-w-7xl gap-8 px-6 md:grid-cols-3">
