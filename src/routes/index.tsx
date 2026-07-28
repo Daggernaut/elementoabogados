@@ -36,7 +36,7 @@ import teamGroup from "@/assets/team-group.jpg.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Elemento Abogados — Asesoría legal estratégica en Guatemala" },
+      { title: "Elemento Abogados | Asesoría legal estratégica en Guatemala" },
       {
         name: "description",
         content:
@@ -97,7 +97,7 @@ function Nav() {
         <div className="flex items-center gap-2">
           <a
             href="#signin"
-            title="Portal de clientes — próximamente"
+            title="Portal de clientes, próximamente"
             className="hidden items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary sm:inline-flex"
           >
             <LogIn className="h-4 w-4" /> Portal clientes
@@ -124,17 +124,7 @@ function Hero() {
 
       <div className="relative mx-auto grid max-w-7xl gap-12 px-6 pb-24 pt-12 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-8">
-          <motion.span
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-white/80 backdrop-blur"
-          >
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[color:var(--accent-orange)]" />
-            Firma legal en Guatemala
-          </motion.span>
-
-          <h1 className="mt-8 font-display text-5xl font-bold leading-[0.95] tracking-tight sm:text-7xl lg:text-[5.75rem]">
+          <h1 className="font-display text-5xl font-bold leading-[0.95] tracking-tight sm:text-7xl lg:text-[5.75rem]">
             {"Más que abogados,".split(" ").map((w, i) => (
               <motion.span
                 key={i}
@@ -163,8 +153,8 @@ function Hero() {
             transition={{ duration: 0.7, delay: 0.7 }}
             className="mt-8 max-w-xl text-lg text-white/75"
           >
-            Acompañamos a empresas, familias e individuos con asesoría legal integral —
-            respuestas claras, criterio corporativo y resultados sostenibles.
+            Acompañamos a empresas, familias y personas con asesoría legal integral.
+            Damos respuestas claras, con criterio profesional y resultados que se sostienen en el tiempo.
           </motion.p>
 
           <motion.div
@@ -682,7 +672,7 @@ function Contact() {
                 { Icon: Phone, k: "Teléfono", v: "+(502) 2339 - 1922", href: "tel:+50223391922" },
                 { Icon: Mail, k: "Correo", v: "info@elementoabogados.com", href: "mailto:info@elementoabogados.com" },
                 { Icon: MapPin, k: "Oficina", v: "Ciudad de Guatemala" },
-                { Icon: Users, k: "Horario", v: "Lun–Vie · 8:00 – 17:00" },
+              { Icon: Users, k: "Horario", v: "Lunes a viernes, 8:00 a 17:00" },
               ].map(({ Icon, k, v, href }) => {
                 const content = (
                   <>
