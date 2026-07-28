@@ -10,33 +10,43 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServiciosBancaYFinanzasRouteImport } from './routes/servicios.banca-y-finanzas'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServiciosBancaYFinanzasRoute = ServiciosBancaYFinanzasRouteImport.update({
+  id: '/servicios/banca-y-finanzas',
+  path: '/servicios/banca-y-finanzas',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/servicios/banca-y-finanzas': typeof ServiciosBancaYFinanzasRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/servicios/banca-y-finanzas': typeof ServiciosBancaYFinanzasRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/servicios/banca-y-finanzas': typeof ServiciosBancaYFinanzasRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/servicios/banca-y-finanzas'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/servicios/banca-y-finanzas'
+  id: '__root__' | '/' | '/servicios/banca-y-finanzas'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ServiciosBancaYFinanzasRoute: typeof ServiciosBancaYFinanzasRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +58,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/servicios/banca-y-finanzas': {
+      id: '/servicios/banca-y-finanzas'
+      path: '/servicios/banca-y-finanzas'
+      fullPath: '/servicios/banca-y-finanzas'
+      preLoaderRoute: typeof ServiciosBancaYFinanzasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ServiciosBancaYFinanzasRoute: ServiciosBancaYFinanzasRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
