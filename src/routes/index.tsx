@@ -32,7 +32,7 @@ import logoAsset from "@/assets/logo-ea.png.asset.json";
 import photoCM from "@/assets/abo-cm.png.asset.json";
 import photoJL from "@/assets/abo-jl.png.asset.json";
 import photoLP from "@/assets/abo-lp.png.asset.json";
-import teamGroup from "@/assets/team-group.jpg.asset.json";
+import aboutCity from "@/assets/about-city.jpg.asset.json";
 import headerHero from "@/assets/header-hero.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -346,9 +346,9 @@ function About() {
           <div className="relative">
             <div className="relative overflow-hidden rounded-3xl shadow-elegant">
               <img
-                src={teamGroup.url}
-                alt="Socios de Elemento Abogados"
-                className="aspect-[4/5] w-full object-cover"
+                src={aboutCity.url}
+                alt="Vista panorámica de la ciudad donde opera Elemento Abogados"
+                className="aspect-[16/9] w-full object-cover lg:aspect-[4/3]"
               />
               <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-primary-deep/70 to-transparent" aria-hidden />
             </div>
