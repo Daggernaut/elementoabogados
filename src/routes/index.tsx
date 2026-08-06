@@ -351,7 +351,7 @@ function About() {
             viewport={{ once: true }}
             className="mt-4 font-display text-4xl font-semibold leading-tight sm:text-5xl"
           >
-            Somos <span className="text-primary">Elemento Abogados</span>, con más de 10 años de experiencia.
+            Somos <span className="text-primary">Elemento Abogados</span>, con más de 20 años de experiencia.
           </motion.h2>
           <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-6 text-muted-foreground">
             Combinamos conocimiento jurídico, visión estratégica y compromiso para ofrecer soluciones
