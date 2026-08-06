@@ -230,10 +230,7 @@ function Pillars() {
             variants={fadeUp}
             className="group relative bg-background p-10 transition-colors hover:bg-secondary"
           >
-            <div className="font-display text-5xl font-semibold text-primary/25 transition-colors group-hover:text-primary">
-              0{i + 1}
-            </div>
-            <h3 className="mt-4 font-display text-xl font-semibold">{it.title}</h3>
+            <h3 className="font-display text-xl font-semibold">{it.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{it.desc}</p>
           </motion.div>
         ))}
