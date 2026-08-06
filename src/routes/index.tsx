@@ -159,8 +159,7 @@ function Hero() {
             transition={{ duration: 0.7, delay: 0.7 }}
             className="mt-8 max-w-xl text-lg text-white/75"
           >
-            Acompañamos a empresas, familias y personas con asesoría legal integral.
-            Damos respuestas claras, con criterio profesional y resultados que se sostienen en el tiempo.
+            Acompañando a nuestros clientes, nacionales e internacionales, con asesoría legal multidisciplinaria, estratégica y cercana. Integramos experiencia, ética y excelencia para ofrecer soluciones personalizadas que generan confianza y valor sostenible.
           </motion.p>
 
           <motion.div
