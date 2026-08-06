@@ -26,7 +26,6 @@ import {
   Download,
   Plus,
   Minus,
-  LogIn,
 } from "lucide-react";
 import logoAsset from "@/assets/logo-ea.png.asset.json";
 import photoCM from "@/assets/abo-cm.png.asset.json";
