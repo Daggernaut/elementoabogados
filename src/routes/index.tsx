@@ -193,11 +193,10 @@ function Hero() {
           transition={{ duration: 0.9, delay: 0.6 }}
           className="self-end lg:col-span-4"
         >
-          <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-md">
+          <div className="grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-md">
             {[
-              ["+10", "Años de experiencia"],
-              ["12", "Áreas del derecho"],
-              ["98%", "Satisfacción clientes"],
+              ["+20", "Años de experiencia"],
+              ["1", "Área de práctica"],
               ["500+", "Casos resueltos"],
             ].map(([k, v]) => (
               <div key={k} className="bg-primary-deep/40 p-6">
@@ -209,6 +208,20 @@ function Hero() {
         </motion.div>
       </div>
 
+      <div className="relative overflow-hidden border-y border-white/10 bg-primary-deep/60 py-6">
+        <div className="marquee-track flex w-max gap-12 whitespace-nowrap font-display text-3xl font-semibold text-white/40 sm:text-5xl">
+          {Array.from({ length: 2 }).map((_, i) => (
+            <div key={i} className="flex items-center gap-12">
+              {["Corporativo", "Inmobiliario", "M&A", "Tributario", "Penal", "Compliance", "Patrimonial"].map((s) => (
+                <span key={s} className="flex items-center gap-12">
+                  {s}
+                  <span className="text-[color:var(--accent-orange)]">✦</span>
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
