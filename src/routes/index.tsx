@@ -207,20 +207,6 @@ function Hero() {
         </motion.div>
       </div>
 
-      <div className="relative overflow-hidden border-y border-white/10 bg-primary-deep/60 py-6">
-        <div className="marquee-track flex w-max gap-12 whitespace-nowrap font-display text-3xl font-semibold text-white/40 sm:text-5xl">
-          {Array.from({ length: 2 }).map((_, i) => (
-            <div key={i} className="flex items-center gap-12">
-              {["Corporativo", "Inmobiliario", "M&A", "Tributario", "Penal", "Compliance", "Patrimonial"].map((s) => (
-                <span key={s} className="flex items-center gap-12">
-                  {s}
-                  <span className="text-[color:var(--accent-orange)]">✦</span>
-                </span>
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
     </section>
   );
 }
