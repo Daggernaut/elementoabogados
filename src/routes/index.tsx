@@ -26,7 +26,6 @@ import {
   Download,
   Plus,
   Minus,
-  LogIn,
 } from "lucide-react";
 import logoAsset from "@/assets/logo-ea.png.asset.json";
 import photoCM from "@/assets/abo-cm.png.asset.json";
@@ -104,13 +103,6 @@ export function Nav() {
           <a href="/#contact" className="transition-colors hover:text-foreground">Contacto</a>
         </nav>
         <div className="flex items-center gap-2">
-          <a
-            href="#signin"
-            title="Portal de clientes, próximamente"
-            className="hidden items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary sm:inline-flex"
-          >
-            <LogIn className="h-4 w-4" /> Portal clientes
-          </a>
           <a
             href="/#contact"
             className="group inline-flex items-center gap-2 rounded-full bg-primary-deep px-5 py-2.5 text-sm font-medium text-primary-foreground transition-all hover:bg-primary"
