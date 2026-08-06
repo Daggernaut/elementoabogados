@@ -316,29 +316,26 @@ function About() {
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="relative lg:col-span-5"
         >
-          <div className="relative">
-            <div className="relative overflow-hidden rounded-3xl shadow-elegant">
+          <div className="flex items-stretch gap-4">
+            <div className="flex flex-col justify-center gap-6 rounded-2xl border border-white/10 bg-primary-deep px-4 py-6 text-primary-foreground shadow-elegant">
+              {[
+                ["+20", "años de experiencia"],
+                ["13", "áreas de práctica"],
+                ["500+", "casos resueltos"],
+              ].map(([k, v]) => (
+                <div key={v} className="text-center">
+                  <div className="font-display text-3xl font-semibold leading-none sm:text-4xl">{k}</div>
+                  <div className="mt-2 text-[10px] uppercase tracking-[0.18em] text-white/60">{v}</div>
+                </div>
+              ))}
+            </div>
+            <div className="relative flex-1 overflow-hidden rounded-3xl shadow-elegant">
               <img
                 src={aboutCity.url}
                 alt="Vista panorámica de la ciudad donde opera Elemento Abogados"
-                className="aspect-[16/9] w-full object-cover lg:aspect-[4/3]"
+                className="aspect-[16/9] h-full w-full object-cover lg:aspect-[4/3]"
               />
               <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-primary-deep/70 to-transparent" aria-hidden />
-            </div>
-            <div className="pointer-events-none absolute inset-x-4 -bottom-8 sm:inset-x-6 lg:-bottom-10">
-              <div className="pointer-events-auto grid grid-cols-4 gap-px overflow-hidden rounded-2xl border border-white/10 bg-primary-deep text-primary-foreground shadow-elegant">
-                {[
-                  ["+10", "años"],
-                  ["12", "áreas"],
-                  ["500+", "casos"],
-                  ["98%", "clientes"],
-                ].map(([k, v]) => (
-                  <div key={v} className="bg-primary-deep px-3 py-4 text-center sm:px-4">
-                    <div className="font-display text-2xl font-semibold leading-none sm:text-3xl">{k}</div>
-                    <div className="mt-1.5 text-[10px] uppercase tracking-[0.18em] text-white/60">{v}</div>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </motion.div>
