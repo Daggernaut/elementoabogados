@@ -196,7 +196,7 @@ function Hero() {
           <div className="grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-md">
             {[
               ["+20", "Años de experiencia"],
-              ["1", "Área de práctica"],
+              ["13", "Áreas de práctica"],
               ["500+", "Casos resueltos"],
             ].map(([k, v]) => (
               <div key={k} className="bg-primary-deep/40 p-6">
