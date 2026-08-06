@@ -104,13 +104,6 @@ export function Nav() {
         </nav>
         <div className="flex items-center gap-2">
           <a
-            href="#signin"
-            title="Portal de clientes, próximamente"
-            className="hidden items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary sm:inline-flex"
-          >
-            <LogIn className="h-4 w-4" /> Portal clientes
-          </a>
-          <a
             href="/#contact"
             className="group inline-flex items-center gap-2 rounded-full bg-primary-deep px-5 py-2.5 text-sm font-medium text-primary-foreground transition-all hover:bg-primary"
           >
