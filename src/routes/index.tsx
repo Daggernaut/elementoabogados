@@ -433,7 +433,7 @@ function Services() {
 function WhyUs() {
   const items = [
     { title: "Asesoría personalizada", desc: "Atención única, entendiendo a fondo tu situación y objetivos." },
-    { title: "Compromiso con tus resultados", desc: "Buscamos siempre la mejor resolución, defendiendo tus derechos." },
+    { title: "Comprometidos con el logro de sus objetivos", desc: "Buscamos siempre la mejor resolución, defendiendo tus derechos." },
     { title: "Especialización jurídica", desc: "Expertos en distintas ramas, preparados para cada desafío." },
   ];
   return (
