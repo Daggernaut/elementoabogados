@@ -434,7 +434,7 @@ function WhyUs() {
   const items = [
     { title: "Asesoría personalizada", desc: "Atención única, entendiendo a fondo tu situación y objetivos." },
     { title: "Comprometidos con el logro de sus objetivos", desc: "Buscamos siempre la mejor resolución, defendiendo tus derechos." },
-    { title: "Especialización jurídica", desc: "Expertos en distintas ramas, preparados para cada desafío." },
+    { title: "Especialización en cada área de práctica", desc: "Expertos en distintas ramas, preparados para cada desafío." },
   ];
   return (
     <section className="relative overflow-hidden bg-primary-deep py-28 text-primary-foreground">
