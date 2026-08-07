@@ -460,7 +460,7 @@ function WhyUs() {
               variants={fadeUp}
               className="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur transition-colors hover:bg-white/10"
             >
-              <div className="font-display text-5xl font-semibold text-[color:var(--accent-orange)]">0{i + 1}</div>
+              
               <h3 className="mt-4 font-display text-xl font-semibold">{it.title}</h3>
               <p className="mt-2 text-sm text-white/70">{it.desc}</p>
             </motion.div>
