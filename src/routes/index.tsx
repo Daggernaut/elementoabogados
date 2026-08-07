@@ -446,7 +446,7 @@ function WhyUs() {
           ¿Por qué colaborar con nosotros?
         </span>
         <h2 className="mt-4 max-w-3xl font-display text-4xl font-semibold leading-tight sm:text-6xl">
-          Más que abogados, <span className="text-white/60">aliados estratégicos</span> en tu causa.
+          Soluciones legales con visión estratégica.
         </h2>
 
         <div className="mt-16 grid gap-8 md:grid-cols-3">
