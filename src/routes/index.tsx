@@ -394,7 +394,7 @@ function Services() {
             </h2>
           </div>
           <p className="max-w-sm text-muted-foreground">
-            Doce áreas de práctica respaldadas por un equipo experto, alineadas a las necesidades reales de tu caso.
+            Áreas de práctica respaldadas por un equipo experto, alineadas a las necesidades reales de tu caso.
           </p>
         </div>
 
