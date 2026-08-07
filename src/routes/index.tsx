@@ -355,8 +355,8 @@ function About() {
             Somos <span className="text-primary">Elemento Abogados</span>, con más de 20 años de experiencia.
           </motion.h2>
           <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-6 text-muted-foreground">
-            Combinamos conocimiento jurídico, visión estratégica y compromiso para ofrecer soluciones
-            efectivas a empresas, familias y personas naturales en distintas áreas del derecho.
+            Diseñamos soluciones legales estratégicas que protegen los intereses de nuestros clientes,
+            fortalecen sus decisiones y contribuyen al logro de sus objetivos.
           </motion.p>
           <ul className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
             {bullets.map((b, i) => (
