@@ -298,13 +298,12 @@ function PromiseCarousel() {
 function About() {
   const bullets = [
     "Equipo legal especializado",
-    "Alta tasa de éxito en procesos",
+    "Estrategias de litigio con resultados ampliamente satisfactorios",
+    "La confianza de nuestros clientes respalda nuestra trayectoria",
+    "Honorarios claros y transparentes",
+    "Excelencia jurídica sustentada en eficiencia, eficacia y ética.",
+    "Soluciones Ágiles y eficientes",
     "Asistencia rápida y oportuna",
-    "Recomendado por nuestros clientes",
-    "Alto desempeño en litigios",
-    "Asesoría gratuita en primera cita",
-    "Resoluciones ágiles y eficientes",
-    "Sin costos ocultos",
   ];
   return (
     <section id="about" className="relative bg-gradient-soft py-28">
