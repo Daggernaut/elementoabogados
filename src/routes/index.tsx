@@ -553,7 +553,6 @@ function Team() {
 function FAQ() {
   // TODO: preguntas finales las filtrará el cliente.
   const faqs = [
-    { q: "¿Ofrecen una primera consulta sin costo?", a: "Sí. La primera cita es de cortesía para entender tu caso y determinar cómo podemos ayudarte." },
     { q: "¿Trabajan con empresas o también con personas individuales?", a: "Ambos. Acompañamos empresas, familias y personas naturales en múltiples áreas del derecho." },
     { q: "¿Cómo se manejan los honorarios profesionales?", a: "Los honorarios se acuerdan de forma transparente al inicio del proceso, sin costos ocultos." },
     { q: "¿Pueden asesorar en operaciones fuera de Guatemala?", a: "Sí. Contamos con una red de firmas aliadas en la región para atender operaciones internacionales." },
