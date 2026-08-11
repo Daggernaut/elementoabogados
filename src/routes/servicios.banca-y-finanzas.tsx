@@ -1,3 +1,4 @@
+import bancaFinanzasHeader from "@/assets/banca-finanzas-header.jpg.asset.json";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { useState } from "react";
