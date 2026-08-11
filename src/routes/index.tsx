@@ -471,9 +471,9 @@ function WhyUs() {
   );
 }
 
-function PersonCard({ name, role, photo, size = "lg" }: { name: string; role: string; photo?: string; size?: "lg" | "md" }) {
+function PersonCard({ name, role, photo, size = "lg", href }: { name: string; role: string; photo?: string; size?: "lg" | "md"; href?: string }) {
   const initials = name.split(" ").map((n) => n[0]).slice(0, 2).join("");
-  return (
+  const card = (
     <div className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all hover:-translate-y-1 hover:shadow-elegant">
       <div className={`relative ${size === "lg" ? "aspect-[4/5]" : "aspect-[4/4]"} overflow-hidden bg-gradient-primary`}>
         {photo ? (
@@ -498,50 +498,61 @@ function PersonCard({ name, role, photo, size = "lg" }: { name: string; role: st
         <div>
           <h3 className="font-display text-xl font-semibold">{name}</h3>
           <p className="text-sm text-muted-foreground">{role}</p>
-        </div>
-        <div className="mt-auto flex items-center gap-2 pt-2">
-          <a
-            href="#"
-            aria-label={`LinkedIn de ${name}`}
-            className="grid h-8 w-8 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
-          >
-            <Linkedin className="h-3.5 w-3.5" />
-          </a>
-          <a
-            href="#"
-            aria-label={`Twitter de ${name}`}
-            className="grid h-8 w-8 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
-          >
-            <Twitter className="h-3.5 w-3.5" />
-          </a>
+          {href && (
+            <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-primary">
+              Ver perfil <ArrowUpRight className="h-3.5 w-3.5" />
+            </span>
+          )}
         </div>
       </div>
     </div>
   );
+  if (href) {
+    return (
+      <Link to={href} className="block">
+        {card}
+      </Link>
+    );
+  }
+  return card;
 }
 
 function Team() {
-  const socios = [
-    { name: "Carlos Moscoso", role: "Socio", photo: photoCM.url },
-    { name: "Jorge Molina", role: "Socio", photo: photoJL.url },
-    { name: "Luis Guerra", role: "Socio", photo: photoLP.url },
-  ];
   return (
     <section id="team" className="bg-background py-28">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-14 max-w-3xl">
-          <span className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">Nuestro equipo</span>
-          <h2 className="mt-4 font-display text-4xl font-semibold leading-tight sm:text-6xl">
-            Los <span className="text-primary">profesionales</span> detrás de cada decisión.
-          </h2>
+        <div className="mb-14 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-3xl">
+            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">Nuestro equipo</span>
+            <h2 className="mt-4 font-display text-4xl font-semibold leading-tight sm:text-6xl">
+              Los <span className="text-primary">profesionales</span> detrás de cada decisión.
+            </h2>
+          </div>
+          <Link
+            to="/equipo"
+            className="group inline-flex flex-none items-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-medium transition-colors hover:border-primary hover:text-primary"
+          >
+            Conocer al equipo
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </Link>
         </div>
 
         <div className="mb-4 flex items-center gap-3">
           <span className="h-px w-8 bg-primary" />
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Socios</span>
         </div>
-        <div className="grid gap-6 md:grid-cols-3">
-          {socios.map((m) => (
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {partners.map((m) => (
+            <PersonCard key={m.slug} name={m.name} role={m.role} photo={m.photo} size="lg" href={`/equipo/${m.slug}`} />
+          ))}
+        </div>
+
+        <div className="mb-4 mt-16 flex items-center gap-3">
+          <span className="h-px w-8 bg-primary" />
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Abogados asociados</span>
+        </div>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {associates.map((m) => (
             <PersonCard key={m.name} name={m.name} role={m.role} photo={m.photo} size="lg" />
           ))}
         </div>
