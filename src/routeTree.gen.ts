@@ -10,11 +10,23 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as EquipoIndexRouteImport } from './routes/equipo.index'
+import { Route as EquipoSlugRouteImport } from './routes/equipo.$slug'
 import { Route as ServiciosBancaYFinanzasRouteImport } from './routes/servicios.banca-y-finanzas'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EquipoIndexRoute = EquipoIndexRouteImport.update({
+  id: '/equipo/',
+  path: '/equipo/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EquipoSlugRoute = EquipoSlugRouteImport.update({
+  id: '/equipo/$slug',
+  path: '/equipo/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServiciosBancaYFinanzasRoute = ServiciosBancaYFinanzasRouteImport.update({
@@ -25,28 +37,41 @@ const ServiciosBancaYFinanzasRoute = ServiciosBancaYFinanzasRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/equipo/$slug': typeof EquipoSlugRoute
   '/servicios/banca-y-finanzas': typeof ServiciosBancaYFinanzasRoute
+  '/equipo/': typeof EquipoIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/equipo/$slug': typeof EquipoSlugRoute
   '/servicios/banca-y-finanzas': typeof ServiciosBancaYFinanzasRoute
+  '/equipo': typeof EquipoIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/equipo/$slug': typeof EquipoSlugRoute
   '/servicios/banca-y-finanzas': typeof ServiciosBancaYFinanzasRoute
+  '/equipo/': typeof EquipoIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/servicios/banca-y-finanzas'
+  fullPaths: '/' | '/equipo/$slug' | '/servicios/banca-y-finanzas' | '/equipo/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/servicios/banca-y-finanzas'
-  id: '__root__' | '/' | '/servicios/banca-y-finanzas'
+  to: '/' | '/equipo/$slug' | '/servicios/banca-y-finanzas' | '/equipo'
+  id:
+    | '__root__'
+    | '/'
+    | '/equipo/$slug'
+    | '/servicios/banca-y-finanzas'
+    | '/equipo/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  EquipoSlugRoute: typeof EquipoSlugRoute
   ServiciosBancaYFinanzasRoute: typeof ServiciosBancaYFinanzasRoute
+  EquipoIndexRoute: typeof EquipoIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -56,6 +81,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/equipo/': {
+      id: '/equipo/'
+      path: '/equipo'
+      fullPath: '/equipo/'
+      preLoaderRoute: typeof EquipoIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/equipo/$slug': {
+      id: '/equipo/$slug'
+      path: '/equipo/$slug'
+      fullPath: '/equipo/$slug'
+      preLoaderRoute: typeof EquipoSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/servicios/banca-y-finanzas': {
@@ -70,7 +109,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  EquipoSlugRoute: EquipoSlugRoute,
   ServiciosBancaYFinanzasRoute: ServiciosBancaYFinanzasRoute,
+  EquipoIndexRoute: EquipoIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

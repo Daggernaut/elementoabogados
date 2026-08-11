@@ -96,7 +96,7 @@ export function Nav() {
               </a>
             </div>
           </div>
-          <a href="/#team" className="transition-colors hover:text-foreground">Equipo</a>
+          <Link to="/equipo" className="transition-colors hover:text-foreground">Equipo</Link>
           <a href="/#faq" className="transition-colors hover:text-foreground">FAQ</a>
           <a href="/#contact" className="transition-colors hover:text-foreground">Contacto</a>
         </nav>
