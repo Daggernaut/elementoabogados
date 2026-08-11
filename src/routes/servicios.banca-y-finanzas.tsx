@@ -104,7 +104,15 @@ function BancaYFinanzas() {
       <Nav />
 
       {/* Hero */}
-      <section className="relative isolate overflow-hidden bg-gradient-hero pt-32 pb-24 text-primary-foreground">
+      <section className="relative isolate overflow-hidden pt-32 pb-24 text-primary-foreground">
+        <img
+          src={bancaFinanzasHeader.url}
+          alt="Edificios corporativos y paisaje financiero de Guatemala"
+          className="absolute inset-0 h-full w-full object-cover"
+          width={1536}
+          height={1024}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-deep/95 via-primary-deep/80 to-primary/60" aria-hidden />
         <div className="absolute inset-0 grid-pattern opacity-20" aria-hidden />
         <div className="absolute -right-32 top-1/3 h-96 w-96 rounded-full bg-primary-glow/25 blur-[120px]" aria-hidden />
         <div className="relative mx-auto max-w-4xl px-6 text-center">
