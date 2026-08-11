@@ -28,11 +28,9 @@ import {
   Minus,
 } from "lucide-react";
 import logoAsset from "@/assets/logo-ea.png.asset.json";
-import photoCM from "@/assets/abo-cm.png.asset.json";
-import photoJL from "@/assets/abo-jl.png.asset.json";
-import photoLP from "@/assets/abo-lp.png.asset.json";
 import aboutCity from "@/assets/about-city.jpg.asset.json";
 import headerHero from "@/assets/header-hero.jpg.asset.json";
+import { partners, associates } from "@/lib/team";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -471,7 +469,7 @@ function WhyUs() {
   );
 }
 
-function PersonCard({ name, role, photo, size = "lg", href }: { name: string; role: string; photo?: string; size?: "lg" | "md"; href?: string }) {
+function PersonCard({ name, role, photo, size = "lg", slug }: { name: string; role: string; photo?: string; size?: "lg" | "md"; slug?: string }) {
   const initials = name.split(" ").map((n) => n[0]).slice(0, 2).join("");
   const card = (
     <div className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all hover:-translate-y-1 hover:shadow-elegant">
@@ -498,7 +496,7 @@ function PersonCard({ name, role, photo, size = "lg", href }: { name: string; ro
         <div>
           <h3 className="font-display text-xl font-semibold">{name}</h3>
           <p className="text-sm text-muted-foreground">{role}</p>
-          {href && (
+          {slug && (
             <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-primary">
               Ver perfil <ArrowUpRight className="h-3.5 w-3.5" />
             </span>
@@ -507,9 +505,9 @@ function PersonCard({ name, role, photo, size = "lg", href }: { name: string; ro
       </div>
     </div>
   );
-  if (href) {
+  if (slug) {
     return (
-      <Link to={href} className="block">
+      <Link to="/equipo/$slug" params={{ slug }} className="block">
         {card}
       </Link>
     );
@@ -543,7 +541,7 @@ function Team() {
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {partners.map((m) => (
-            <PersonCard key={m.slug} name={m.name} role={m.role} photo={m.photo} size="lg" href={`/equipo/${m.slug}`} />
+            <PersonCard key={m.slug} name={m.name} role={m.role} photo={m.photo} size="lg" slug={m.slug} />
           ))}
         </div>
 
