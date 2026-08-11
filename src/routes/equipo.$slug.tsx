@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { ArrowLeft, ArrowRight, Clock, Mail, MapPin, Phone } from "lucide-react";
 import { Nav, Footer } from "./index";
-import { partners } from "@/lib/team";
+import { partners, type Partner } from "@/lib/team";
 
 export const Route = createFileRoute("/equipo/$slug")({
   loader: ({ params }) => {
@@ -30,7 +30,7 @@ export const Route = createFileRoute("/equipo/$slug")({
 });
 
 function PartnerPage() {
-  const { partner } = Route.useLoaderData();
+  const { partner } = Route.useLoaderData() as { partner: Partner };
   const index = partners.findIndex((p) => p.slug === partner.slug);
   const prev = partners[(index - 1 + partners.length) % partners.length];
   const next = partners[(index + 1) % partners.length];
