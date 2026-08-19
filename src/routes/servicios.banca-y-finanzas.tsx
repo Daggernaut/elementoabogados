@@ -104,15 +104,18 @@ function BancaYFinanzas() {
       <Nav />
 
       {/* Hero */}
-      <section className="relative isolate overflow-hidden pt-32 pb-24 text-primary-foreground">
+      <section className="relative isolate overflow-hidden pt-28 pb-20 text-primary-foreground sm:pt-32 sm:pb-24">
         <img
           src={bancaFinanzasHeader.url}
           alt="Edificios corporativos y paisaje financiero de Guatemala"
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover object-center"
           width={1536}
           height={1024}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-deep/95 via-primary-deep/80 to-primary/60" aria-hidden />
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-primary-deep/95 via-primary-deep/85 to-primary-deep/75 sm:bg-gradient-to-br sm:from-primary-deep/95 sm:via-primary-deep/85 sm:to-primary/70"
+          aria-hidden
+        />
         <div className="absolute inset-0 grid-pattern opacity-20" aria-hidden />
         <div className="absolute -right-32 top-1/3 h-96 w-96 rounded-full bg-primary-glow/25 blur-[120px]" aria-hidden />
         <div className="relative mx-auto max-w-4xl px-6 text-center">
@@ -128,7 +131,7 @@ function BancaYFinanzas() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="mt-5 font-display text-5xl font-bold leading-[1.02] sm:text-7xl"
+            className="mt-5 font-display text-4xl font-bold leading-[1.05] sm:text-5xl md:text-7xl"
           >
             Banca y Finanzas
           </motion.h1>
@@ -136,12 +139,12 @@ function BancaYFinanzas() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.25 }}
-            className="mx-auto mt-6 max-w-2xl text-lg text-white/75"
+            className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/85 sm:text-lg sm:text-white/80"
           >
             Asesoría legal especializada para bancos, entidades financieras, fondos de inversión y empresas
             en un entorno de constante evolución normativa.
           </motion.p>
-          <nav className="mt-8 flex items-center justify-center gap-2 text-xs text-white/60">
+          <nav className="mt-8 flex flex-wrap items-center justify-center gap-2 text-xs text-white/60">
             <Link to="/" className="hover:text-white">Inicio</Link>
             <span>/</span>
             <a href="/#services" className="hover:text-white">Servicios</a>
