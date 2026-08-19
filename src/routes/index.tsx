@@ -313,17 +313,17 @@ function About() {
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="relative lg:col-span-5"
         >
-          <div className="relative lg:-ml-[max(1.5rem,(100vw-80rem)/2)]">
+          <div className="relative mx-auto max-w-md">
             <div className="relative overflow-hidden rounded-3xl shadow-elegant">
               <img
                 src={aboutCity.url}
                 alt="Vista panorámica de la ciudad donde opera Elemento Abogados"
-                className="aspect-[16/9] w-full object-cover lg:aspect-[4/3] lg:min-h-[520px]"
+                className="aspect-[16/9] w-full object-cover lg:aspect-[4/3] lg:min-h-[420px]"
               />
               <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-primary-deep/70 to-transparent" aria-hidden />
             </div>
-            <div className="pointer-events-none absolute inset-x-4 -bottom-8 sm:inset-x-6 lg:-bottom-10 lg:inset-x-8">
-              <div className="pointer-events-auto grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-white/10 bg-primary-deep text-primary-foreground shadow-elegant">
+            <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 -bottom-8 w-[92%] max-w-[20rem] sm:-bottom-10 lg:-bottom-12">
+              <div className="pointer-events-auto grid w-full grid-cols-3 gap-px overflow-hidden rounded-2xl border border-white/10 bg-primary-deep text-primary-foreground shadow-elegant">
                 {[
                   ["+20", "años de experiencia"],
                   ["13", "áreas de práctica"],
