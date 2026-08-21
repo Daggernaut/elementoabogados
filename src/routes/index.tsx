@@ -21,6 +21,7 @@ import aboutCity from "@/assets/about-city.jpg.asset.json";
 import headerHero from "@/assets/header-hero.jpg.asset.json";
 import { partners, associates } from "@/lib/team";
 import { services } from "@/lib/services";
+import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -379,7 +380,7 @@ function Services() {
           </p>
         </div>
 
-        <div className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid overflow-hidden rounded-2xl border border-border sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => (
             <motion.a
               key={s.title}
@@ -389,7 +390,14 @@ function Services() {
               viewport={{ once: true, margin: "-50px" }}
               custom={i * 0.3}
               variants={fadeUp}
-              className="group relative flex flex-col gap-4 bg-card p-8 transition-colors duration-300 hover:bg-primary"
+              className={cn(
+                "group relative flex flex-col gap-4 border-b border-border bg-card p-8 transition-colors duration-300 hover:bg-primary",
+                "sm:border-r",
+                (i + 1) % 2 === 0 && "sm:border-r-0",
+                (i + 1) % 3 !== 0 && "lg:border-r",
+                (i + 1) % 3 === 0 && "lg:border-r-0",
+                i === services.length - 1 && "border-b-0"
+              )}
             >
               <div className="flex items-center justify-between">
                 <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-white/15 group-hover:text-white">
