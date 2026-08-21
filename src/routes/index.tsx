@@ -19,6 +19,9 @@ import {
 import logoAsset from "@/assets/logo-ea.png.asset.json";
 import aboutCity from "@/assets/about-city.jpg.asset.json";
 import headerHero from "@/assets/header-hero.jpg.asset.json";
+import contactTeam from "@/assets/equipo-contacto.png.asset.json";
+import deckEs from "@/assets/presentacion-es.pptx.asset.json";
+import deckEn from "@/assets/presentacion-en.pptx.asset.json";
 import { partners, associates } from "@/lib/team";
 import { services } from "@/lib/services";
 import { cn } from "@/lib/utils";
