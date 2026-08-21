@@ -744,21 +744,22 @@ function Contact() {
               })}
             </div>
 
-            <div className="mt-10 flex flex-wrap items-center gap-4">
+            <div className="mt-10 flex w-full flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
               <a
                 href="mailto:info@elementoabogados.com"
-                className="group inline-flex items-center gap-2 rounded-full bg-[color:var(--accent-orange)] px-6 py-3.5 text-sm font-semibold text-primary-deep transition-all hover:-translate-y-0.5 hover:shadow-glow"
+                className="group flex w-full items-center justify-center gap-2 rounded-full bg-[color:var(--accent-orange)] px-6 py-3.5 text-sm font-semibold text-primary-deep transition-all hover:-translate-y-0.5 hover:shadow-glow sm:inline-flex sm:w-auto"
               >
                 <Mail className="h-4 w-4" /> Escríbenos
               </a>
               <a
                 href="/presentacion.pdf"
                 download
-                className="group inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-white/10"
+                className="group flex w-full items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-white/10 sm:inline-flex sm:w-auto"
               >
                 <Download className="h-4 w-4" /> Descargar presentación
               </a>
             </div>
+
           </div>
 
           <div className="lg:col-span-6">
