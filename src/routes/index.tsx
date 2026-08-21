@@ -846,7 +846,7 @@ export function Footer() {
         <div>
           <img src={logoAsset.url} alt="Elemento Abogados" className="h-10 w-auto" />
           <p className="mt-4 max-w-xs text-sm text-muted-foreground">
-            Firma legal en Guatemala. Más que abogados, aliados estratégicos en tu causa.
+            Más que abogados, aliados estratégicos en tu causa.
           </p>
         </div>
         <div className="text-sm">
