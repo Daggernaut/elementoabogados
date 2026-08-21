@@ -157,7 +157,8 @@ function ServicePage() {
               </div>
             </div>
 
-          </div>
+          </article>
+
 
           <aside className="lg:col-span-4">
             <div className="rounded-2xl border border-border bg-card p-8">
