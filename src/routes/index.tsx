@@ -842,12 +842,21 @@ function Contact() {
 export function Footer() {
   return (
     <footer className="border-t border-border bg-background py-12">
-      <div className="mx-auto grid max-w-7xl gap-8 px-6 md:grid-cols-3">
+      <div className="mx-auto grid max-w-7xl gap-8 px-6 md:grid-cols-4">
         <div>
           <img src={logoAsset.url} alt="Elemento Abogados" className="h-10 w-auto" />
           <p className="mt-4 max-w-xs text-sm text-muted-foreground">
             Más que abogados, aliados estratégicos en tu causa.
           </p>
+        </div>
+        <div className="text-sm">
+          <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Legal</div>
+          <ul className="mt-3 space-y-2">
+            <li><Link className="hover:text-primary" to="/nosotros">Nosotros</Link></li>
+            <li><Link className="hover:text-primary" to="/politica-de-privacidad">Políticas de privacidad</Link></li>
+            <li><Link className="hover:text-primary" to="/terminos-y-condiciones">Términos y condiciones</Link></li>
+            <li><Link className="hover:text-primary" to="/faq">Preguntas frecuentes</Link></li>
+          </ul>
         </div>
         <div className="text-sm">
           <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Contacto</div>
