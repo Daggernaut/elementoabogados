@@ -155,17 +155,17 @@ function Hero() {
           >
             <a
               href="#contact"
-              className="group flex w-full items-center justify-center gap-2 rounded-full bg-[color:var(--accent-orange)] px-6 py-3.5 text-sm font-semibold text-primary-deep shadow-lg transition-all hover:-translate-y-0.5 hover:shadow-glow sm:inline-flex sm:w-auto"
+              className="group flex w-full items-center justify-center gap-2 rounded-full bg-[color:var(--accent-orange)] px-8 py-3.5 text-center text-sm font-semibold text-primary-deep shadow-lg transition-all hover:-translate-y-0.5 hover:shadow-glow sm:inline-flex sm:w-auto sm:px-6"
             >
               Agenda una consulta
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" />
             </a>
             <a
               href={deckEs.url}
               download
-              className="group flex w-full items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-white/10 sm:inline-flex sm:w-auto"
+              className="group flex w-full items-center justify-center gap-2 rounded-full border border-white/25 px-8 py-3.5 text-center text-sm font-medium text-white transition-colors hover:bg-white/10 sm:inline-flex sm:w-auto sm:px-6"
             >
-              <Download className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
+              <Download className="h-4 w-4 shrink-0 transition-transform group-hover:-translate-y-0.5" />
               Presentación (Español)
             </a>
             <a
