@@ -375,7 +375,7 @@ function Services() {
           {services.map((s, i) => (
             <motion.a
               key={s.title}
-              href={s.href}
+              href={`/servicios/${s.slug}`}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
