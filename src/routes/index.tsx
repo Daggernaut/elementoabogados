@@ -21,6 +21,7 @@ import aboutCity from "@/assets/about-city.jpg.asset.json";
 import headerHero from "@/assets/header-hero.jpg.asset.json";
 import { partners, associates } from "@/lib/team";
 import { services } from "@/lib/services";
+import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/")({
   head: () => ({
