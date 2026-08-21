@@ -15,6 +15,7 @@ import {
   Download,
   Plus,
   Minus,
+  ChevronDown,
 } from "lucide-react";
 import logoAsset from "@/assets/logo-ea.png.asset.json";
 import aboutCity from "@/assets/about-city.jpg.asset.json";
