@@ -19,6 +19,9 @@ import {
 import logoAsset from "@/assets/logo-ea.png.asset.json";
 import aboutCity from "@/assets/about-city.jpg.asset.json";
 import headerHero from "@/assets/header-hero.jpg.asset.json";
+import contactTeam from "@/assets/equipo-contacto.png.asset.json";
+import deckEs from "@/assets/presentacion-es.pptx.asset.json";
+import deckEn from "@/assets/presentacion-en.pptx.asset.json";
 import { partners, associates } from "@/lib/team";
 import { services } from "@/lib/services";
 import { cn } from "@/lib/utils";
@@ -158,12 +161,20 @@ function Hero() {
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
             <a
-              href="/presentacion.pdf"
+              href={deckEs.url}
               download
               className="group flex w-full items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-white/10 sm:inline-flex sm:w-auto"
             >
               <Download className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
-              Descargar presentación
+              Presentación (Español)
+            </a>
+            <a
+              href={deckEn.url}
+              download
+              className="group flex w-full items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-white/10 sm:inline-flex sm:w-auto"
+            >
+              <Download className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
+              Presentation (English)
             </a>
           </motion.div>
         </div>
@@ -764,11 +775,18 @@ function Contact() {
                 <Mail className="h-4 w-4" /> Escríbenos
               </a>
               <a
-                href="/presentacion.pdf"
+                href={deckEs.url}
                 download
                 className="group flex w-full items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-white/10 sm:inline-flex sm:w-auto"
               >
-                <Download className="h-4 w-4" /> Descargar presentación
+                <Download className="h-4 w-4" /> Presentación (Español)
+              </a>
+              <a
+                href={deckEn.url}
+                download
+                className="group flex w-full items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-white/10 sm:inline-flex sm:w-auto"
+              >
+                <Download className="h-4 w-4" /> Presentation (English)
               </a>
             </div>
 
@@ -776,12 +794,11 @@ function Contact() {
 
           <div className="lg:col-span-6">
             <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-1 backdrop-blur">
-              <iframe
-                title="Ubicación Elemento Abogados"
-                src="https://www.google.com/maps?q=Ciudad%20de%20Guatemala&output=embed"
-                className="h-[420px] w-full rounded-[22px]"
+              <img
+                src={contactTeam.url}
+                alt="Equipo de Elemento Abogados"
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
+                className="h-[420px] w-full rounded-[22px] object-cover object-top"
               />
             </div>
           </div>
