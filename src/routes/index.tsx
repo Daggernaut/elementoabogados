@@ -577,7 +577,6 @@ function FAQ() {
     { q: "¿Cómo se manejan los honorarios profesionales?", a: "Los honorarios se acuerdan de forma transparente al inicio del proceso, sin costos ocultos." },
     { q: "¿Pueden asesorar en operaciones fuera de Guatemala?", a: "Sí. Contamos con una red de firmas aliadas en la región para atender operaciones internacionales." },
     { q: "¿Cuánto tiempo tarda un proceso legal típico?", a: "Depende de la materia y complejidad. En la primera reunión te damos una estimación realista." },
-    { q: "¿Existe portal en línea para clientes?", a: "Sí, próximamente lanzaremos un portal para consulta de documentos y estado de tus casos." },
   ];
   const [open, setOpen] = useState<number | null>(0);
   return (
