@@ -61,7 +61,7 @@ export function Nav() {
           <img src={logoAsset.url} alt="Elemento Abogados" className="h-9 w-auto" />
         </Link>
         <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
-          <a href="/#about" className="transition-colors hover:text-foreground">Nosotros</a>
+          <Link to="/nosotros" className="transition-colors hover:text-foreground">Nosotros</Link>
           <div className="group relative">
             <a href="/servicios" className="inline-flex items-center gap-1 transition-colors hover:text-foreground">
               Servicios
@@ -85,7 +85,7 @@ export function Nav() {
 
           </div>
           <Link to="/equipo" className="transition-colors hover:text-foreground">Equipo</Link>
-          <a href="/#faq" className="transition-colors hover:text-foreground">FAQ</a>
+          <Link to="/faq" className="transition-colors hover:text-foreground">FAQ</Link>
           <a href="/#contact" className="transition-colors hover:text-foreground">Contacto</a>
         </nav>
         <div className="flex items-center gap-2">
@@ -842,12 +842,21 @@ function Contact() {
 export function Footer() {
   return (
     <footer className="border-t border-border bg-background py-12">
-      <div className="mx-auto grid max-w-7xl gap-8 px-6 md:grid-cols-3">
+      <div className="mx-auto grid max-w-7xl gap-8 px-6 md:grid-cols-4">
         <div>
           <img src={logoAsset.url} alt="Elemento Abogados" className="h-10 w-auto" />
           <p className="mt-4 max-w-xs text-sm text-muted-foreground">
             Más que abogados, aliados estratégicos en tu causa.
           </p>
+        </div>
+        <div className="text-sm">
+          <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Legal</div>
+          <ul className="mt-3 space-y-2">
+            <li><Link className="hover:text-primary" to="/nosotros">Nosotros</Link></li>
+            <li><Link className="hover:text-primary" to="/politica-de-privacidad">Políticas de privacidad</Link></li>
+            <li><Link className="hover:text-primary" to="/terminos-y-condiciones">Términos y condiciones</Link></li>
+            <li><Link className="hover:text-primary" to="/faq">Preguntas frecuentes</Link></li>
+          </ul>
         </div>
         <div className="text-sm">
           <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Contacto</div>

@@ -10,6 +10,10 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as NosotrosRouteImport } from './routes/nosotros'
+import { Route as PoliticaDePrivacidadRouteImport } from './routes/politica-de-privacidad'
+import { Route as TerminosYCondicionesRouteImport } from './routes/terminos-y-condiciones'
 import { Route as EquipoIndexRouteImport } from './routes/equipo.index'
 import { Route as EquipoSlugRouteImport } from './routes/equipo.$slug'
 import { Route as ServiciosIndexRouteImport } from './routes/servicios.index'
@@ -19,6 +23,26 @@ import { Route as ServiciosBancaYFinanzasRouteImport } from './routes/servicios.
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NosotrosRoute = NosotrosRouteImport.update({
+  id: '/nosotros',
+  path: '/nosotros',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PoliticaDePrivacidadRoute = PoliticaDePrivacidadRouteImport.update({
+  id: '/politica-de-privacidad',
+  path: '/politica-de-privacidad',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TerminosYCondicionesRoute = TerminosYCondicionesRouteImport.update({
+  id: '/terminos-y-condiciones',
+  path: '/terminos-y-condiciones',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EquipoIndexRoute = EquipoIndexRouteImport.update({
@@ -49,6 +73,10 @@ const ServiciosBancaYFinanzasRoute = ServiciosBancaYFinanzasRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/faq': typeof FaqRoute
+  '/nosotros': typeof NosotrosRoute
+  '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
+  '/terminos-y-condiciones': typeof TerminosYCondicionesRoute
   '/equipo/$slug': typeof EquipoSlugRoute
   '/servicios/$slug': typeof ServiciosSlugRoute
   '/servicios/banca-y-finanzas': typeof ServiciosBancaYFinanzasRoute
@@ -57,6 +85,10 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/faq': typeof FaqRoute
+  '/nosotros': typeof NosotrosRoute
+  '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
+  '/terminos-y-condiciones': typeof TerminosYCondicionesRoute
   '/equipo/$slug': typeof EquipoSlugRoute
   '/servicios/$slug': typeof ServiciosSlugRoute
   '/servicios/banca-y-finanzas': typeof ServiciosBancaYFinanzasRoute
@@ -66,6 +98,10 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/faq': typeof FaqRoute
+  '/nosotros': typeof NosotrosRoute
+  '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
+  '/terminos-y-condiciones': typeof TerminosYCondicionesRoute
   '/equipo/$slug': typeof EquipoSlugRoute
   '/servicios/$slug': typeof ServiciosSlugRoute
   '/servicios/banca-y-finanzas': typeof ServiciosBancaYFinanzasRoute
@@ -76,6 +112,10 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/faq'
+    | '/nosotros'
+    | '/politica-de-privacidad'
+    | '/terminos-y-condiciones'
     | '/equipo/$slug'
     | '/servicios/$slug'
     | '/servicios/banca-y-finanzas'
@@ -84,6 +124,10 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/faq'
+    | '/nosotros'
+    | '/politica-de-privacidad'
+    | '/terminos-y-condiciones'
     | '/equipo/$slug'
     | '/servicios/$slug'
     | '/servicios/banca-y-finanzas'
@@ -92,6 +136,10 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/faq'
+    | '/nosotros'
+    | '/politica-de-privacidad'
+    | '/terminos-y-condiciones'
     | '/equipo/$slug'
     | '/servicios/$slug'
     | '/servicios/banca-y-finanzas'
@@ -101,6 +149,10 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FaqRoute: typeof FaqRoute
+  NosotrosRoute: typeof NosotrosRoute
+  PoliticaDePrivacidadRoute: typeof PoliticaDePrivacidadRoute
+  TerminosYCondicionesRoute: typeof TerminosYCondicionesRoute
   EquipoSlugRoute: typeof EquipoSlugRoute
   ServiciosSlugRoute: typeof ServiciosSlugRoute
   ServiciosBancaYFinanzasRoute: typeof ServiciosBancaYFinanzasRoute
@@ -115,6 +167,34 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nosotros': {
+      id: '/nosotros'
+      path: '/nosotros'
+      fullPath: '/nosotros'
+      preLoaderRoute: typeof NosotrosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/politica-de-privacidad': {
+      id: '/politica-de-privacidad'
+      path: '/politica-de-privacidad'
+      fullPath: '/politica-de-privacidad'
+      preLoaderRoute: typeof PoliticaDePrivacidadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terminos-y-condiciones': {
+      id: '/terminos-y-condiciones'
+      path: '/terminos-y-condiciones'
+      fullPath: '/terminos-y-condiciones'
+      preLoaderRoute: typeof TerminosYCondicionesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/equipo/': {
@@ -157,6 +237,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FaqRoute: FaqRoute,
+  NosotrosRoute: NosotrosRoute,
+  PoliticaDePrivacidadRoute: PoliticaDePrivacidadRoute,
+  TerminosYCondicionesRoute: TerminosYCondicionesRoute,
   EquipoSlugRoute: EquipoSlugRoute,
   ServiciosSlugRoute: ServiciosSlugRoute,
   ServiciosBancaYFinanzasRoute: ServiciosBancaYFinanzasRoute,
