@@ -61,7 +61,7 @@ export function Nav() {
           <img src={logoAsset.url} alt="Elemento Abogados" className="h-9 w-auto" />
         </Link>
         <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
-          <a href="/#about" className="transition-colors hover:text-foreground">Nosotros</a>
+          <Link to="/nosotros" className="transition-colors hover:text-foreground">Nosotros</Link>
           <div className="group relative">
             <a href="/servicios" className="inline-flex items-center gap-1 transition-colors hover:text-foreground">
               Servicios

@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as FaqRouteImport } from './routes/faq'
+import { Route as NosotrosRouteImport } from './routes/nosotros'
 import { Route as PoliticaDePrivacidadRouteImport } from './routes/politica-de-privacidad'
 import { Route as TerminosYCondicionesRouteImport } from './routes/terminos-y-condiciones'
 import { Route as EquipoIndexRouteImport } from './routes/equipo.index'
@@ -27,6 +28,11 @@ const IndexRoute = IndexRouteImport.update({
 const FaqRoute = FaqRouteImport.update({
   id: '/faq',
   path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NosotrosRoute = NosotrosRouteImport.update({
+  id: '/nosotros',
+  path: '/nosotros',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PoliticaDePrivacidadRoute = PoliticaDePrivacidadRouteImport.update({
@@ -68,6 +74,7 @@ const ServiciosBancaYFinanzasRoute = ServiciosBancaYFinanzasRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/faq': typeof FaqRoute
+  '/nosotros': typeof NosotrosRoute
   '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/terminos-y-condiciones': typeof TerminosYCondicionesRoute
   '/equipo/$slug': typeof EquipoSlugRoute
@@ -79,6 +86,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/faq': typeof FaqRoute
+  '/nosotros': typeof NosotrosRoute
   '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/terminos-y-condiciones': typeof TerminosYCondicionesRoute
   '/equipo/$slug': typeof EquipoSlugRoute
@@ -91,6 +99,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/faq': typeof FaqRoute
+  '/nosotros': typeof NosotrosRoute
   '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/terminos-y-condiciones': typeof TerminosYCondicionesRoute
   '/equipo/$slug': typeof EquipoSlugRoute
@@ -104,6 +113,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/faq'
+    | '/nosotros'
     | '/politica-de-privacidad'
     | '/terminos-y-condiciones'
     | '/equipo/$slug'
@@ -115,6 +125,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/faq'
+    | '/nosotros'
     | '/politica-de-privacidad'
     | '/terminos-y-condiciones'
     | '/equipo/$slug'
@@ -126,6 +137,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/faq'
+    | '/nosotros'
     | '/politica-de-privacidad'
     | '/terminos-y-condiciones'
     | '/equipo/$slug'
@@ -138,6 +150,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   FaqRoute: typeof FaqRoute
+  NosotrosRoute: typeof NosotrosRoute
   PoliticaDePrivacidadRoute: typeof PoliticaDePrivacidadRoute
   TerminosYCondicionesRoute: typeof TerminosYCondicionesRoute
   EquipoSlugRoute: typeof EquipoSlugRoute
@@ -161,6 +174,13 @@ declare module '@tanstack/react-router' {
       path: '/faq'
       fullPath: '/faq'
       preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nosotros': {
+      id: '/nosotros'
+      path: '/nosotros'
+      fullPath: '/nosotros'
+      preLoaderRoute: typeof NosotrosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/politica-de-privacidad': {
@@ -218,6 +238,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   FaqRoute: FaqRoute,
+  NosotrosRoute: NosotrosRoute,
   PoliticaDePrivacidadRoute: PoliticaDePrivacidadRoute,
   TerminosYCondicionesRoute: TerminosYCondicionesRoute,
   EquipoSlugRoute: EquipoSlugRoute,
