@@ -58,18 +58,26 @@ export function Nav() {
         <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
           <a href="/#about" className="transition-colors hover:text-foreground">Nosotros</a>
           <div className="group relative">
-            <a href="/#services" className="inline-flex items-center gap-1 transition-colors hover:text-foreground">
+            <a href="/servicios" className="inline-flex items-center gap-1 transition-colors hover:text-foreground">
               Servicios
               <svg className="h-3 w-3 transition-transform group-hover:rotate-180" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M2.5 4.5 6 8l3.5-3.5" /></svg>
             </a>
-            <div className="invisible absolute left-1/2 top-full z-50 w-64 -translate-x-1/2 translate-y-1 rounded-xl border border-border bg-background/95 p-2 opacity-0 shadow-elegant backdrop-blur transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-              <Link to="/servicios/banca-y-finanzas" className="block rounded-lg px-3 py-2 text-sm text-foreground hover:bg-secondary">
-                Banca y Finanzas
-              </Link>
-              <a href="/#services" className="block rounded-lg px-3 py-2 text-sm text-muted-foreground hover:bg-secondary">
-                Ver todas las áreas
+            <div className="invisible absolute left-1/2 top-full z-50 grid w-[38rem] -translate-x-1/2 translate-y-1 grid-cols-2 gap-1 rounded-xl border border-border bg-background/95 p-2 opacity-0 shadow-elegant backdrop-blur transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+              {services.map((s) => (
+                <a
+                  key={s.slug}
+                  href={`/servicios/${s.slug}`}
+                  className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-foreground hover:bg-secondary"
+                >
+                  <s.icon className="h-4 w-4 shrink-0 text-primary" />
+                  {s.title}
+                </a>
+              ))}
+              <a href="/servicios" className="col-span-2 mt-1 block rounded-lg border-t border-border px-3 py-2 text-sm text-muted-foreground hover:bg-secondary">
+                Ver todas las áreas de práctica
               </a>
             </div>
+
           </div>
           <Link to="/equipo" className="transition-colors hover:text-foreground">Equipo</Link>
           <a href="/#faq" className="transition-colors hover:text-foreground">FAQ</a>
