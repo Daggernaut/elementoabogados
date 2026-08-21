@@ -187,9 +187,9 @@ function Hero() {
         >
           <div className="grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-md">
             {[
-              ["+20", "Años de experiencia"],
-              ["13", "Áreas de práctica"],
-              ["500+", "Casos resueltos"],
+              ["+20", "años de experiencia"],
+              ["13", "áreas de práctica"],
+              ["500+", "casos resueltos"],
             ].map(([k, v], i) => (
               <motion.div
                 key={k}
