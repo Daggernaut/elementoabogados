@@ -161,12 +161,20 @@ function Hero() {
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
             <a
-              href="/presentacion.pdf"
+              href={deckEs.url}
               download
               className="group flex w-full items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-white/10 sm:inline-flex sm:w-auto"
             >
               <Download className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
-              Descargar presentación
+              Presentación (Español)
+            </a>
+            <a
+              href={deckEn.url}
+              download
+              className="group flex w-full items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-white/10 sm:inline-flex sm:w-auto"
+            >
+              <Download className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
+              Presentation (English)
             </a>
           </motion.div>
         </div>
