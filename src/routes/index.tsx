@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "motion/react";
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import {
   ArrowUpRight,
   Users,
@@ -15,6 +15,7 @@ import {
   Download,
   Plus,
   Minus,
+  ChevronDown,
 } from "lucide-react";
 import logoAsset from "@/assets/logo-ea.png.asset.json";
 import aboutCity from "@/assets/about-city.jpg.asset.json";
@@ -101,6 +102,64 @@ export function Nav() {
   );
 }
 
+function DownloadDropdown({ className }: { className?: string }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+    if (open) {
+      document.addEventListener("mousedown", handleClick);
+      return () => document.removeEventListener("mousedown", handleClick);
+    }
+  }, [open]);
+
+  return (
+    <div ref={ref} className={cn("relative w-full sm:w-auto", className)}>
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className="group flex w-full items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 px-8 py-3.5 text-center text-sm font-medium text-white transition-colors hover:bg-white/10 sm:w-auto sm:px-6"
+      >
+        <Download className="h-4 w-4 shrink-0 transition-transform group-hover:-translate-y-0.5" />
+        Descargar presentación
+        <ChevronDown
+          className={cn(
+            "h-4 w-4 shrink-0 transition-transform",
+            open && "rotate-180"
+          )}
+        />
+      </button>
+      {open && (
+        <div className="absolute left-0 top-full z-20 mt-2 w-full overflow-hidden rounded-2xl border border-white/10 bg-primary-deep shadow-xl sm:w-56">
+          <a
+            href={deckEs.url}
+            download
+            onClick={() => setOpen(false)}
+            className="flex items-center gap-2 px-4 py-3 text-sm text-white/90 transition-colors hover:bg-white/10"
+          >
+            <span className="text-base">🇪🇸</span>
+            Versión en español
+          </a>
+          <a
+            href={deckEn.url}
+            download
+            onClick={() => setOpen(false)}
+            className="flex items-center gap-2 px-4 py-3 text-sm text-white/90 transition-colors hover:bg-white/10"
+          >
+            <span className="text-base">🇬🇧</span>
+            English version
+          </a>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function Hero() {
   return (
     <section id="top" className="relative isolate overflow-hidden bg-gradient-hero pt-32 text-primary-foreground">
@@ -160,22 +219,7 @@ function Hero() {
               Agenda una consulta
               <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" />
             </a>
-            <a
-              href={deckEs.url}
-              download
-              className="group flex w-full items-center justify-center gap-2 rounded-full border border-white/25 px-8 py-3.5 text-center text-sm font-medium text-white transition-colors hover:bg-white/10 sm:inline-flex sm:w-auto sm:px-6"
-            >
-              <Download className="h-4 w-4 shrink-0 transition-transform group-hover:-translate-y-0.5" />
-              Presentación (Español)
-            </a>
-            <a
-              href={deckEn.url}
-              download
-              className="group flex w-full items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-white/10 sm:inline-flex sm:w-auto"
-            >
-              <Download className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
-              Presentation (English)
-            </a>
+            <DownloadDropdown />
           </motion.div>
         </div>
 
@@ -774,20 +818,7 @@ function Contact() {
               >
                 <Mail className="h-4 w-4" /> Escríbenos
               </a>
-              <a
-                href={deckEs.url}
-                download
-                className="group flex w-full items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-white/10 sm:inline-flex sm:w-auto"
-              >
-                <Download className="h-4 w-4" /> Presentación (Español)
-              </a>
-              <a
-                href={deckEn.url}
-                download
-                className="group flex w-full items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-white/10 sm:inline-flex sm:w-auto"
-              >
-                <Download className="h-4 w-4" /> Presentation (English)
-              </a>
+              <DownloadDropdown />
             </div>
 
           </div>
