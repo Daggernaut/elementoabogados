@@ -228,55 +228,68 @@ function Pillars() {
   );
 }
 
-const promises = [
+const pillars = [
   {
-    title: "Atención personalizada en cada proceso",
-    body: "Nos enfocamos en entender tu situación para ofrecer respuestas claras y efectivas. Cada caso es único, y así lo tratamos: con dedicación, análisis y comunicación constante.",
+    title: "Excelencia Jurídica",
+    body: "Rigor técnico, especialización y capacidad para resolver asuntos de alta complejidad con estándares de primer nivel.",
   },
   {
-    title: "Experiencia legal con impacto real",
-    body: "Contamos con un equipo experto en diversas áreas del derecho. Nuestra visión integral permite anticipar riesgos y encontrar soluciones concretas, útiles y sostenibles.",
+    title: "Talento y Especialización",
+    body: "Un equipo de profesionales con experiencia complementaria, capaces de integrar distintas áreas de práctica para atender las necesidades más sofisticadas del cliente.",
+  },
+  {
+    title: "Cliente y Visión de Negocio",
+    body: "Comprender los objetivos comerciales del cliente para brindar soluciones jurídicas estratégicas que generen valor y acompañen la toma de decisiones.",
+  },
+  {
+    title: "Integración y Crecimiento",
+    body: "Una firma integrada que combina tecnología, procesos, colaboración y gestión eficiente para crecer de forma sostenible y ofrecer un servicio consistente.",
   },
 ];
 
-function PromiseCarousel() {
-  const [i, setI] = useState(0);
-  useEffect(() => {
-    const t = setInterval(() => setI((p) => (p + 1) % promises.length), 6000);
-    return () => clearInterval(t);
-  }, []);
-  const active = promises[i];
+function PracticePillars() {
   return (
-    <section className="relative border-b border-border bg-background py-20">
-      <div className="mx-auto max-w-5xl px-6 text-center">
-        <span className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">Nuestro compromiso</span>
-        <h2 className="mt-4 font-display text-3xl font-semibold leading-tight sm:text-5xl">
-          Lo que puedes esperar al trabajar con nosotros
-        </h2>
-        <div className="relative mt-12 min-h-[220px]">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="mx-auto max-w-3xl"
-            >
-              <h3 className="font-display text-2xl font-semibold text-primary sm:text-3xl">{active.title}</h3>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">{active.body}</p>
-            </motion.div>
-          </AnimatePresence>
+    <section className="relative border-b border-border bg-background py-24 sm:py-28">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mb-16 max-w-3xl">
+          <motion.span
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="text-xs font-semibold uppercase tracking-[0.25em] text-primary"
+          >
+            Los pilares de nuestra práctica
+          </motion.span>
+          <motion.h2
+            variants={fadeUp}
+            custom={1}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="mt-4 font-display text-4xl font-semibold leading-tight sm:text-5xl"
+          >
+            Principios que orientan cada asesoría
+          </motion.h2>
         </div>
-        <div className="mt-8 flex items-center justify-center gap-2">
-          {promises.map((_, idx) => (
-            <button
-              key={idx}
-              type="button"
-              aria-label={`Ir al mensaje ${idx + 1}`}
-              onClick={() => setI(idx)}
-              className={`h-1.5 rounded-full transition-all ${idx === i ? "w-10 bg-primary" : "w-4 bg-border hover:bg-primary/40"}`}
-            />
+
+        <div className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+          {pillars.map((it, i) => (
+            <motion.div
+              key={it.title}
+              variants={fadeUp}
+              custom={i}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-80px" }}
+              className="group relative bg-card p-8 transition-colors duration-300 hover:bg-secondary sm:p-10"
+            >
+              <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                <span className="font-display text-sm font-bold">{String(i + 1).padStart(2, "0")}</span>
+              </div>
+              <h3 className="font-display text-xl font-semibold leading-snug">{it.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{it.body}</p>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -822,7 +835,7 @@ function Index() {
       <Nav />
       <Hero />
       <Pillars />
-      <PromiseCarousel />
+      <PracticePillars />
       <About />
       <Services />
       <WhyUs />
