@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as EquipoIndexRouteImport } from './routes/equipo.index'
 import { Route as EquipoSlugRouteImport } from './routes/equipo.$slug'
 import { Route as ServiciosIndexRouteImport } from './routes/servicios.index'
+import { Route as ServiciosSlugRouteImport } from './routes/servicios.$slug'
 import { Route as ServiciosBancaYFinanzasRouteImport } from './routes/servicios.banca-y-finanzas'
 
 const IndexRoute = IndexRouteImport.update({
@@ -35,6 +36,11 @@ const ServiciosIndexRoute = ServiciosIndexRouteImport.update({
   path: '/servicios/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServiciosSlugRoute = ServiciosSlugRouteImport.update({
+  id: '/servicios/$slug',
+  path: '/servicios/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServiciosBancaYFinanzasRoute = ServiciosBancaYFinanzasRouteImport.update({
   id: '/servicios/banca-y-finanzas',
   path: '/servicios/banca-y-finanzas',
@@ -44,6 +50,7 @@ const ServiciosBancaYFinanzasRoute = ServiciosBancaYFinanzasRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/equipo/$slug': typeof EquipoSlugRoute
+  '/servicios/$slug': typeof ServiciosSlugRoute
   '/servicios/banca-y-finanzas': typeof ServiciosBancaYFinanzasRoute
   '/equipo/': typeof EquipoIndexRoute
   '/servicios/': typeof ServiciosIndexRoute
@@ -51,6 +58,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/equipo/$slug': typeof EquipoSlugRoute
+  '/servicios/$slug': typeof ServiciosSlugRoute
   '/servicios/banca-y-finanzas': typeof ServiciosBancaYFinanzasRoute
   '/equipo': typeof EquipoIndexRoute
   '/servicios': typeof ServiciosIndexRoute
@@ -59,6 +67,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/equipo/$slug': typeof EquipoSlugRoute
+  '/servicios/$slug': typeof ServiciosSlugRoute
   '/servicios/banca-y-finanzas': typeof ServiciosBancaYFinanzasRoute
   '/equipo/': typeof EquipoIndexRoute
   '/servicios/': typeof ServiciosIndexRoute
@@ -68,6 +77,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/equipo/$slug'
+    | '/servicios/$slug'
     | '/servicios/banca-y-finanzas'
     | '/equipo/'
     | '/servicios/'
@@ -75,6 +85,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/equipo/$slug'
+    | '/servicios/$slug'
     | '/servicios/banca-y-finanzas'
     | '/equipo'
     | '/servicios'
@@ -82,6 +93,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/equipo/$slug'
+    | '/servicios/$slug'
     | '/servicios/banca-y-finanzas'
     | '/equipo/'
     | '/servicios/'
@@ -90,6 +102,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   EquipoSlugRoute: typeof EquipoSlugRoute
+  ServiciosSlugRoute: typeof ServiciosSlugRoute
   ServiciosBancaYFinanzasRoute: typeof ServiciosBancaYFinanzasRoute
   EquipoIndexRoute: typeof EquipoIndexRoute
   ServiciosIndexRoute: typeof ServiciosIndexRoute
@@ -125,6 +138,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServiciosIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/servicios/$slug': {
+      id: '/servicios/$slug'
+      path: '/servicios/$slug'
+      fullPath: '/servicios/$slug'
+      preLoaderRoute: typeof ServiciosSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/servicios/banca-y-finanzas': {
       id: '/servicios/banca-y-finanzas'
       path: '/servicios/banca-y-finanzas'
@@ -138,6 +158,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   EquipoSlugRoute: EquipoSlugRoute,
+  ServiciosSlugRoute: ServiciosSlugRoute,
   ServiciosBancaYFinanzasRoute: ServiciosBancaYFinanzasRoute,
   EquipoIndexRoute: EquipoIndexRoute,
   ServiciosIndexRoute: ServiciosIndexRoute,
