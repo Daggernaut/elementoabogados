@@ -1,5 +1,7 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
+import { motion } from "motion/react";
 import { ArrowRight, ArrowUpRight, Mail, Phone } from "lucide-react";
+
 import { Nav, Footer } from "./index";
 import { services, getService } from "@/lib/services";
 
