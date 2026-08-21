@@ -594,7 +594,7 @@ function FAQ() {
     <section id="faq" className="bg-gradient-soft py-28">
       <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-12">
         <div className="lg:col-span-5">
-          <span className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">Preguntas frecuentes</span>
+          <span className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">FAQ</span>
           <h2 className="mt-4 font-display text-4xl font-semibold leading-tight sm:text-5xl">
             Resolvemos <span className="text-primary">tus dudas</span> antes de empezar.
           </h2>
