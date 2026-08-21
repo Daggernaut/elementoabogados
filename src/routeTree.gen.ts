@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PoliticaDePrivacidadRouteImport } from './routes/politica-de-privacidad'
 import { Route as EquipoIndexRouteImport } from './routes/equipo.index'
 import { Route as EquipoSlugRouteImport } from './routes/equipo.$slug'
 import { Route as ServiciosIndexRouteImport } from './routes/servicios.index'
@@ -19,6 +20,11 @@ import { Route as ServiciosBancaYFinanzasRouteImport } from './routes/servicios.
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PoliticaDePrivacidadRoute = PoliticaDePrivacidadRouteImport.update({
+  id: '/politica-de-privacidad',
+  path: '/politica-de-privacidad',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EquipoIndexRoute = EquipoIndexRouteImport.update({
@@ -49,6 +55,7 @@ const ServiciosBancaYFinanzasRoute = ServiciosBancaYFinanzasRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/equipo/$slug': typeof EquipoSlugRoute
   '/servicios/$slug': typeof ServiciosSlugRoute
   '/servicios/banca-y-finanzas': typeof ServiciosBancaYFinanzasRoute
@@ -57,6 +64,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/equipo/$slug': typeof EquipoSlugRoute
   '/servicios/$slug': typeof ServiciosSlugRoute
   '/servicios/banca-y-finanzas': typeof ServiciosBancaYFinanzasRoute
@@ -66,6 +74,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/equipo/$slug': typeof EquipoSlugRoute
   '/servicios/$slug': typeof ServiciosSlugRoute
   '/servicios/banca-y-finanzas': typeof ServiciosBancaYFinanzasRoute
@@ -76,6 +85,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/politica-de-privacidad'
     | '/equipo/$slug'
     | '/servicios/$slug'
     | '/servicios/banca-y-finanzas'
@@ -84,6 +94,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/politica-de-privacidad'
     | '/equipo/$slug'
     | '/servicios/$slug'
     | '/servicios/banca-y-finanzas'
@@ -92,6 +103,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/politica-de-privacidad'
     | '/equipo/$slug'
     | '/servicios/$slug'
     | '/servicios/banca-y-finanzas'
@@ -101,6 +113,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PoliticaDePrivacidadRoute: typeof PoliticaDePrivacidadRoute
   EquipoSlugRoute: typeof EquipoSlugRoute
   ServiciosSlugRoute: typeof ServiciosSlugRoute
   ServiciosBancaYFinanzasRoute: typeof ServiciosBancaYFinanzasRoute
@@ -115,6 +128,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/politica-de-privacidad': {
+      id: '/politica-de-privacidad'
+      path: '/politica-de-privacidad'
+      fullPath: '/politica-de-privacidad'
+      preLoaderRoute: typeof PoliticaDePrivacidadRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/equipo/': {
@@ -157,6 +177,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PoliticaDePrivacidadRoute: PoliticaDePrivacidadRoute,
   EquipoSlugRoute: EquipoSlugRoute,
   ServiciosSlugRoute: ServiciosSlugRoute,
   ServiciosBancaYFinanzasRoute: ServiciosBancaYFinanzasRoute,
