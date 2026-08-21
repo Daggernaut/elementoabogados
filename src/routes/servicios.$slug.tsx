@@ -96,21 +96,36 @@ function ServicePage() {
               </p>
             </div>
 
-            <div className="mt-10 flex flex-wrap gap-3">
-              <a
-                href="/#contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-primary-deep px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary"
-              >
-                Agenda una consulta
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </a>
-              <Link
-                to="/servicios"
-                className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium transition-colors hover:bg-secondary"
-              >
-                Ver todas las áreas
-              </Link>
+            <div className="mt-10 rounded-2xl border border-border bg-secondary/50 p-6 sm:p-8">
+              <h2 className="font-display text-xl font-semibold">
+                ¿Necesitas asesoría en {service.title.toLowerCase()}?
+              </h2>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Cuéntanos tu caso y te contactamos con el abogado indicado para esta área.
+              </p>
+              <div className="mt-6 flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <a
+                  href="/#contact"
+                  className="group flex w-full items-center justify-center gap-2 rounded-full bg-primary-deep px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary sm:inline-flex sm:w-auto"
+                >
+                  Agenda una consulta
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </a>
+                <a
+                  href={`mailto:info@elementoabogados.com?subject=${encodeURIComponent(`Consulta: ${service.title}`)}`}
+                  className="flex w-full items-center justify-center gap-2 rounded-full border border-border bg-card px-6 py-3.5 text-sm font-medium transition-colors hover:bg-secondary sm:inline-flex sm:w-auto"
+                >
+                  <Mail className="h-4 w-4 text-primary" /> Escríbenos
+                </a>
+                <Link
+                  to="/servicios"
+                  className="flex w-full items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground sm:inline-flex sm:w-auto"
+                >
+                  Ver todas las áreas
+                </Link>
+              </div>
             </div>
+
           </div>
 
           <aside className="lg:col-span-4">

@@ -148,11 +148,11 @@ function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.85 }}
-            className="mt-10 flex flex-wrap gap-4"
+            className="mt-10 flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4"
           >
             <a
               href="#contact"
-              className="group inline-flex items-center gap-2 rounded-full bg-[color:var(--accent-orange)] px-6 py-3.5 text-sm font-semibold text-primary-deep shadow-lg transition-all hover:-translate-y-0.5 hover:shadow-glow"
+              className="group flex w-full items-center justify-center gap-2 rounded-full bg-[color:var(--accent-orange)] px-6 py-3.5 text-sm font-semibold text-primary-deep shadow-lg transition-all hover:-translate-y-0.5 hover:shadow-glow sm:inline-flex sm:w-auto"
             >
               Agenda una consulta
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -160,7 +160,7 @@ function Hero() {
             <a
               href="/presentacion.pdf"
               download
-              className="group inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-white/10"
+              className="group flex w-full items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-white/10 sm:inline-flex sm:w-auto"
             >
               <Download className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
               Descargar presentación
@@ -179,14 +179,21 @@ function Hero() {
               ["+20", "Años de experiencia"],
               ["13", "Áreas de práctica"],
               ["500+", "Casos resueltos"],
-            ].map(([k, v]) => (
-              <div key={k} className="bg-primary-deep/40 p-6">
-                <div className="font-display text-4xl font-semibold">{k}</div>
-                <div className="mt-1 text-xs uppercase tracking-wider text-white/55">{v}</div>
-              </div>
+            ].map(([k, v], i) => (
+              <motion.div
+                key={k}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.75 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                className="bg-primary-deep/40 px-4 py-6 sm:px-6"
+              >
+                <div className="font-display text-3xl font-semibold sm:text-4xl">{k}</div>
+                <div className="mt-1 text-[11px] uppercase leading-snug tracking-wider text-white/55 sm:text-xs">{v}</div>
+              </motion.div>
             ))}
           </div>
         </motion.div>
+
       </div>
 
     </section>
@@ -737,21 +744,22 @@ function Contact() {
               })}
             </div>
 
-            <div className="mt-10 flex flex-wrap items-center gap-4">
+            <div className="mt-10 flex w-full flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
               <a
                 href="mailto:info@elementoabogados.com"
-                className="group inline-flex items-center gap-2 rounded-full bg-[color:var(--accent-orange)] px-6 py-3.5 text-sm font-semibold text-primary-deep transition-all hover:-translate-y-0.5 hover:shadow-glow"
+                className="group flex w-full items-center justify-center gap-2 rounded-full bg-[color:var(--accent-orange)] px-6 py-3.5 text-sm font-semibold text-primary-deep transition-all hover:-translate-y-0.5 hover:shadow-glow sm:inline-flex sm:w-auto"
               >
                 <Mail className="h-4 w-4" /> Escríbenos
               </a>
               <a
                 href="/presentacion.pdf"
                 download
-                className="group inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-white/10"
+                className="group flex w-full items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-white/10 sm:inline-flex sm:w-auto"
               >
                 <Download className="h-4 w-4" /> Descargar presentación
               </a>
             </div>
+
           </div>
 
           <div className="lg:col-span-6">
