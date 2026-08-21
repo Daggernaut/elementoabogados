@@ -775,11 +775,18 @@ function Contact() {
                 <Mail className="h-4 w-4" /> Escríbenos
               </a>
               <a
-                href="/presentacion.pdf"
+                href={deckEs.url}
                 download
                 className="group flex w-full items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-white/10 sm:inline-flex sm:w-auto"
               >
-                <Download className="h-4 w-4" /> Descargar presentación
+                <Download className="h-4 w-4" /> Presentación (Español)
+              </a>
+              <a
+                href={deckEn.url}
+                download
+                className="group flex w-full items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-white/10 sm:inline-flex sm:w-auto"
+              >
+                <Download className="h-4 w-4" /> Presentation (English)
               </a>
             </div>
 
@@ -787,12 +794,11 @@ function Contact() {
 
           <div className="lg:col-span-6">
             <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-1 backdrop-blur">
-              <iframe
-                title="Ubicación Elemento Abogados"
-                src="https://www.google.com/maps?q=Ciudad%20de%20Guatemala&output=embed"
-                className="h-[420px] w-full rounded-[22px]"
+              <img
+                src={contactTeam.url}
+                alt="Equipo de Elemento Abogados"
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
+                className="h-[420px] w-full rounded-[22px] object-cover object-top"
               />
             </div>
           </div>
