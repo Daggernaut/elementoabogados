@@ -11,7 +11,7 @@ import {
   Mail,
   MapPin,
   Linkedin,
-  Twitter,
+  
   Download,
   Plus,
   Minus,
