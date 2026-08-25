@@ -11,7 +11,7 @@ import {
   Mail,
   MapPin,
   Linkedin,
-  Twitter,
+  
   Download,
   Plus,
   Minus,
@@ -871,9 +871,6 @@ export function Footer() {
           <div className="mt-3 flex items-center gap-2">
             <a href="#" aria-label="LinkedIn" className="grid h-9 w-9 place-items-center rounded-full border border-border transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground">
               <Linkedin className="h-4 w-4" />
-            </a>
-            <a href="#" aria-label="Twitter" className="grid h-9 w-9 place-items-center rounded-full border border-border transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground">
-              <Twitter className="h-4 w-4" />
             </a>
           </div>
         </div>
