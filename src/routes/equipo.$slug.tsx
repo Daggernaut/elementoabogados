@@ -91,15 +91,6 @@ function PartnerPage() {
                     </li>
                   </ul>
                 </div>
-                <div className="border-t border-border pt-4">
-                  <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                    Horario laboral
-                  </div>
-                  <p className="mt-3 flex items-center gap-3 text-muted-foreground">
-                    <Clock className="h-4 w-4 flex-none text-primary" />
-                    Lunes a viernes, 8:00 am a 6:00 pm
-                  </p>
-                </div>
               </div>
             </div>
           </aside>
