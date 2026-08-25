@@ -56,7 +56,6 @@ function PartnerPage() {
           >
             {partner.name}
           </motion.h1>
-          <p className="mt-3 text-lg text-white/80">{partner.role}</p>
         </div>
       </section>
 
