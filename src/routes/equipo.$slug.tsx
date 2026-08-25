@@ -18,7 +18,7 @@ export const Route = createFileRoute("/equipo/$slug")({
     return {
       meta: [
         { title: `${partner.name} | Elemento Abogados` },
-        { name: "description", content: `${partner.name}, ${partner.role}. ${partner.headline}` },
+        { name: "description", content: `${partner.name}, ${partner.role}.` },
         { property: "og:title", content: `${partner.name} | Elemento Abogados` },
         { property: "og:description", content: `${partner.name}, ${partner.role}.` },
         { property: "og:type", content: "profile" },
@@ -96,51 +96,12 @@ function PartnerPage() {
           </aside>
 
           <div className="lg:col-span-8">
-            <p className="font-display text-xl leading-relaxed text-foreground">{partner.headline}</p>
-
-            <h2 className="mt-10 font-display text-2xl font-semibold">Biografía</h2>
+            <h2 className="font-display text-2xl font-semibold">Biografía</h2>
             <div className="mt-4 space-y-4 leading-relaxed text-muted-foreground">
               {partner.bio.map((p) => (
                 <p key={p.slice(0, 40)}>{p}</p>
               ))}
             </div>
-
-            <h2 className="mt-10 font-display text-2xl font-semibold">Educación</h2>
-            <ul className="mt-4 space-y-3">
-              {partner.education.map((e) => (
-                <li key={e} className="flex gap-3 text-muted-foreground">
-                  <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-primary" />
-                  {e}
-                </li>
-              ))}
-            </ul>
-
-            {partner.memberships && (
-              <>
-                <h2 className="mt-10 font-display text-2xl font-semibold">Membresías</h2>
-                <ul className="mt-4 space-y-3">
-                  {partner.memberships.map((m) => (
-                    <li key={m} className="flex gap-3 text-muted-foreground">
-                      <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-primary" />
-                      {m}
-                    </li>
-                  ))}
-                </ul>
-              </>
-            )}
-
-            {partner.practice && (
-              <>
-                <h2 className="mt-10 font-display text-2xl font-semibold">Áreas de práctica</h2>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {partner.practice.map((a) => (
-                    <span key={a} className="rounded-full border border-border bg-secondary px-4 py-2 text-sm">
-                      {a}
-                    </span>
-                  ))}
-                </div>
-              </>
-            )}
 
             <div className="mt-14 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-8">
               <Link
