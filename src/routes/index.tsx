@@ -692,7 +692,7 @@ function AskUs() {
   }
   return (
     <section className="bg-background py-28">
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 lg:grid-cols-12">
+      <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <h2 className="font-display text-4xl font-semibold leading-tight sm:text-5xl">
             ¿Tienes una duda específica?
