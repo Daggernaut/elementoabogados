@@ -209,7 +209,7 @@ function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.85 }}
-            className="mt-10 flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4"
+            className="relative z-30 mt-10 flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4"
           >
             <a
               href="#contact"
