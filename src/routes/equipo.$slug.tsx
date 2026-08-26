@@ -85,9 +85,9 @@ function PartnerPage() {
       <section className="py-20">
         <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-12">
           <motion.aside
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease, delay: 0.2 }}
+            initial={{ opacity: 0, x: -80 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease, delay: 0.2 }}
             className="lg:col-span-4"
           >
             <div className="overflow-hidden rounded-3xl border border-border bg-card">
@@ -127,9 +127,9 @@ function PartnerPage() {
           </motion.aside>
 
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease, delay: 0.3 }}
+            initial={{ opacity: 0, x: 80 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease, delay: 0.3 }}
             className="lg:col-span-8"
           >
             <h2 className="font-display text-2xl font-semibold">Biografía</h2>
