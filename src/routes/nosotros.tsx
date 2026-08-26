@@ -69,7 +69,7 @@ const capabilities = [
 ];
 
 const stats = [
-  { value: "+20", label: "años de experiencia" },
+  { value: "10", label: "años de experiencia" },
   { value: "13", label: "áreas de práctica" },
   { value: "500+", label: "casos resueltos" },
 ];
