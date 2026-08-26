@@ -68,27 +68,38 @@ function PartnerPage() {
             <Link to="/equipo" className="hover:text-white">Equipo</Link>
             <span>/</span>
             <span className="text-white">{partner.name}</span>
-          </nav>
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-6 font-display text-5xl font-bold tracking-tight sm:text-6xl"
-          >
-            {partner.name}
-          </motion.h1>
+          </motion.nav>
+          <div className="mt-6 overflow-hidden">
+            <motion.h1
+              initial={{ opacity: 0, y: "110%" }}
+              animate={{ opacity: 1, y: "0%" }}
+              transition={{ duration: 0.8, ease, delay: 0.1 }}
+              className="font-display text-5xl font-bold tracking-tight sm:text-6xl"
+            >
+              {partner.name}
+            </motion.h1>
+          </div>
         </div>
-      </section>
+      </motion.section>
 
       <section className="py-20">
         <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-12">
-          <aside className="lg:col-span-4">
+          <motion.aside
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease, delay: 0.2 }}
+            className="lg:col-span-4"
+          >
             <div className="overflow-hidden rounded-3xl border border-border bg-card">
-              <div className="relative aspect-[4/5] bg-gradient-primary">
-                <img
+              <div ref={photoRef} className="relative aspect-[4/5] overflow-hidden bg-gradient-primary">
+                <motion.img
                   src={partner.photo}
                   alt={partner.name}
-                  className="absolute inset-0 h-full w-full object-cover object-top"
+                  style={{ y: photoY, scale: photoScale }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.9, ease, delay: 0.25 }}
+                  className="absolute inset-0 h-full w-full object-cover object-top will-change-transform"
                 />
               </div>
               <div className="space-y-4 p-6 text-sm">
