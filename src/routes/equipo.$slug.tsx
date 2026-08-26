@@ -155,7 +155,7 @@ function PartnerPage() {
                 {next.name} <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
