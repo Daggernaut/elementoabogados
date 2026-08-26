@@ -124,9 +124,14 @@ function PartnerPage() {
                 </div>
               </div>
             </div>
-          </aside>
+          </motion.aside>
 
-          <div className="lg:col-span-8">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease, delay: 0.3 }}
+            className="lg:col-span-8"
+          >
             <h2 className="font-display text-2xl font-semibold">Biografía</h2>
             <div className="mt-4 space-y-4 leading-relaxed text-muted-foreground">
               {partner.bio.map((p) => (
