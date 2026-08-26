@@ -255,7 +255,7 @@ function Hero() {
 function Pillars() {
   const items = [
     { title: "Asesoría legal integral", desc: "Contratos, acuerdos y documentos con plena seguridad jurídica." },
-    { title: "Abogados especialistas", desc: "Equipo multidisciplinario con conocimiento técnico y profundo." },
+    { title: "Equipo de alto nivel", desc: "Experiencia y conocimiento especializado para abordar asuntos complejos y decisiones estratégicas." },
     { title: "Resolución de conflictos", desc: "Soluciones rápidas y favorables que priorizan tus intereses." },
   ];
   return (
