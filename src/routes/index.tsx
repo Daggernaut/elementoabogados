@@ -85,7 +85,6 @@ export function Nav() {
 
           </div>
           <Link to="/equipo" className="transition-colors hover:text-foreground">Equipo</Link>
-          <Link to="/faq" className="transition-colors hover:text-foreground">FAQ</Link>
           <a href="/#contact" className="transition-colors hover:text-foreground">Contacto</a>
         </nav>
         <div className="flex items-center gap-2">
