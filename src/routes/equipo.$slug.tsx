@@ -30,19 +30,39 @@ export const Route = createFileRoute("/equipo/$slug")({
   component: PartnerPage,
 });
 
+const ease = [0.22, 1, 0.36, 1] as const;
+
 function PartnerPage() {
   const { partner } = Route.useLoaderData() as { partner: Partner };
   const index = partners.findIndex((p) => p.slug === partner.slug);
   const prev = partners[(index - 1 + partners.length) % partners.length];
   const next = partners[(index + 1) % partners.length];
 
+  const photoRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: photoRef,
+    offset: ["start end", "end start"],
+  });
+  const photoY = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
+  const photoScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.12, 1.06, 1.12]);
+
   return (
-    <main className="min-h-screen bg-background font-sans text-foreground">
+    <main key={partner.slug} className="min-h-screen bg-background font-sans text-foreground">
       <Nav />
 
-      <section className="bg-gradient-hero pt-32 text-primary-foreground">
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, ease }}
+        className="overflow-hidden bg-gradient-hero pt-32 text-primary-foreground"
+      >
         <div className="mx-auto max-w-7xl px-6 pb-16 pt-10">
-          <nav className="flex items-center gap-2 text-sm text-white/70">
+          <motion.nav
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease, delay: 0.05 }}
+            className="flex items-center gap-2 text-sm text-white/70"
+          >
             <Link to="/" className="hover:text-white">Inicio</Link>
             <span>/</span>
             <Link to="/equipo" className="hover:text-white">Equipo</Link>
