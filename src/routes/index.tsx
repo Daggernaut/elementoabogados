@@ -854,7 +854,6 @@ export function Footer() {
             <li><Link className="hover:text-primary" to="/nosotros">Nosotros</Link></li>
             <li><Link className="hover:text-primary" to="/politica-de-privacidad">Políticas de privacidad</Link></li>
             <li><Link className="hover:text-primary" to="/terminos-y-condiciones">Términos y condiciones</Link></li>
-            <li><Link className="hover:text-primary" to="/faq">Preguntas frecuentes</Link></li>
           </ul>
         </div>
         <div className="text-sm">
