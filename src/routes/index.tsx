@@ -694,8 +694,7 @@ function AskUs() {
     <section className="bg-background py-28">
       <div className="mx-auto grid max-w-6xl gap-10 px-6 lg:grid-cols-12">
         <div className="lg:col-span-5">
-          <span className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">Haznos una pregunta</span>
-          <h2 className="mt-4 font-display text-4xl font-semibold leading-tight sm:text-5xl">
+          <h2 className="font-display text-4xl font-semibold leading-tight sm:text-5xl">
             ¿Tienes una duda específica?
           </h2>
           <p className="mt-6 text-muted-foreground">
