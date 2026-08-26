@@ -83,7 +83,7 @@ function PartnerPage() {
       </motion.section>
 
       <section className="py-20">
-        <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-12">
+        <div className="mx-auto grid max-w-7xl gap-12 overflow-hidden px-6 lg:grid-cols-12">
           <motion.aside
             initial={{ opacity: 0, x: -80 }}
             animate={{ opacity: 1, x: 0 }}
