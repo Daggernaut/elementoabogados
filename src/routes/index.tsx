@@ -639,7 +639,7 @@ function FAQ() {
         <div className="lg:col-span-5">
           <span className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">FAQ</span>
           <h2 className="mt-4 font-display text-4xl font-semibold leading-tight sm:text-5xl">
-            Resolvemos <span className="text-primary">tus dudas</span> antes de empezar.
+            ¿Tienes alguna pregunta <span className="text-primary">adicional</span>?
           </h2>
           <p className="mt-6 text-muted-foreground">
             Reunimos las preguntas más frecuentes de nuestros clientes. Si no encuentras la respuesta que buscas,
