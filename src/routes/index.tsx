@@ -687,7 +687,7 @@ function AskUs() {
               name="message"
               rows={5}
               className="resize-none rounded-lg border border-input bg-background px-3 py-2.5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
-              placeholder="Describe brevemente tu situación..."
+              placeholder="Escribe tu pregunta aquí..."
             />
           </label>
           <div className="mt-6 flex items-center justify-between gap-4">
