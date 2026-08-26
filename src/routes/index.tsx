@@ -697,10 +697,7 @@ function AskUs() {
           <h2 className="font-display text-4xl font-semibold leading-tight sm:text-5xl">
             ¿Tienes una duda específica?
           </h2>
-          <p className="mt-6 text-muted-foreground">
-            Cuéntanos brevemente tu situación. Un abogado te responderá directamente por correo.
-          </p>
-          <div className="mt-8 flex items-center gap-3 rounded-2xl border border-border bg-secondary/60 p-4 text-sm">
+          <div className="mt-6 flex items-center gap-3 rounded-2xl border border-border bg-secondary/60 p-4 text-sm">
             <span className="grid h-9 w-9 place-items-center rounded-full bg-primary/10 text-primary">
               <Mail className="h-4 w-4" />
             </span>
