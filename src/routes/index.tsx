@@ -11,10 +11,8 @@ import {
   Mail,
   MapPin,
   Linkedin,
-  
+
   Download,
-  Plus,
-  Minus,
   ChevronDown,
 } from "lucide-react";
 import logoAsset from "@/assets/logo-ea.png.asset.json";
@@ -624,59 +622,6 @@ function Team() {
   );
 }
 
-function FAQ() {
-  // TODO: preguntas finales las filtrará el cliente.
-  const faqs = [
-    { q: "¿Trabajan con empresas o también con personas individuales?", a: "Ambos. Acompañamos empresas, familias y personas naturales en múltiples áreas del derecho." },
-    { q: "¿Cómo se manejan los honorarios profesionales?", a: "Los honorarios se acuerdan de forma transparente al inicio del proceso, sin costos ocultos." },
-    { q: "¿Pueden asesorar en operaciones fuera de Guatemala?", a: "Sí. Contamos con una red de firmas aliadas en la región para atender operaciones internacionales." },
-    { q: "¿Cuánto tiempo tarda un proceso legal típico?", a: "Depende de la materia y complejidad. En la primera reunión te damos una estimación realista." },
-  ];
-  const [open, setOpen] = useState<number | null>(0);
-  return (
-    <section id="faq" className="bg-gradient-soft py-28">
-      <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-12">
-        <div className="lg:col-span-5">
-          <span className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">FAQ</span>
-          <h2 className="mt-4 font-display text-4xl font-semibold leading-tight sm:text-5xl">
-            Contáctanos
-          </h2>
-          <p className="mt-6 text-muted-foreground">
-            Reunimos las preguntas más frecuentes de nuestros clientes. Si no encuentras la respuesta que buscas,
-            escríbenos y te contactaremos en menos de 24 horas.
-          </p>
-        </div>
-
-        <div className="lg:col-span-7">
-          <ul className="divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card">
-            {faqs.map((f, i) => {
-              const isOpen = open === i;
-              return (
-                <li key={f.q}>
-                  <button
-                    type="button"
-                    onClick={() => setOpen(isOpen ? null : i)}
-                    className="flex w-full items-center justify-between gap-6 px-6 py-5 text-left transition-colors hover:bg-secondary/60"
-                    aria-expanded={isOpen}
-                  >
-                    <span className="font-display text-lg font-semibold">{f.q}</span>
-                    <span className="grid h-8 w-8 flex-none place-items-center rounded-full border border-border text-primary">
-                      {isOpen ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
-                    </span>
-                  </button>
-                  {isOpen && (
-                    <div className="px-6 pb-6 text-sm leading-relaxed text-muted-foreground">{f.a}</div>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function AskUs() {
   const [status, setStatus] = useState<"idle" | "sent">("idle");
   function onSubmit(e: FormEvent<HTMLFormElement>) {
@@ -887,7 +832,6 @@ function Index() {
       <Services />
       <WhyUs />
       <Team />
-      <FAQ />
       <AskUs />
       <Contact />
       <Footer />
