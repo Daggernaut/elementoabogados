@@ -11,10 +11,8 @@ import {
   Mail,
   MapPin,
   Linkedin,
-  
+
   Download,
-  Plus,
-  Minus,
   ChevronDown,
 } from "lucide-react";
 import logoAsset from "@/assets/logo-ea.png.asset.json";
