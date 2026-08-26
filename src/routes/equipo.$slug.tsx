@@ -132,7 +132,7 @@ function PartnerPage() {
             transition={{ duration: 0.8, ease, delay: 0.3 }}
             className="lg:col-span-8"
           >
-            <h2 className="font-display text-2xl font-semibold">Biografía</h2>
+            <h2 className="font-display text-2xl font-semibold">Perfil</h2>
             <div className="mt-4 space-y-4 leading-relaxed text-muted-foreground">
               {partner.bio.map((p) => (
                 <p key={p.slice(0, 40)}>{p}</p>
