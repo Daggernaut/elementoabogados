@@ -4,7 +4,6 @@ import photoLP from "@/assets/abo-lp.png.asset.json";
 import photoMB from "@/assets/abo-mb.jpg.asset.json";
 import photoClaudia from "@/assets/abo-claudia.jpg.asset.json";
 import photoRodrigo from "@/assets/abo-rodrigo.jpg.asset.json";
-import photoGF from "@/assets/gerente-fin.png.asset.json";
 
 export type Partner = {
   slug: string;
