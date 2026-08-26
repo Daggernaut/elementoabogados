@@ -21,8 +21,8 @@ import logoAsset from "@/assets/logo-ea.png.asset.json";
 import aboutCity from "@/assets/about-city.jpg.asset.json";
 import headerHero from "@/assets/header-hero.jpg.asset.json";
 import contactTeam from "@/assets/equipo-contacto.png.asset.json";
-import deckEs from "@/assets/presentacion-es.pptx.asset.json";
-import deckEn from "@/assets/presentacion-en.pptx.asset.json";
+import deckEs from "@/assets/presentacion-es-pdf.asset.json";
+import deckEn from "@/assets/presentacion-en-pdf.asset.json";
 import { partners, associates } from "@/lib/team";
 import { services } from "@/lib/services";
 import { cn } from "@/lib/utils";
@@ -134,7 +134,7 @@ function DownloadDropdown({ className }: { className?: string }) {
         />
       </button>
       {open && (
-        <div className="absolute left-0 top-full z-20 mt-2 w-full overflow-hidden rounded-2xl border border-white/10 bg-primary-deep shadow-xl sm:w-56">
+        <div className="absolute left-0 top-full z-50 mt-2 w-full overflow-hidden rounded-2xl border border-white/10 bg-primary-deep shadow-xl sm:w-56">
           <a
             href={deckEs.url}
             download
@@ -209,7 +209,7 @@ function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.85 }}
-            className="mt-10 flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4"
+            className="relative z-30 mt-10 flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4"
           >
             <a
               href="#contact"
@@ -806,7 +806,7 @@ function Contact() {
               })}
             </div>
 
-            <div className="mt-10 flex w-full flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+            <div className="relative z-30 mt-10 flex w-full flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
               <a
                 href="mailto:info@elementoabogados.com"
                 className="group flex w-full items-center justify-center gap-2 rounded-full bg-[color:var(--accent-orange)] px-6 py-3.5 text-sm font-semibold text-primary-deep transition-all hover:-translate-y-0.5 hover:shadow-glow sm:inline-flex sm:w-auto"
