@@ -215,7 +215,7 @@ function Hero() {
               href="#contact"
               className="group flex w-full items-center justify-center gap-2 rounded-full bg-[color:var(--accent-orange)] px-8 py-3.5 text-center text-sm font-semibold text-primary-deep shadow-lg transition-all hover:-translate-y-0.5 hover:shadow-glow sm:inline-flex sm:w-auto sm:px-6"
             >
-              Agenda una consulta
+              Contáctanos
               <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" />
             </a>
             <DownloadDropdown />
