@@ -640,7 +640,7 @@ function AskUs() {
       <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <h2 className="font-display text-4xl font-semibold leading-tight sm:text-5xl">
-            ¿Tienes una duda específica?
+            ¿Tienes alguna pregunta adicional?
           </h2>
           <div className="mt-6 flex items-center gap-3 rounded-2xl border border-border bg-secondary/60 p-4 text-sm">
             <span className="grid h-9 w-9 place-items-center rounded-full bg-primary/10 text-primary">
