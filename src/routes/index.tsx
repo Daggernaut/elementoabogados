@@ -832,7 +832,6 @@ function Index() {
       <Services />
       <WhyUs />
       <Team />
-      <FAQ />
       <AskUs />
       <Contact />
       <Footer />
