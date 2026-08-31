@@ -282,20 +282,20 @@ function Pillars() {
 
 const pillars = [
   {
-    title: "Excelencia Jurídica",
-    body: "Rigor técnico, especialización y capacidad para resolver asuntos de alta complejidad con estándares de primer nivel.",
+    title: "Excelencia",
+    body: "Los más altos estándares de calidad, rigor y criterio jurídico orientan cada asunto que asumimos y cada solución que desarrollamos.",
   },
   {
-    title: "Talento y Especialización",
-    body: "Un equipo de profesionales con experiencia complementaria, capaces de integrar distintas áreas de práctica para atender las necesidades más sofisticadas del cliente.",
+    title: "Talento",
+    body: "Reunimos profesionales de primer nivel y distintas áreas de práctica para ofrecer una asesoría integral, sofisticada y consistente.",
   },
   {
-    title: "Cliente y Visión de Negocio",
-    body: "Comprender los objetivos comerciales del cliente para brindar soluciones jurídicas estratégicas que generen valor y acompañen la toma de decisiones.",
+    title: "Compromiso con el cliente",
+    body: "Conocemos el negocio, entendemos sus desafíos y trabajamos junto a nuestros clientes para alcanzar sus objetivos y proteger sus intereses.",
   },
   {
-    title: "Integración y Crecimiento",
-    body: "Una firma integrada que combina tecnología, procesos, colaboración y gestión eficiente para crecer de forma sostenible y ofrecer un servicio consistente.",
+    title: "Innovación",
+    body: "Integramos conocimiento, tecnología y nuevas formas de trabajo para anticiparnos a los desafíos y ofrecer soluciones eficientes en un entorno en constante evolución.",
   },
 ];
 
