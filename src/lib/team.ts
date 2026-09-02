@@ -1,7 +1,7 @@
 import photoCM from "@/assets/Carlos-Moscoso.webp.asset.json";
 import photoJL from "@/assets/JorgeLuis-Molina.webp.asset.json";
 import photoLP from "@/assets/LuisPedro-Guerra1.webp.asset.json";
-import photoMB from "@/assets/MariaElena-Barrientos.webp.asset.json";
+import photoMB from "@/assets/MariaElena-Barrientos.jpg.asset.json";
 import photoClaudia from "@/assets/abo-claudia-fixed.jpg";
 import photoRodrigo from "@/assets/Rodrigo-Anleu1.webp.asset.json";
 
