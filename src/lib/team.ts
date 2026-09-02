@@ -1,9 +1,9 @@
-import photoCM from "@/assets/abo-cm.png.asset.json";
-import photoJL from "@/assets/abo-jl.png.asset.json";
-import photoLP from "@/assets/abo-lp.png.asset.json";
-import photoMB from "@/assets/abo-mb.jpg";
-import photoClaudia from "@/assets/abo-claudia.jpg.asset.json";
-import photoRodrigo from "@/assets/abo-rodrigo.jpg.asset.json";
+import photoCM from "@/assets/Carlos-Moscoso.webp.asset.json";
+import photoJL from "@/assets/JorgeLuis-Molina.webp.asset.json";
+import photoLP from "@/assets/LuisPedro-Guerra1.webp.asset.json";
+import photoMB from "@/assets/MariaElena-Barrientos.webp.asset.json";
+import photoClaudia from "@/assets/Claudia-Molina1.webp.asset.json";
+import photoRodrigo from "@/assets/Rodrigo-Anleu1.webp.asset.json";
 
 export type Partner = {
   slug: string;
@@ -98,7 +98,7 @@ export const partners: Partner[] = [
     name: "María Elena Barrientos",
     role: "Socia",
     headline: "Perfil profesional pendiente de revisión por la firma",
-    photo: photoMB,
+    photo: photoMB.url,
     email: "mbarrientos@elementoabogados.com",
     phone: "+(502) 2339 - 1922",
     // TODO: reemplazar con la biografía oficial que enviará la firma.
