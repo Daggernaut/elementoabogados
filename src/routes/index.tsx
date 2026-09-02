@@ -532,7 +532,7 @@ function WhyUs() {
   );
 }
 
-function PersonCard({ name, role, photo, slug }: { name: string; role: string; photo?: string; size?: "lg" | "md"; slug?: string }) {
+function PersonCard({ name, role, photo, slug }: { name: string; role: string; photo?: string; slug?: string }) {
   const initials = name.split(" ").map((n) => n[0]).slice(0, 2).join("");
   const card = (
     <div className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all hover:-translate-y-1 hover:shadow-elegant">
@@ -604,7 +604,7 @@ function Team() {
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {partners.map((m) => (
-            <PersonCard key={m.slug} name={m.name} role={m.role} photo={m.photo} size="lg" slug={m.slug} />
+            <PersonCard key={m.slug} name={m.name} role={m.role} photo={m.photo} slug={m.slug} />
           ))}
         </div>
 
@@ -612,9 +612,9 @@ function Team() {
           <span className="h-px w-8 bg-primary" />
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Abogados asociados</span>
         </div>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {associates.map((m) => (
-            <PersonCard key={m.name} name={m.name} role={m.role} photo={m.photo} size="lg" />
+            <PersonCard key={m.name} name={m.name} role={m.role} photo={m.photo} />
           ))}
         </div>
       </div>
