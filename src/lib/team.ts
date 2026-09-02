@@ -97,16 +97,18 @@ export const partners: Partner[] = [
     slug: "maria-elena-barrientos",
     name: "María Elena Barrientos",
     role: "Socia",
-    headline: "Socia especializada en Derecho Corporativo, Laboral y Cumplimiento",
+    headline: "Abogada laboralista con más de 20 años de experiencia",
     photo: photoMB.url,
     email: "mbarrientos@elementoabogados.com",
     phone: "+(502) 2339 - 1922",
     bio: [
-      "María Elena acompaña a empresas y personas en asuntos corporativos, laborales y de cumplimiento, con un enfoque práctico orientado a decisiones claras y oportunas.",
-      "Su trabajo combina la asesoría preventiva con el acompañamiento en negociaciones y procesos, cuidando siempre la relación cercana con cada cliente y construyendo soluciones que se ajustan a sus necesidades.",
+      "Abogada laboralista con más de 20 años de experiencia asesorando a empresas nacionales e internacionales en derecho laboral, relaciones laborales, cumplimiento en materia de salud y seguridad ocupacional, derecho migratorio y asuntos corporativos relacionados con la gestióndel talento humano. A lo largo de su trayectoria, ha asesorado a innumerables empresas de sectores como retail, alimentos, tecnología y servicios financieros.",
+      "Cuenta con amplia experiencia en auditorías laborales, reestructuraciones de personal, estrategias para la prevención y gestión de riesgos laborales y litigio laboral enfocado en la defensa del empleador. Ha dirigido procesos de terminación y reorganización que han involucrado a más de 1,500 trabajadores, con un nivel mínimo de judicialización. Asimismo, ha participado en operaciones de M&A, identificando contingencias laborales críticas y diseñando planes de mitigación para prevenir costos y riesgos relevantes.",
+      "Su práctica se caracteriza por un enfoque preventivo, estratégico y orientado a resultados. Ha implementado programas de cumplimiento que han permitido reducir en más de un 65 % los riesgos asociados con sanciones y reclamaciones laborales, así como mecanismos de solución temprana de conflictos que han evitado la judicialización en más del 70 % de los asuntos atendidos. En materia migratoria, ha estandarizado procesos para corporaciones multinacionales, logrando reducir hasta en un 35 % los tiempos de tramitación.",
+      "Ha sido reconocida por The Legal 500, Chambers and Partners y Business Today como una de las abogadas más influyentes de Guatemala en materia laboral.",
+      "En el ámbito académico, es evaluadora del examen técnico profesional en Derecho Laboral y Procesal Laboral de la Universidad del Istmo y ha ejercido como asesora de tesis de grado en Derecho Laboral en la Universidad Rafael Landívar; ha participado como expositora en seminarios y congresos jurídicos nacionales e internacionales, y es autora de artículos especializados publicados en revistas como WorkPlace y Business Magazine.",
     ],
-    education: ["Licenciatura en Ciencias Jurídicas y Sociales"],
-    practice: ["Corporativo", "Laboral", "Cumplimiento"],
+    practice: ["Laboral", "Corporativo", "Migratorio", "Cumplimiento"],
   },
 ];
 
