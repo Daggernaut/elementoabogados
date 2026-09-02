@@ -15,7 +15,7 @@ import {
   Download,
   ChevronDown,
 } from "lucide-react";
-import logoAsset from "@/assets/logo-ea.png.asset.json";
+import logoAsset from "@/assets/logo-nav.png.asset.json";
 import aboutCity from "@/assets/about-city.jpg.asset.json";
 import headerHero from "@/assets/header-hero.jpg.asset.json";
 import contactTeam from "@/assets/equipo-contacto.png.asset.json";
@@ -56,7 +56,7 @@ export function Nav() {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3.5">
         <Link to="/" className="flex items-center gap-2">
-          <img src={logoAsset.url} alt="Elemento Abogados" className="h-9 w-auto" />
+          <img src={logoAsset.url} alt="Elemento Abogados" className="h-8 w-auto" />
         </Link>
         <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
           <Link to="/nosotros" className="transition-colors hover:text-foreground">Nosotros</Link>
@@ -787,7 +787,7 @@ export function Footer() {
     <footer className="border-t border-border bg-background py-12">
       <div className="mx-auto grid max-w-7xl gap-8 px-6 md:grid-cols-4">
         <div>
-          <img src={logoAsset.url} alt="Elemento Abogados" className="h-10 w-auto" />
+          <img src={logoAsset.url} alt="Elemento Abogados" className="h-9 w-auto" />
           <p className="mt-4 max-w-xs text-sm text-muted-foreground">
             Más que abogados, aliados estratégicos en tu causa.
           </p>
