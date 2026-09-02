@@ -2,7 +2,7 @@ import photoCM from "@/assets/Carlos-Moscoso.webp.asset.json";
 import photoJL from "@/assets/JorgeLuis-Molina.webp.asset.json";
 import photoLP from "@/assets/LuisPedro-Guerra1.webp.asset.json";
 import photoMB from "@/assets/MariaElena-Barrientos.webp.asset.json";
-import photoClaudia from "@/assets/Claudia-Molina1.webp.asset.json";
+import photoClaudia from "@/assets/abo-claudia-fixed.jpg";
 import photoRodrigo from "@/assets/Rodrigo-Anleu1.webp.asset.json";
 
 export type Partner = {
@@ -114,6 +114,6 @@ export const partners: Partner[] = [
 export type Associate = { name: string; role: string; photo: string };
 
 export const associates: Associate[] = [
-  { name: "Claudia Molina", role: "Abogada Asociada", photo: photoClaudia.url },
+  { name: "Claudia Molina", role: "Abogada Asociada", photo: photoClaudia },
   { name: "Rodrigo Anleu", role: "Abogado Asociado", photo: photoRodrigo.url },
 ];
