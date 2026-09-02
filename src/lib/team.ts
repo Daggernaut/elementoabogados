@@ -70,17 +70,18 @@ export const partners: Partner[] = [
   },
   {
     slug: "luis-pedro-guerra",
-    name: "Luis Pedro Guerra",
+    name: "Luis Pedro Guerra Gómez",
     role: "Socio & Fundador",
-    headline: "Maestría en Asesoría en Tributación — Universidad Rafael Landívar, Guatemala",
+    headline: "Litigio, Arbitraje y Resolución de Controversias",
     photo: photoLP.url,
     email: "lguerra@elementoabogados.com",
     phone: "+(502) 2339 - 1922",
     bio: [
-      "Luis Pedro cuenta con más de 10 años de experiencia en el área de litigio, enfocado en conflictos de carácter arbitral, mercantil, civil, constitucional, administrativo y tributario.",
-      "Tiene amplia experiencia en la defensa de los intereses de nuestros clientes en los diferentes tipos de litigio, así como en la elaboración de estrategias para solventarlos, no solamente a través de procesos judiciales, sino además a través de negociaciones extrajudiciales y otros métodos alternativos.",
-      "Tiene experiencia en el planteamiento de recursos ordinarios, extraordinarios y constitucionales, tales como amparo, inconstitucionalidades generales y en caso concreto, y recursos de casación.",
-      "Su práctica profesional lo ha especializado en la asesoría en temas de litigio comercial, constitucional y administrativo, abarcando empresas de diferentes industrias reguladas tales como el sector minero, agrícola, inmobiliario, supermercados y distribuidoras de bebidas, entre otros.",
+      "Luis Pedro Guerra Gómez cuenta con más de diez años de experiencia asesorando y representando a empresas nacionales e internacionales en litigios judiciales, arbitrajes y controversias de alta complejidad. Su práctica se concentra en la resolución estratégica de conflictos en materia civil, mercantil, societaria, bancaria, administrativa y constitucional.",
+      "A lo largo de su trayectoria ha dirigido procesos relacionados con incumplimientos contractuales, conflictos societarios, recuperación de activos, responsabilidad de administradores, disputas inmobiliarias, reclamaciones por daños y controversias derivadas de sectores regulados. Asimismo, posee amplia experiencia en el diseño e implementación de estrategias procesales orientadas a la protección de los intereses de sus clientes, tanto en sede judicial como arbitral.",
+      "Su experiencia incluye la interposición y defensa de recursos ordinarios, extraordinarios y constitucionales, así como la conducción de negociaciones complejas y mecanismos alternativos de resolución de conflictos, buscando siempre soluciones eficientes alineadas con los objetivos comerciales de sus clientes.",
+      "Ha asesorado a empresas de diversos sectores económicos, incluyendo banca, desarrollo inmobiliario, construcción, energía, minería, agroindustria, transporte, comercio y distribución, participando regularmente en asuntos que requieren una combinación de análisis jurídico, visión estratégica y manejo de riesgos.",
+      "Paralelamente a su práctica profesional, desarrolla actividades académicas como catedrático universitario en programas de grado y posgrado, impartiendo cursos relacionados con litigación, argumentación jurídica y derecho tributario.",
     ],
     education: [
       "Maestría en Asesoría en Tributación – Universidad Rafael Landívar",
@@ -91,7 +92,7 @@ export const partners: Partner[] = [
       "Instituto Guatemalteco de Derecho Procesal (IGDP)",
       "Colegio de Abogados y Notarios de Guatemala (CANG)",
     ],
-    practice: ["Litigio", "Arbitraje", "Tributario", "Administrativo"],
+    practice: ["Litigio", "Arbitraje", "Resolución de conflictos", "Derecho administrativo"],
   },
   {
     slug: "maria-elena-barrientos",
