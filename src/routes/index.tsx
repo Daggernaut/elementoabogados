@@ -536,7 +536,7 @@ function PersonCard({ name, role, photo, size = "lg", slug }: { name: string; ro
   const initials = name.split(" ").map((n) => n[0]).slice(0, 2).join("");
   const card = (
     <div className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all hover:-translate-y-1 hover:shadow-elegant">
-      <div className={`relative ${size === "lg" ? "aspect-[4/5]" : "aspect-[4/4]"} overflow-hidden bg-gradient-primary`}>
+      <div className="relative aspect-[4/5] overflow-hidden bg-gradient-primary">
         {photo ? (
           <img
             src={photo}
