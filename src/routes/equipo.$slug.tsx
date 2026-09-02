@@ -133,7 +133,7 @@ function PartnerPage() {
             className="lg:col-span-8"
           >
             <h2 className="font-display text-2xl font-semibold">Perfil</h2>
-            <div className="mt-4 space-y-4 leading-relaxed text-muted-foreground">
+            <div className="mt-4 space-y-4 text-justify leading-relaxed text-muted-foreground">
               {partner.bio.map((p) => (
                 <p key={p.slice(0, 40)}>{p}</p>
               ))}
