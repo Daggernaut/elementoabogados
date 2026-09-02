@@ -97,14 +97,13 @@ export const partners: Partner[] = [
     slug: "maria-elena-barrientos",
     name: "María Elena Barrientos",
     role: "Socia",
-    headline: "Perfil profesional pendiente de revisión por la firma",
+    headline: "Socia especializada en Derecho Corporativo, Laboral y Cumplimiento",
     photo: photoMB.url,
     email: "mbarrientos@elementoabogados.com",
     phone: "+(502) 2339 - 1922",
-    // TODO: reemplazar con la biografía oficial que enviará la firma.
     bio: [
       "María Elena acompaña a empresas y personas en asuntos corporativos, laborales y de cumplimiento, con un enfoque práctico orientado a decisiones claras y oportunas.",
-      "Su trabajo combina la asesoría preventiva con el acompañamiento en negociaciones y procesos, cuidando siempre la relación cercana con cada cliente.",
+      "Su trabajo combina la asesoría preventiva con el acompañamiento en negociaciones y procesos, cuidando siempre la relación cercana con cada cliente y construyendo soluciones que se ajustan a sus necesidades.",
     ],
     education: ["Licenciatura en Ciencias Jurídicas y Sociales"],
     practice: ["Corporativo", "Laboral", "Cumplimiento"],
