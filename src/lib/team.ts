@@ -114,6 +114,6 @@ export const partners: Partner[] = [
 export type Associate = { name: string; role: string; photo: string };
 
 export const associates: Associate[] = [
-  { name: "Claudia Molina", role: "Abogada Asociada", photo: photoClaudia.url },
+  { name: "Claudia Molina", role: "Abogada Asociada", photo: photoClaudia },
   { name: "Rodrigo Anleu", role: "Abogado Asociado", photo: photoRodrigo.url },
 ];
