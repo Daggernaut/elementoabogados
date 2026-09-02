@@ -532,7 +532,7 @@ function WhyUs() {
   );
 }
 
-function PersonCard({ name, role, photo, size = "lg", slug }: { name: string; role: string; photo?: string; size?: "lg" | "md"; slug?: string }) {
+function PersonCard({ name, role, photo, slug }: { name: string; role: string; photo?: string; size?: "lg" | "md"; slug?: string }) {
   const initials = name.split(" ").map((n) => n[0]).slice(0, 2).join("");
   const card = (
     <div className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all hover:-translate-y-1 hover:shadow-elegant">
