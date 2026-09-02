@@ -108,6 +108,7 @@ export const partners: Partner[] = [
       "Ha sido reconocida por The Legal 500, Chambers and Partners y Business Today como una de las abogadas más influyentes de Guatemala en materia laboral.",
       "En el ámbito académico, es evaluadora del examen técnico profesional en Derecho Laboral y Procesal Laboral de la Universidad del Istmo y ha ejercido como asesora de tesis de grado en Derecho Laboral en la Universidad Rafael Landívar; ha participado como expositora en seminarios y congresos jurídicos nacionales e internacionales, y es autora de artículos especializados publicados en revistas como WorkPlace y Business Magazine.",
     ],
+    education: [],
     practice: ["Laboral", "Corporativo", "Migratorio", "Cumplimiento"],
   },
 ];
