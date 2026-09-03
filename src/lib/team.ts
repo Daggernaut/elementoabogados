@@ -52,9 +52,9 @@ export const partners: Partner[] = [
     email: "jmolina@elementoabogados.com",
     phone: "+(502) 2339 - 1922",
     bio: [
-      "Jorge Luis cuenta con amplia experiencia en asesoría a compañías nacionales e internacionales, principalmente en las áreas de derecho inmobiliario, derecho corporativo, fusiones y adquisiciones, comercio internacional, derecho bancario y financiero, financiamiento de proyectos y mercado de capitales, derecho mercantil y derecho civil.",
+      "Jorge Luis, cuenta con amplia experiencia en asesoría a compañías nacionales e internacionales, principalmente en las áreas de derecho inmobiliario, derecho corporativo, fusiones y adquisiciones, comercio internacional, derecho bancario y financiero, financiamiento de proyectos y mercado de capitales, derecho mercantil y derecho civil.",
       "En cuanto a Derecho Corporativo ha asesorado a compañías nacionales y transnacionales en diferentes aspectos del día a día y se mantiene activo en las nuevas tendencias de desarrollo de proyectos inmobiliarios en Guatemala, además de las estructuras de financiamiento que ofrece el sistema bancario para los mismos.",
-      "En Derecho Bancario y Financiero tiene extenso conocimiento en asesoría relacionada con créditos y financiamiento para bancos e instituciones financieras de renombre, de las cuales fue asesor legal in house de dos grupos financieros del país. Asimismo, tiene experiencia en contratos y estructuras de préstamos complejos y fideicomisos.",
+      "En Derecho Bancario y Financiero tiene extenso conocimiento en asesoría relacionada con créditos y financiamiento para bancos e instituciones financieras de renombre, de las cuales fue asesor legal In House de dos grupos financieros del país, asimismo, tiene experiencia en contratos y estructuras de préstamos complejos y fideicomisos.",
       "Es catedrático suplente, impartiendo cursos relacionados a temas corporativos en la Universidad Rafael Landívar.",
     ],
     education: [
