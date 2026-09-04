@@ -169,8 +169,8 @@ function ServicePage() {
                 <a href="mailto:info@elementoabogados.com" className="flex items-center gap-3 text-muted-foreground hover:text-primary">
                   <Mail className="h-4 w-4 text-primary" /> info@elementoabogados.com
                 </a>
-                <a href="tel:+50223347576" className="flex items-center gap-3 text-muted-foreground hover:text-primary">
-                  <Phone className="h-4 w-4 text-primary" /> +502 2334 7576
+                <a href="tel:+50223391922" className="flex items-center gap-3 text-muted-foreground hover:text-primary">
+                  <Phone className="h-4 w-4 text-primary" /> +502 2339-1922
                 </a>
               </div>
             </div>
