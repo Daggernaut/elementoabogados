@@ -25,6 +25,8 @@ import deckEn from "@/assets/presentacion-en-pdf.asset.json";
 import { partners, associates } from "@/lib/team";
 import { services } from "@/lib/services";
 import { cn } from "@/lib/utils";
+import { sendContactInquiry } from "@/lib/contact.functions";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
