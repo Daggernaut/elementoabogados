@@ -1,6 +1,7 @@
 import photoCM from "@/assets/Carlos-Moscoso-2.webp.asset.json";
 import photoJL from "@/assets/JorgeLuis-Molina-2.webp.asset.json";
 import photoLP from "@/assets/LuisPedro-Guerra1-3.webp.asset.json";
+import photoLPCutout from "@/assets/LuisPedro-Trans.png.asset.json";
 import photoMB from "@/assets/MariaElena-Barrientos-3.webp.asset.json";
 import photoClaudia from "@/assets/Claudia-Molina1-2.webp.asset.json";
 import photoRodrigo from "@/assets/Rodrigo-Anleu1-2.webp.asset.json";
@@ -11,13 +12,16 @@ export type Partner = {
   role: string;
   headline: string;
   photo: string;
+  photoCutout?: string;
   email: string;
   phone: string;
   bio: string[];
   education: string[];
   memberships?: string[];
   practice?: string[];
+  languages?: string[];
 };
+
 
 export const partners: Partner[] = [
   {
@@ -74,6 +78,7 @@ export const partners: Partner[] = [
     role: "Socio & Fundador",
     headline: "Litigio, Arbitraje y Resolución de Controversias",
     photo: photoLP.url,
+    photoCutout: photoLPCutout.url,
     email: "lguerra@elementoabogados.com",
     phone: "+(502) 2339 - 1922",
     bio: [
@@ -84,15 +89,21 @@ export const partners: Partner[] = [
       "Paralelamente a su práctica profesional, desarrolla actividades académicas como catedrático universitario en programas de grado y posgrado, impartiendo cursos relacionados con litigación, argumentación jurídica y derecho tributario.",
     ],
     education: [
-      "Maestría en Asesoría en Tributación – Universidad Rafael Landívar",
-      "Posgrado en Derecho Corporativo y Tributario – Universidad del Istmo",
-      "Licenciatura en Ciencias Jurídicas y Sociales – Universidad Rafael Landívar | Menciones Honoríficas: Cum laude",
+      "Maestría en Asesoría en Tributación – Universidad Rafael Landívar, Guatemala. 2023",
+      "Posgrado en Derecho Corporativo y Tributario – Universidad del Istmo, Guatemala. 2016",
+      "Licenciatura en Ciencias Jurídicas y Sociales – Universidad Rafael Landívar, Guatemala. Menciones Honoríficas: Cum Laude. 2014",
     ],
     memberships: [
       "Instituto Guatemalteco de Derecho Procesal (IGDP)",
       "Colegio de Abogados y Notarios de Guatemala (CANG)",
     ],
-    practice: ["Litigio", "Arbitraje", "Resolución de conflictos", "Derecho administrativo"],
+    languages: ["Español", "Inglés"],
+    practice: [
+      "Resolución de Controversias en Materia Civil y Comercial",
+      "Tributario",
+      "Derecho Administrativo y Constitucional",
+      "Minería e Inmobiliario",
+    ],
   },
   {
     slug: "maria-elena-barrientos",
