@@ -167,6 +167,8 @@ function Hero() {
         src={headerHero.url}
         alt=""
         aria-hidden
+        fetchPriority="high"
+        decoding="async"
         className="pointer-events-none absolute inset-0 h-full w-full object-cover object-right"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-primary-deep/85 via-primary-deep/40 to-transparent" aria-hidden />
@@ -377,6 +379,8 @@ function About() {
               <img
                 src={aboutCity.url}
                 alt="Vista panorámica de la ciudad donde opera Elemento Abogados"
+                loading="lazy"
+                decoding="async"
                 className="aspect-[16/9] w-full object-cover lg:aspect-[4/3] lg:min-h-[420px]"
               />
               <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-primary-deep/70 to-transparent" aria-hidden />
@@ -554,6 +558,8 @@ function PersonCard({ name, role, photo, slug }: { name: string; role: string; p
           <img
             src={photo}
             alt={name}
+            loading="lazy"
+            decoding="async"
             className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
           />
         ) : (
@@ -797,6 +803,7 @@ function Contact() {
                 src={contactTeam.url}
                 alt="Equipo de Elemento Abogados"
                 loading="lazy"
+                decoding="async"
                 className="h-[420px] w-full rounded-[22px] object-cover object-top"
               />
             </div>
@@ -812,7 +819,7 @@ export function Footer() {
     <footer className="border-t border-border bg-background py-12">
       <div className="mx-auto grid max-w-7xl gap-8 px-6 md:grid-cols-4">
         <div>
-          <img src={logoAsset.url} alt="Elemento Abogados" className="h-9 w-auto" />
+          <img src={logoAsset.url} alt="Elemento Abogados" loading="lazy" decoding="async" className="h-9 w-auto" />
           <p className="mt-4 max-w-xs text-sm text-muted-foreground">
             Más que abogados, aliados estratégicos en tu causa.
           </p>

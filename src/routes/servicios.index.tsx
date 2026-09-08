@@ -1,8 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import { Nav, Footer } from "./index";
 import { services } from "@/lib/services";
+
+const SITE = "https://elementoabogados.lovable.app";
 
 export const Route = createFileRoute("/servicios/")({
   head: () => ({
@@ -19,11 +21,30 @@ export const Route = createFileRoute("/servicios/")({
         content: "Asesoría legal multidisciplinaria para empresas y familias en Guatemala.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: `${SITE}/servicios` },
       { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: `${SITE}/servicios` }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: "Áreas de práctica de Elemento Abogados",
+          itemListElement: services.map((s, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            name: s.title,
+            url: `${SITE}/servicios/${s.slug}`,
+          })),
+        }),
+      },
     ],
   }),
   component: ServiciosIndex,
 });
+
 
 function ServiciosIndex() {
   return (
@@ -51,29 +72,36 @@ function ServiciosIndex() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => (
-              <motion.a
+              <motion.div
                 key={s.slug}
-                href={`/servicios/${s.slug}`}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: (i % 3) * 0.06 }}
-                className="group relative flex flex-col gap-4 bg-card p-8 transition-colors duration-300 hover:bg-primary"
+                className="bg-card"
               >
-                <div className="flex items-center justify-between">
-                  <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-white/15 group-hover:text-white">
-                    <s.icon className="h-5 w-5" />
-                  </span>
-                  <ArrowUpRight className="h-5 w-5 text-muted-foreground transition-all group-hover:rotate-45 group-hover:text-white" />
-                </div>
-                <h2 className="font-display text-xl font-semibold leading-tight transition-colors duration-300 group-hover:text-primary-foreground">
-                  {s.title}
-                </h2>
-                <p className="text-sm text-muted-foreground transition-colors duration-300 group-hover:text-primary-foreground/85">
-                  {s.desc}
-                </p>
-              </motion.a>
+                <Link
+                  to="/servicios/$slug"
+                  params={{ slug: s.slug }}
+                  title={`${s.title} — Elemento Abogados`}
+                  className="group relative flex h-full flex-col gap-4 bg-card p-8 transition-colors duration-300 hover:bg-primary"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-white/15 group-hover:text-white">
+                      <s.icon className="h-5 w-5" />
+                    </span>
+                    <ArrowUpRight className="h-5 w-5 text-muted-foreground transition-all group-hover:rotate-45 group-hover:text-white" />
+                  </div>
+                  <h2 className="font-display text-xl font-semibold leading-tight transition-colors duration-300 group-hover:text-primary-foreground">
+                    {s.title}
+                  </h2>
+                  <p className="text-sm text-muted-foreground transition-colors duration-300 group-hover:text-primary-foreground/85">
+                    {s.desc}
+                  </p>
+                </Link>
+              </motion.div>
             ))}
+
           </div>
         </div>
       </section>
