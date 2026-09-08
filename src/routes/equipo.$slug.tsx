@@ -43,8 +43,8 @@ function PartnerPage() {
     target: photoRef,
     offset: ["start end", "end start"],
   });
-  const photoY = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
-  const photoScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.12, 1.06, 1.12]);
+  const photoY = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
+  const photoScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.18, 1.1, 1.18]);
 
   return (
     <main key={partner.slug} className="min-h-screen bg-background font-sans text-foreground">
