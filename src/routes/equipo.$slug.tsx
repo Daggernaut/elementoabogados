@@ -34,33 +34,6 @@ export const Route = createFileRoute("/equipo/$slug")({
 // power3.out equivalent
 const ease = [0.215, 0.61, 0.355, 1] as const;
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function Watermark({ side, speed = 120 }: { side: "left" | "right"; speed?: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], [speed, -speed]);
-
-  return (
-    <div
-      ref={ref}
-      aria-hidden
-      className={`pointer-events-none absolute top-1/2 hidden -translate-y-1/2 select-none md:block ${
-        side === "left" ? "-left-24" : "-right-24"
-      }`}
-    >
-      <motion.img
-        src={isologo.url}
-        alt=""
-        style={{ y }}
-        initial={{ opacity: 0, scale: 0.92 }}
-        whileInView={{ opacity: 0.06, scale: 1 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 1, ease }}
-        className="h-[320px] w-auto lg:h-[420px]"
-      />
-    </div>
-  );
-}
 
 function Reveal({
   children,
