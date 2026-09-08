@@ -16,6 +16,7 @@ import {
   ChevronDown,
 } from "lucide-react";
 import logoAsset from "@/assets/logo-nav.png.asset.json";
+import isologo from "@/assets/isologo.png.asset.json";
 import aboutCity from "@/assets/about-city.jpg.asset.json";
 import headerHero from "@/assets/header-hero.jpg.asset.json";
 import contactTeam from "@/assets/equipo-contacto.png.asset.json";
@@ -502,6 +503,16 @@ function WhyUs() {
       <div className="absolute inset-0 grid-pattern opacity-20" aria-hidden />
       <div className="absolute -right-32 top-1/3 h-96 w-96 rounded-full bg-primary-glow/25 blur-[120px]" />
       <div className="absolute -left-32 bottom-0 h-96 w-96 rounded-full bg-[color:var(--accent-orange)]/20 blur-[120px]" />
+      <motion.img
+        src={isologo.url}
+        alt=""
+        aria-hidden
+        initial={{ opacity: 0, scale: 0.92 }}
+        whileInView={{ opacity: 0.07, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+        className="pointer-events-none absolute -left-24 -top-24 w-[420px] max-w-none select-none sm:w-[560px]"
+      />
       <div className="relative mx-auto max-w-7xl px-6">
         <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[color:var(--accent-orange)]">
           ¿Por qué colaborar con nosotros?
