@@ -1,8 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import { Nav, Footer } from "./index";
 import { services } from "@/lib/services";
+
+const SITE = "https://elementoabogados.lovable.app";
 
 export const Route = createFileRoute("/servicios/")({
   head: () => ({
@@ -19,11 +21,30 @@ export const Route = createFileRoute("/servicios/")({
         content: "Asesoría legal multidisciplinaria para empresas y familias en Guatemala.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: `${SITE}/servicios` },
       { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: `${SITE}/servicios` }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: "Áreas de práctica de Elemento Abogados",
+          itemListElement: services.map((s, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            name: s.title,
+            url: `${SITE}/servicios/${s.slug}`,
+          })),
+        }),
+      },
     ],
   }),
   component: ServiciosIndex,
 });
+
 
 function ServiciosIndex() {
   return (
