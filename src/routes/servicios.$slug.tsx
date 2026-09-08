@@ -162,15 +162,7 @@ function ServicePage() {
               <span>/</span>
               <span className="text-foreground">{service.title}</span>
             </nav>
-            <div className="mt-8 flex items-start gap-5">
-              <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-secondary text-primary">
-                <Icon className="h-6 w-6" />
-              </span>
-              <h2 className="font-display text-3xl font-semibold leading-tight sm:text-4xl">
-                {service.desc}
-              </h2>
-            </div>
-            <div className="mt-6 space-y-5 text-base leading-relaxed text-muted-foreground">
+            <div className="mt-8 space-y-5 text-base leading-relaxed text-muted-foreground">
               {service.paragraphs.map((p) => (
                 <p key={p.slice(0, 24)}>{p}</p>
               ))}
