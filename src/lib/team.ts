@@ -5,6 +5,11 @@ import photoLPCutout from "@/assets/LuisPedro-Trans.png.asset.json";
 import photoMB from "@/assets/MariaElena-Barrientos-3.webp.asset.json";
 import photoClaudia from "@/assets/Claudia-Molina1-2.webp.asset.json";
 import photoRodrigo from "@/assets/Rodrigo-Anleu1-2.webp.asset.json";
+import photoCMCutout from "@/assets/CaMoscoso-trans.png.asset.json";
+import photoJLCutout from "@/assets/Jor-Molina.png.asset.json";
+import photoMBCutout from "@/assets/MaElena-trans.png.asset.json";
+import photoClaudiaCutout from "@/assets/Clau-Molin-trans.png.asset.json";
+import photoRodrigoCutout from "@/assets/RodAnleu-T.webp.asset.json";
 
 export type Partner = {
   slug: string;
