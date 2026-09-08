@@ -234,15 +234,18 @@ function ServicePage() {
               <ul className="mt-4 space-y-2 text-sm">
                 {related.map((r) => (
                   <li key={r.slug}>
-                    <a
-                      href={`/servicios/${r.slug}`}
+                    <Link
+                      to="/servicios/$slug"
+                      params={{ slug: r.slug }}
+                      title={`${r.title} — Elemento Abogados`}
                       className="flex items-center justify-between gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
                     >
                       {r.title}
                       <ArrowRight className="h-4 w-4" />
-                    </a>
+                    </Link>
                   </li>
                 ))}
+
               </ul>
             </div>
           </aside>
