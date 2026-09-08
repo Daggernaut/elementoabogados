@@ -634,18 +634,24 @@ function Team() {
 }
 
 function AskUs() {
-  const [status, setStatus] = useState<"idle" | "sent">("idle");
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const f = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const f = new FormData(form);
     const name = String(f.get("name") ?? "").slice(0, 100);
     const email = String(f.get("email") ?? "").slice(0, 200);
     const message = String(f.get("message") ?? "").slice(0, 2000);
-    const subject = encodeURIComponent(`Pregunta desde el sitio de ${name}`);
-    const body = encodeURIComponent(`Nombre: ${name}\nCorreo: ${email}\n\n${message}`);
-    window.location.href = `mailto:info@elementoabogados.com?subject=${subject}&body=${body}`;
-    setStatus("sent");
+    setStatus("sending");
+    try {
+      await sendContactInquiry({ data: { name, email, message } });
+      form.reset();
+      setStatus("sent");
+    } catch {
+      setStatus("error");
+    }
   }
+
   return (
     <section className="bg-background py-28">
       <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-12">
