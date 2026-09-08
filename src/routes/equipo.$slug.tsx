@@ -34,6 +34,7 @@ export const Route = createFileRoute("/equipo/$slug")({
 // power3.out equivalent
 const ease = [0.215, 0.61, 0.355, 1] as const;
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function Watermark({ side, speed = 120 }: { side: "left" | "right"; speed?: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
@@ -254,7 +255,6 @@ function PartnerPage() {
 
       {partner.practice?.length ? (
         <section className="relative overflow-x-clip py-16">
-          <Watermark side="left" />
           <div className="relative mx-auto max-w-7xl px-6">
             <Reveal>
               <h2 className="font-display text-2xl font-semibold">Áreas de práctica</h2>
@@ -282,7 +282,6 @@ function PartnerPage() {
 
       {(partner.education.length > 0 || partner.memberships?.length || partner.languages?.length) && (
         <section className="relative overflow-x-clip py-16">
-          <Watermark side="right" speed={90} />
           <div className="relative mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-3">
             {partner.education.length > 0 && (
               <Reveal>
