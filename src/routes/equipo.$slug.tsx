@@ -1,6 +1,6 @@
-import { useRef, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion } from "motion/react";
 import { ArrowLeft, ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import { Nav, Footer } from "./index";
 import { partners, type Partner } from "@/lib/team";
