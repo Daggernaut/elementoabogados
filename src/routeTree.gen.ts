@@ -18,6 +18,7 @@ import { Route as EquipoSlugRouteImport } from './routes/equipo.$slug'
 import { Route as ServiciosIndexRouteImport } from './routes/servicios.index'
 import { Route as ServiciosSlugRouteImport } from './routes/servicios.$slug'
 import { Route as ServiciosBancaYFinanzasRouteImport } from './routes/servicios.banca-y-finanzas'
+import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -64,6 +65,12 @@ const ServiciosBancaYFinanzasRoute = ServiciosBancaYFinanzasRouteImport.update({
   path: '/servicios/banca-y-finanzas',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LovableEmailTransactionalPreviewRoute =
+  LovableEmailTransactionalPreviewRouteImport.update({
+    id: '/lovable/email/transactional/preview',
+    path: '/lovable/email/transactional/preview',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -75,6 +82,7 @@ export interface FileRoutesByFullPath {
   '/servicios/banca-y-finanzas': typeof ServiciosBancaYFinanzasRoute
   '/equipo/': typeof EquipoIndexRoute
   '/servicios/': typeof ServiciosIndexRoute
+  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -86,6 +94,7 @@ export interface FileRoutesByTo {
   '/servicios/banca-y-finanzas': typeof ServiciosBancaYFinanzasRoute
   '/equipo': typeof EquipoIndexRoute
   '/servicios': typeof ServiciosIndexRoute
+  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -98,6 +107,7 @@ export interface FileRoutesById {
   '/servicios/banca-y-finanzas': typeof ServiciosBancaYFinanzasRoute
   '/equipo/': typeof EquipoIndexRoute
   '/servicios/': typeof ServiciosIndexRoute
+  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -111,6 +121,7 @@ export interface FileRouteTypes {
     | '/servicios/banca-y-finanzas'
     | '/equipo/'
     | '/servicios/'
+    | '/lovable/email/transactional/preview'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -122,6 +133,7 @@ export interface FileRouteTypes {
     | '/servicios/banca-y-finanzas'
     | '/equipo'
     | '/servicios'
+    | '/lovable/email/transactional/preview'
   id:
     | '__root__'
     | '/'
@@ -133,6 +145,7 @@ export interface FileRouteTypes {
     | '/servicios/banca-y-finanzas'
     | '/equipo/'
     | '/servicios/'
+    | '/lovable/email/transactional/preview'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -145,6 +158,7 @@ export interface RootRouteChildren {
   ServiciosBancaYFinanzasRoute: typeof ServiciosBancaYFinanzasRoute
   EquipoIndexRoute: typeof EquipoIndexRoute
   ServiciosIndexRoute: typeof ServiciosIndexRoute
+  LovableEmailTransactionalPreviewRoute: typeof LovableEmailTransactionalPreviewRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -212,6 +226,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServiciosBancaYFinanzasRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lovable/email/transactional/preview': {
+      id: '/lovable/email/transactional/preview'
+      path: '/lovable/email/transactional/preview'
+      fullPath: '/lovable/email/transactional/preview'
+      preLoaderRoute: typeof LovableEmailTransactionalPreviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -225,6 +246,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServiciosBancaYFinanzasRoute: ServiciosBancaYFinanzasRoute,
   EquipoIndexRoute: EquipoIndexRoute,
   ServiciosIndexRoute: ServiciosIndexRoute,
+  LovableEmailTransactionalPreviewRoute: LovableEmailTransactionalPreviewRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
