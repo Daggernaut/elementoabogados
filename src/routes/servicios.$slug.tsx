@@ -5,11 +5,22 @@ import { ArrowRight, ArrowUpRight, Mail, Phone } from "lucide-react";
 import { Nav, Footer } from "./index";
 import { services, getService } from "@/lib/services";
 
+const SITE = "https://elementoabogados.lovable.app";
+
+const clamp = (text: string, max = 158) =>
+  text.length <= max ? text : `${text.slice(0, max - 1).replace(/[\s,;.]+\S*$/, "")}…`;
+
 export const Route = createFileRoute("/servicios/$slug")({
   loader: ({ params }) => {
     const service = getService(params.slug);
     if (!service) throw notFound();
-    return { title: service.title, desc: service.desc };
+    return {
+      slug: service.slug,
+      title: service.title,
+      desc: service.desc,
+      intro: service.intro,
+      image: service.image,
+    };
   },
   head: ({ loaderData }) => {
     if (!loaderData) {
@@ -18,20 +29,60 @@ export const Route = createFileRoute("/servicios/$slug")({
       };
     }
     const title = `${loaderData.title} | Elemento Abogados`;
+    const description = clamp(loaderData.intro || loaderData.desc);
+    const url = `${SITE}/servicios/${loaderData.slug}`;
     return {
       meta: [
         { title },
-        { name: "description", content: loaderData.desc },
+        { name: "description", content: description },
         { property: "og:title", content: title },
-        { property: "og:description", content: loaderData.desc },
+        { property: "og:description", content: description },
         { property: "og:type", content: "article" },
+        { property: "og:url", content: url },
         { name: "twitter:card", content: "summary_large_image" },
+      ],
+      links: [
+        { rel: "canonical", href: url },
+        { rel: "preload", as: "image", href: loaderData.image, fetchpriority: "high" },
+      ],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LegalService",
+            name: `${loaderData.title} — Elemento Abogados`,
+            description,
+            url,
+            areaServed: "Guatemala",
+            provider: {
+              "@type": "LegalService",
+              name: "Elemento Abogados",
+              url: SITE,
+              telephone: "+502 2339-1922",
+              email: "info@elementoabogados.com",
+            },
+          }),
+        },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Inicio", item: SITE },
+              { "@type": "ListItem", position: 2, name: "Áreas de práctica", item: `${SITE}/servicios` },
+              { "@type": "ListItem", position: 3, name: loaderData.title, item: url },
+            ],
+          }),
+        },
       ],
     };
   },
   notFoundComponent: ServiceNotFound,
   component: ServicePage,
 });
+
 
 function ServiceNotFound() {
   return (
