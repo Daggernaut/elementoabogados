@@ -1,6 +1,7 @@
 import photoCM from "@/assets/Carlos-Moscoso-2.webp.asset.json";
 import photoJL from "@/assets/JorgeLuis-Molina-2.webp.asset.json";
 import photoLP from "@/assets/LuisPedro-Guerra1-3.webp.asset.json";
+import photoLPCutout from "@/assets/LuisPedro-Trans.png.asset.json";
 import photoMB from "@/assets/MariaElena-Barrientos-3.webp.asset.json";
 import photoClaudia from "@/assets/Claudia-Molina1-2.webp.asset.json";
 import photoRodrigo from "@/assets/Rodrigo-Anleu1-2.webp.asset.json";
@@ -11,13 +12,16 @@ export type Partner = {
   role: string;
   headline: string;
   photo: string;
+  photoCutout?: string;
   email: string;
   phone: string;
   bio: string[];
   education: string[];
   memberships?: string[];
   practice?: string[];
+  languages?: string[];
 };
+
 
 export const partners: Partner[] = [
   {
