@@ -35,6 +35,7 @@ export const partners: Partner[] = [
     role: "Socio & Fundador",
     headline: "Derecho Penal, Compliance, Arbitraje y Resolución de Controversias",
     photo: photoCM.url,
+    photoCutout: photoCMCutout.url,
     email: "cmoscoso@elementoabogados.com",
     phone: "+(502) 2339 - 1922",
     bio: [
@@ -58,6 +59,7 @@ export const partners: Partner[] = [
     headline:
       "Maestría en Derecho Bancario, Seguros y Mercados Financieros — Universidad de San Carlos de Guatemala y Universidad de Valencia",
     photo: photoJL.url,
+    photoCutout: photoJLCutout.url,
     email: "jmolina@elementoabogados.com",
     phone: "+(502) 2339 - 1922",
     bio: [
@@ -116,6 +118,7 @@ export const partners: Partner[] = [
     role: "Socia",
     headline: "Abogada laboralista con más de 20 años de experiencia",
     photo: photoMB.url,
+    photoCutout: photoMBCutout.url,
     email: "mbarrientos@elementoabogados.com",
     phone: "+(502) 2339 - 1922",
     bio: [
@@ -130,9 +133,9 @@ export const partners: Partner[] = [
   },
 ];
 
-export type Associate = { name: string; role: string; photo: string };
+export type Associate = { name: string; role: string; photo: string; photoCutout?: string };
 
 export const associates: Associate[] = [
-  { name: "Claudia Molina", role: "Abogada Asociada", photo: photoClaudia.url },
-  { name: "Rodrigo Anleu", role: "Abogado Asociado", photo: photoRodrigo.url },
+  { name: "Claudia Molina", role: "Abogada Asociada", photo: photoClaudia.url, photoCutout: photoClaudiaCutout.url },
+  { name: "Rodrigo Anleu", role: "Abogado Asociado", photo: photoRodrigo.url, photoCutout: photoRodrigoCutout.url },
 ];
