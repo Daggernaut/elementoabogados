@@ -711,16 +711,22 @@ function AskUs() {
           </label>
           <div className="mt-6 flex items-center justify-between gap-4">
             <p className="text-xs text-muted-foreground">
-              {status === "sent" ? "Se abrió tu cliente de correo. ¡Gracias!" : "Al enviar, se abrirá tu cliente de correo."}
+              {status === "sent"
+                ? "¡Gracias! Recibimos tu mensaje y te responderemos por correo."
+                : status === "error"
+                  ? "No pudimos enviar tu mensaje. Escríbenos a info@elementoabogados.com."
+                  : "Te responderemos directamente por correo."}
             </p>
             <button
               type="submit"
-              className="group inline-flex items-center gap-2 rounded-full bg-primary-deep px-6 py-3 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary"
+              disabled={status === "sending"}
+              className="group inline-flex items-center gap-2 rounded-full bg-primary-deep px-6 py-3 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary disabled:opacity-60"
             >
-              Enviar pregunta
+              {status === "sending" ? "Enviando..." : "Enviar pregunta"}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </button>
           </div>
+
         </form>
       </div>
     </section>
