@@ -148,21 +148,6 @@ function ServicePage() {
           >
             {service.title}
           </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.25 }}
-            className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/85 sm:text-lg"
-          >
-            {service.desc}
-          </motion.p>
-          <nav className="mt-8 flex flex-wrap items-center justify-center gap-2 text-xs text-white/60">
-            <Link to="/" className="hover:text-white">Inicio</Link>
-            <span>/</span>
-            <Link to="/servicios" className="hover:text-white">Servicios</Link>
-            <span>/</span>
-            <span className="text-white">{service.title}</span>
-          </nav>
         </div>
       </section>
 
@@ -170,12 +155,21 @@ function ServicePage() {
       <section className="bg-background py-20 sm:py-24">
         <div className="mx-auto grid max-w-7xl gap-14 px-6 lg:grid-cols-12">
           <article className="lg:col-span-8">
-            <span className="grid h-14 w-14 place-items-center rounded-2xl bg-secondary text-primary">
-              <Icon className="h-6 w-6" />
-            </span>
-            <h2 className="mt-6 font-display text-3xl font-semibold leading-tight sm:text-4xl">
-              {service.desc}
-            </h2>
+            <nav className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+              <Link to="/" className="hover:text-primary">Inicio</Link>
+              <span>/</span>
+              <Link to="/servicios" className="hover:text-primary">Servicios</Link>
+              <span>/</span>
+              <span className="text-foreground">{service.title}</span>
+            </nav>
+            <div className="mt-8 flex items-start gap-5">
+              <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-secondary text-primary">
+                <Icon className="h-6 w-6" />
+              </span>
+              <h2 className="font-display text-3xl font-semibold leading-tight sm:text-4xl">
+                {service.desc}
+              </h2>
+            </div>
             <div className="mt-6 space-y-5 text-base leading-relaxed text-muted-foreground">
               {service.paragraphs.map((p) => (
                 <p key={p.slice(0, 24)}>{p}</p>
