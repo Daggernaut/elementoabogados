@@ -121,7 +121,10 @@ function ServicePage() {
           className="absolute inset-0 h-full w-full object-cover object-center"
           width={1536}
           height={1024}
+          fetchPriority="high"
+          decoding="async"
         />
+
         <div
           className="absolute inset-0 bg-gradient-to-b from-primary-deep/95 via-primary-deep/85 to-primary-deep/75 sm:bg-gradient-to-br sm:from-primary-deep/95 sm:via-primary-deep/85 sm:to-primary/70"
           aria-hidden
