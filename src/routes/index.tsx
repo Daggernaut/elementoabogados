@@ -820,9 +820,6 @@ export function Footer() {
       <div className="mx-auto grid max-w-7xl gap-8 px-6 md:grid-cols-4">
         <div>
           <img src={logoAsset.url} alt="Elemento Abogados" loading="lazy" decoding="async" className="h-14 w-auto" />
-          <p className="mt-4 max-w-xs text-sm text-muted-foreground">
-            Más que abogados, aliados estratégicos en tu causa.
-          </p>
         </div>
         <div className="text-sm">
           <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Legal</div>
