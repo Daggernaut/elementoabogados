@@ -31,7 +31,7 @@ export type Partner = {
 export const partners: Partner[] = [
   {
     slug: "carlos-moscoso",
-    name: "Carlos Andrés Moscoso ",
+    name: "Carlos Moscoso ",
     role: "Socio",
     headline: "Derecho Penal, Compliance, Arbitraje y Resolución de Controversias",
     photo: photoCM.url,
