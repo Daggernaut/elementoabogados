@@ -170,7 +170,7 @@ function ServicePage() {
                 {service.desc}
               </h2>
             </div>
-            <div className="mt-6 space-y-5 text-base leading-relaxed text-muted-foreground">
+            <div className="mt-6 space-y-5 text-justify text-base leading-relaxed text-muted-foreground">
               {service.paragraphs.map((p) => (
                 <p key={p.slice(0, 24)}>{p}</p>
               ))}
