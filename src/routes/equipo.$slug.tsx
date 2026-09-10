@@ -214,6 +214,35 @@ function PartnerPage() {
                     6a. Calle 5-28, Zona 9, Edificio Torre Cristal, Oficina 802, Ciudad de Guatemala
                   </li>
                 </ul>
+
+                {partner.practice?.length ? (
+                  <>
+                    <div className="my-5 border-t border-border" />
+                    <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                      Áreas de práctica
+                    </div>
+                    <ul className="mt-3 space-y-2">
+                      {partner.practice.map((area) => {
+                        const areaSlug = practiceSlugMap[area];
+                        return (
+                          <li key={area}>
+                            {areaSlug ? (
+                              <Link
+                                to="/servicios/$slug"
+                                params={{ slug: areaSlug }}
+                                className="text-foreground transition-colors hover:text-primary"
+                              >
+                                {area}
+                              </Link>
+                            ) : (
+                              <span className="text-foreground">{area}</span>
+                            )}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </>
+                ) : null}
               </motion.div>
             </div>
           </div>
@@ -247,51 +276,6 @@ function PartnerPage() {
           </motion.div>
         </div>
       </section>
-
-      {partner.practice?.length ? (
-        <section className="relative overflow-x-clip py-16">
-          <div className="relative mx-auto max-w-7xl px-6">
-            <Reveal>
-              <h2 className="font-display text-2xl font-semibold">Áreas de práctica</h2>
-            </Reveal>
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {partner.practice.map((area, i) => {
-                const areaSlug = practiceSlugMap[area];
-                return (
-                  <motion.div
-                    key={area}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.9, ease, delay: i * 0.1 }}
-                    className="rounded-2xl border border-border bg-card p-5 transition-colors hover:border-primary/40"
-                  >
-                    {areaSlug ? (
-                      <Link
-                        to="/servicios/$slug"
-                        params={{ slug: areaSlug }}
-                        className="block focus:outline-none"
-                      >
-                        <span className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                        <p className="mt-2 font-medium leading-snug">{area}</p>
-                      </Link>
-                    ) : (
-                      <div className="block">
-                        <span className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                        <p className="mt-2 font-medium leading-snug">{area}</p>
-                      </div>
-                    )}
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-      ) : null}
 
       {(partner.memberships?.length || partner.languages?.length) && (
         <section className="relative overflow-x-clip py-16">
