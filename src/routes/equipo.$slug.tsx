@@ -294,21 +294,16 @@ function PartnerPage() {
         </section>
       ) : null}
 
-      {(partner.education.length > 0 || partner.memberships?.length || partner.languages?.length) && (
+      {(partner.memberships?.length || partner.languages?.length) && (
         <section className="relative overflow-x-clip py-16">
           <div className="relative mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-3">
-            {partner.education.length > 0 && (
-              <Reveal>
-                <InfoBlock title="Formación profesional" items={partner.education} />
-              </Reveal>
-            )}
             {partner.memberships?.length ? (
-              <Reveal delay={0.1}>
+              <Reveal>
                 <InfoBlock title="Membresías" items={partner.memberships} />
               </Reveal>
             ) : null}
             {partner.languages?.length ? (
-              <Reveal delay={0.2}>
+              <Reveal delay={0.1}>
                 <InfoBlock title="Idiomas" items={[partner.languages.join(" / ")]} />
               </Reveal>
             ) : null}
