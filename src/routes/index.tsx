@@ -454,7 +454,7 @@ function Services() {
               Áreas de práctica con <span className="text-primary">resultados comprobados</span>.
             </h2>
           </div>
-          <p className="max-w-sm text-muted-foreground">
+          <p className="max-w-sm text-justify text-muted-foreground">
             Áreas de práctica respaldadas por un equipo experto, alineadas a las necesidades reales de tu caso.
           </p>
         </div>
