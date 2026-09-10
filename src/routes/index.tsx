@@ -314,7 +314,7 @@ function PracticePillars() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="text-xs font-semibold uppercase tracking-[0.25em] text-primary"
+            className="text-justify text-xs font-semibold uppercase tracking-[0.25em] text-primary"
           >
             Los pilares de nuestra práctica
           </motion.span>
@@ -324,7 +324,7 @@ function PracticePillars() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="mt-4 font-display text-4xl font-semibold leading-tight sm:text-5xl"
+            className="mt-4 text-justify font-display text-4xl font-semibold leading-tight sm:text-5xl"
           >
             Principios que orientan cada asesoría
           </motion.h2>
@@ -344,8 +344,8 @@ function PracticePillars() {
               <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                 <span className="font-display text-sm font-bold">{String(i + 1).padStart(2, "0")}</span>
               </div>
-              <h3 className="font-display text-xl font-semibold leading-snug">{it.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{it.body}</p>
+              <h3 className="text-justify font-display text-xl font-semibold leading-snug">{it.title}</h3>
+              <p className="mt-3 text-justify text-sm leading-relaxed text-muted-foreground">{it.body}</p>
             </motion.div>
           ))}
         </div>
