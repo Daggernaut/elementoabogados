@@ -81,7 +81,7 @@ export const partners: Partner[] = [
   },
   {
     slug: "luis-pedro-guerra",
-    name: "Luis Pedro Guerra Gómez",
+    name: "Luis Pedro Guerra ",
     role: "Socio",
     headline: "Litigio, Arbitraje y Resolución de Controversias",
     photo: photoLP.url,
@@ -89,7 +89,7 @@ export const partners: Partner[] = [
     email: "lguerra@elementoabogados.com",
     phone: "+(502) 2339 - 1922",
     bio: [
-      "Luis Pedro Guerra Gómez cuenta con más de diez años de experiencia asesorando y representando a empresas nacionales e internacionales en litigios judiciales, arbitrajes y controversias de alta complejidad. Su práctica se concentra en la resolución estratégica de conflictos en materia civil, mercantil, societaria, bancaria, administrativa y constitucional.",
+      "Luis Pedro Guerra cuenta con más de diez años de experiencia asesorando y representando a empresas nacionales e internacionales en litigios judiciales, arbitrajes y controversias de alta complejidad. Su práctica se concentra en la resolución estratégica de conflictos en materia civil, mercantil, societaria, bancaria, administrativa y constitucional.",
       "A lo largo de su trayectoria ha dirigido procesos relacionados con incumplimientos contractuales, conflictos societarios, recuperación de activos, responsabilidad de administradores, disputas inmobiliarias, reclamaciones por daños y controversias derivadas de sectores regulados. Asimismo, posee amplia experiencia en el diseño e implementación de estrategias procesales orientadas a la protección de los intereses de sus clientes, tanto en sede judicial como arbitral.",
       "Su experiencia incluye la interposición y defensa de recursos ordinarios, extraordinarios y constitucionales, así como la conducción de negociaciones complejas y mecanismos alternativos de resolución de conflictos, buscando siempre soluciones eficientes alineadas con los objetivos comerciales de sus clientes.",
       "Ha asesorado a empresas de diversos sectores económicos, incluyendo banca, desarrollo inmobiliario, construcción, energía, minería, agroindustria, transporte, comercio y distribución, participando regularmente en asuntos que requieren una combinación de análisis jurídico, visión estratégica y manejo de riesgos.",
