@@ -166,11 +166,11 @@ function ServicePage() {
               <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-secondary text-primary">
                 <Icon className="h-5 w-5" />
               </span>
-              <h2 className="font-display text-xl font-semibold leading-snug text-foreground sm:text-2xl">
+              <h2 className="text-justify font-display text-xl font-semibold leading-snug text-foreground sm:text-2xl">
                 {service.desc}
               </h2>
             </div>
-            <div className="mt-6 space-y-5 text-base leading-relaxed text-muted-foreground">
+            <div className="mt-6 space-y-5 text-justify text-base leading-relaxed text-muted-foreground">
               {service.paragraphs.map((p) => (
                 <p key={p.slice(0, 24)}>{p}</p>
               ))}
