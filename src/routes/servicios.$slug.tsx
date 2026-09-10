@@ -198,12 +198,6 @@ function ServicePage() {
                 >
                   <Mail className="h-4 w-4 text-primary" /> Escríbenos
                 </a>
-                <Link
-                  to="/servicios"
-                  className="flex w-full items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground sm:inline-flex sm:w-auto"
-                >
-                  Ver todas las áreas
-                </Link>
               </div>
             </div>
 
@@ -241,6 +235,16 @@ function ServicePage() {
                 ))}
 
               </ul>
+            </div>
+
+            <div className="mt-6">
+              <Link
+                to="/servicios"
+                className="group flex items-center justify-center gap-2 rounded-full border border-border bg-card px-6 py-3.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+              >
+                Ver todas las áreas
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </Link>
             </div>
           </aside>
         </div>
