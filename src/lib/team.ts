@@ -31,7 +31,7 @@ export type Partner = {
 export const partners: Partner[] = [
   {
     slug: "carlos-moscoso",
-    name: "Carlos Andrés Moscoso Díaz",
+    name: "Carlos Andrés Moscoso ",
     role: "Socio & Fundador",
     headline: "Derecho Penal, Compliance, Arbitraje y Resolución de Controversias",
     photo: photoCM.url,
@@ -142,6 +142,6 @@ export const partners: Partner[] = [
 export type Associate = { name: string; role: string; photo: string; photoCutout?: string };
 
 export const associates: Associate[] = [
-  { name: "Claudia Molina", role: "Abogada Asociada", photo: photoClaudia.url, photoCutout: photoClaudiaCutout.url },
-  { name: "Rodrigo Anleu", role: "Abogado Asociado", photo: photoRodrigo.url, photoCutout: photoRodrigoCutout.url },
+  { name: "Claudia Molina", role: "Asociada", photo: photoClaudia.url, photoCutout: photoClaudiaCutout.url },
+  { name: "Rodrigo Anleu", role: "Asociado", photo: photoRodrigo.url, photoCutout: photoRodrigoCutout.url },
 ];
