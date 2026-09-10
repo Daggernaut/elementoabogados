@@ -819,7 +819,7 @@ export function Footer() {
     <footer className="border-t border-border bg-background py-12">
       <div className="mx-auto grid max-w-7xl gap-8 px-6 md:grid-cols-4">
         <div>
-          <img src={logoAsset.url} alt="Elemento Abogados" loading="lazy" decoding="async" className="h-14 w-auto" />
+          <img src={logoAsset.url} alt="Elemento Abogados" loading="lazy" decoding="async" className="h-16 w-auto" />
         </div>
         <div className="text-sm">
           <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Legal</div>
