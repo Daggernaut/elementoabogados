@@ -225,8 +225,7 @@ function PartnerPage() {
             transition={{ duration: 0.95, ease, delay: 0.5 }}
             className="lg:col-span-7"
           >
-            <h2 className="font-display text-2xl font-semibold">Perfil</h2>
-            <div className="mt-4 space-y-4 text-justify leading-relaxed text-muted-foreground">
+            <div className="space-y-4 text-justify leading-relaxed text-muted-foreground">
               {partner.bio.map((p, i) => (
                 <motion.p
                   key={p.slice(0, 40)}
