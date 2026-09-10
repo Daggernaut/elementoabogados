@@ -239,6 +239,12 @@ function PartnerPage() {
                 </motion.p>
               ))}
             </div>
+
+            {partner.education.length > 0 && (
+              <div className="mt-12">
+                <InfoBlock title="Formación profesional" items={partner.education} />
+              </div>
+            )}
           </motion.div>
         </div>
       </section>
