@@ -82,7 +82,7 @@ export const partners: Partner[] = [
   {
     slug: "luis-pedro-guerra",
     name: "Luis Pedro Guerra Gómez",
-    role: "Socio & Fundador",
+    role: "Socio",
     headline: "Litigio, Arbitraje y Resolución de Controversias",
     photo: photoLP.url,
     photoCutout: photoLPCutout.url,
