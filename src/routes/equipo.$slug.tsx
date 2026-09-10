@@ -6,6 +6,23 @@ import { Nav, Footer } from "./index";
 import { partners, type Partner } from "@/lib/team";
 import isologo from "@/assets/isologo.png.asset.json";
 
+const practiceSlugMap: Record<string, string> = {
+  "Litigios Penales": "litigio-penal",
+  Compliance: "compliance-y-gobierno-corporativo",
+  "Arbitraje y Resolución de Controversias": "resolucion-de-controversias",
+  Corporativo: "derecho-corporativo",
+  Inmobiliario: "derecho-inmobiliario",
+  "Banca y Finanzas": "banca-y-finanzas",
+  "Fusiones y adquisiciones": "fusiones-y-adquisiciones",
+  "Resolución de Controversias en Materia Civil y Comercial": "resolucion-de-controversias",
+  Tributario: "fiscal",
+  "Derecho Administrativo y Constitucional": "derecho-constitucional",
+  "Minería e Inmobiliario": "derecho-inmobiliario",
+  Laboral: "migratorio-y-laboral",
+  Migratorio: "migratorio-y-laboral",
+  Cumplimiento: "compliance-y-gobierno-corporativo",
+};
+
 export const Route = createFileRoute("/equipo/$slug")({
   loader: ({ params }) => {
     const partner = partners.find((p) => p.slug === params.slug);
