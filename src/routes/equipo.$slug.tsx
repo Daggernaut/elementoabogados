@@ -256,21 +256,39 @@ function PartnerPage() {
               <h2 className="font-display text-2xl font-semibold">Áreas de práctica</h2>
             </Reveal>
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {partner.practice.map((area, i) => (
-                <motion.div
-                  key={area}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.9, ease, delay: i * 0.1 }}
-                  className="rounded-2xl border border-border bg-card p-5 transition-colors hover:border-primary/40"
-                >
-                  <span className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <p className="mt-2 font-medium leading-snug">{area}</p>
-                </motion.div>
-              ))}
+              {partner.practice.map((area, i) => {
+                const areaSlug = practiceSlugMap[area];
+                return (
+                  <motion.div
+                    key={area}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.9, ease, delay: i * 0.1 }}
+                    className="rounded-2xl border border-border bg-card p-5 transition-colors hover:border-primary/40"
+                  >
+                    {areaSlug ? (
+                      <Link
+                        to="/servicios/$slug"
+                        params={{ slug: areaSlug }}
+                        className="block focus:outline-none"
+                      >
+                        <span className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <p className="mt-2 font-medium leading-snug">{area}</p>
+                      </Link>
+                    ) : (
+                      <div className="block">
+                        <span className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <p className="mt-2 font-medium leading-snug">{area}</p>
+                      </div>
+                    )}
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>
