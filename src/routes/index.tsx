@@ -176,7 +176,7 @@ function Hero() {
 
       <div className="relative mx-auto grid max-w-7xl gap-12 px-6 pb-24 pt-12 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-8">
-          <h1 className="font-display text-5xl font-bold leading-[0.95] tracking-tight sm:text-7xl lg:text-[5.75rem]">
+          <h1 className="font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-[5rem]">
             {"Más que abogados,".split(" ").map((w, i) => (
               <motion.span
                 key={i}
@@ -193,7 +193,7 @@ function Hero() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.45 }}
-              className="text-white/60"
+              className="mt-2 inline-block text-white/60"
             >
               aliados estratégicos.
             </motion.span>
