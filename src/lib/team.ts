@@ -39,7 +39,7 @@ export const partners: Partner[] = [
     email: "cmoscoso@elementoabogados.com",
     phone: "+(502) 2339 - 1922",
     bio: [
-      "Carlos Andrés Moscoso Díaz cuenta con más de diez años de experiencia asesorando y representando a personas y empresas nacionales e internacionales en asuntos relacionados con Derecho Penal, Compliance, Arbitraje, Derecho Constitucional y resolución de controversias.",
+      "Cuenta con más de diez años de experiencia asesorando y representando a personas y empresas nacionales e internacionales en asuntos relacionados con Derecho Penal, Compliance, Arbitraje, Derecho Constitucional y resolución de controversias.",
       "Su práctica profesional se enfoca en el diseño e implementación de estrategias jurídicas para la prevención, gestión y resolución de conflictos complejos, incluyendo litigios penales, arbitrajes, investigaciones internas y controversias con impacto patrimonial, corporativo y reputacional.",
       "Asimismo, asesora a organizaciones de distintos sectores económicos en la identificación y mitigación de riesgos legales, así como en el desarrollo e implementación de programas de Compliance orientados al fortalecimiento de controles internos y al cumplimiento normativo.",
       "A lo largo de su trayectoria ha intervenido en asuntos de alta complejidad jurídica y estratégica, representando a sus clientes tanto en el ejercicio de acciones legales como en la defensa de sus derechos e intereses. Su enfoque combina una sólida experiencia en litigación y resolución de controversias con una visión preventiva orientada a la gestión eficiente de riesgos y la protección de los intereses patrimoniales, comerciales y reputacionales de quienes asesora.",
