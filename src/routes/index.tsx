@@ -151,7 +151,7 @@ function DownloadDropdown({ className }: { className?: string }) {
             onClick={() => setOpen(false)}
             className="flex items-center gap-2 px-4 py-3 text-sm text-white/90 transition-colors hover:bg-white/10"
           >
-            <span className="text-base">🇬🇧</span>
+            <span className="flex h-6 w-6 items-center justify-center rounded-full border border-white/20 text-[10px] font-semibold uppercase tracking-wider">EN</span>
             English version
           </a>
         </div>
