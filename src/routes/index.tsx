@@ -388,7 +388,7 @@ function About() {
             <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 -bottom-8 w-[92%] max-w-[20rem] sm:-bottom-10 lg:-bottom-12">
               <div className="pointer-events-auto grid w-full grid-cols-3 gap-px overflow-hidden rounded-2xl border border-white/10 bg-primary-deep text-primary-foreground shadow-elegant">
                 {[
-                  ["+20", "años de experiencia"],
+                  ["10", "años de experiencia"],
                   ["13", "áreas de práctica"],
                   ["500+", "casos resueltos"],
                 ].map(([k, v]) => (
