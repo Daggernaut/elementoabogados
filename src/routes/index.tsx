@@ -277,7 +277,7 @@ function Pillars() {
             className="group relative bg-background p-10 transition-colors hover:bg-secondary"
           >
             <h3 className="font-display text-xl font-semibold">{it.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{it.desc}</p>
+            <p className="mt-2 text-justify text-sm leading-relaxed text-muted-foreground">{it.desc}</p>
           </motion.div>
         ))}
       </div>
