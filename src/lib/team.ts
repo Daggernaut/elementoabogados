@@ -124,11 +124,17 @@ export const partners: Partner[] = [
     bio: [
       "Abogada laboralista con más de 20 años de experiencia asesorando a empresas nacionales e internacionales en derecho laboral, relaciones laborales, cumplimiento en materia de salud y seguridad ocupacional, derecho migratorio y asuntos corporativos relacionados con la gestióndel talento humano. A lo largo de su trayectoria, ha asesorado a innumerables empresas de sectores como retail, alimentos, tecnología y servicios financieros.",
       "Cuenta con amplia experiencia en auditorías laborales, reestructuraciones de personal, estrategias para la prevención y gestión de riesgos laborales y litigio laboral enfocado en la defensa del empleador. Ha dirigido procesos de terminación y reorganización que han involucrado a más de 1,500 trabajadores, con un nivel mínimo de judicialización. Asimismo, ha participado en operaciones de M&A, identificando contingencias laborales críticas y diseñando planes de mitigación para prevenir costos y riesgos relevantes.",
-      "Su práctica se caracteriza por un enfoque preventivo, estratégico y orientado a resultados. Ha implementado programas de cumplimiento que han permitido reducir en más de un 65 % los riesgos asociados con sanciones y reclamaciones laborales, así como mecanismos de solución temprana de conflictos que han evitado la judicialización en más del 70 % de los asuntos atendidos. En materia migratoria, ha estandarizado procesos para corporaciones multinacionales, logrando reducir hasta en un 35 % los tiempos de tramitación.",
+      "Su práctica se caracteriza por un enfoque preventivo, estratégico y orientado a resultados. Ha implementado programos de cumplimiento que han permitido reducir en más de un 65 % los riesgos asociados con sanciones y reclamaciones laborales, así como mecanismos de solución temprana de conflictos que han evitado la judicialización en más del 70 % de los asuntos atendidos. En materia migratoria, ha estandarizado procesos para corporaciones multinacionales, logrando reducir hasta en un 35 % los tiempos de tramitación.",
       "Ha sido reconocida por The Legal 500, Chambers and Partners y Business Today como una de las abogadas más influyentes de Guatemala en materia laboral.",
       "En el ámbito académico, es evaluadora del examen técnico profesional en Derecho Laboral y Procesal Laboral de la Universidad del Istmo y ha ejercido como asesora de tesis de grado en Derecho Laboral en la Universidad Rafael Landívar; ha participado como expositora en seminarios y congresos jurídicos nacionales e internacionales, y es autora de artículos especializados publicados en revistas como WorkPlace y Business Magazine.",
     ],
-    education: [],
+    education: [
+      "Auditor ISO 45001 - Sistemas de Gestión Seguridad y Salud en el Trabajo, 2021",
+      "PBP Psicología y Recursos Humanos - ESI School, 2015",
+      "LLM Derecho de la Empresa - Pontificia Universidad Católica de Chile, 2011",
+      "Licenciada en Ciencias Jurídicas y Sociales, Abogada y Notario - Universidad Rafael Landívar de Guatemala, 2007",
+    ],
+    memberships: ["Colegio de Abogados y Notarios de Guatemala (CANG)"],
     practice: ["Laboral", "Corporativo", "Migratorio", "Cumplimiento"],
   },
 ];
