@@ -103,7 +103,7 @@ function EquipoPage() {
           <div className="mb-8 mt-20 flex items-center gap-3">
             <span className="h-px w-8 bg-primary" />
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-              Abogados asociados
+              ASOCIADOS
             </span>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
