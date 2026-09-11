@@ -274,7 +274,7 @@ function PartnerPage() {
               </div>
             )}
 
-            {partner.memberships?.length > 0 && (
+            {!!partner.memberships?.length && (
               <div className="mt-12">
                 <InfoBlock title="Membresías" items={partner.memberships} />
               </div>
@@ -283,11 +283,11 @@ function PartnerPage() {
         </div>
       </section>
 
-      {partner.languages?.length > 0 && (
+      {!!partner.languages?.length && (
         <section className="relative overflow-x-clip py-16">
           <div className="relative mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-3">
             <Reveal>
-              <InfoBlock title="Idiomas" items={[partner.languages.join(" / ")]} />
+              <InfoBlock title="Idiomas" items={[partner.languages!.join(" / ")]} />
             </Reveal>
           </div>
         </section>
