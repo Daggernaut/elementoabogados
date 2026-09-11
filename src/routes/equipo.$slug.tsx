@@ -273,23 +273,22 @@ function PartnerPage() {
                 <InfoBlock title="Formación profesional" items={partner.education} />
               </div>
             )}
+
+            {!!partner.memberships?.length && (
+              <div className="mt-12">
+                <InfoBlock title="Membresías" items={partner.memberships} />
+              </div>
+            )}
           </motion.div>
         </div>
       </section>
 
-      {(partner.memberships?.length || partner.languages?.length) && (
+      {!!partner.languages?.length && (
         <section className="relative overflow-x-clip py-16">
           <div className="relative mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-3">
-            {partner.memberships?.length ? (
-              <Reveal>
-                <InfoBlock title="Membresías" items={partner.memberships} />
-              </Reveal>
-            ) : null}
-            {partner.languages?.length ? (
-              <Reveal delay={0.1}>
-                <InfoBlock title="Idiomas" items={[partner.languages.join(" / ")]} />
-              </Reveal>
-            ) : null}
+            <Reveal>
+              <InfoBlock title="Idiomas" items={[partner.languages!.join(" / ")]} />
+            </Reveal>
           </div>
         </section>
       )}
