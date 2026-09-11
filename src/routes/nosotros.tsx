@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { Nav, Footer } from "./index";
 import aboutCity from "@/assets/about-city.jpg.asset.json";
-import teamGroup from "@/assets/team-group.jpg.asset.json";
+import teamGroup from "@/assets/equipo-contacto.png.asset.json";
 
 export const Route = createFileRoute("/nosotros")({
   head: () => ({
