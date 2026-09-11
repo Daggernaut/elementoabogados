@@ -153,7 +153,7 @@ export const services: Service[] = [
   {
     slug: "fiscal",
     icon: Receipt,
-    title: "Fiscal",
+    title: "Derecho Tributario",
     desc: "Estrategia fiscal integral para operaciones nacionales e internacionales.",
     image: imgFiscal.url,
     imageAlt: "Análisis de documentos financieros y tributarios",
