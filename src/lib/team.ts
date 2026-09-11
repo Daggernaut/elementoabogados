@@ -55,9 +55,8 @@ export const partners: Partner[] = [
   {
     slug: "jorge-luis-molina",
     name: "Jorge Luis Molina",
-    role: "Socio & Fundador",
-    headline:
-      "Maestría en Derecho Bancario, Seguros y Mercados Financieros — Universidad de San Carlos de Guatemala y Universidad de Valencia",
+    role: "Socio ",
+    headline: "",
     photo: photoJL.url,
     photoCutout: photoJLCutout.url,
     email: "jmolina@elementoabogados.com",
