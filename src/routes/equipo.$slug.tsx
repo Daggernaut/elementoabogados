@@ -144,7 +144,7 @@ function PartnerPage() {
             transition={{ duration: 0.9, ease, delay: 0.22 }}
             className="mt-4 max-w-2xl text-white/75"
           >
-            {partner.role} · {partner.headline}
+            {partner.role}{partner.headline && ` · ${partner.headline}`}
           </motion.p>
         </div>
       </motion.section>
