@@ -344,7 +344,7 @@ function PracticePillars() {
               <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                 <span className="font-display text-sm font-bold">{String(i + 1).padStart(2, "0")}</span>
               </div>
-              <h3 className="text-justify font-display text-xl font-semibold leading-snug">{it.title}</h3>
+              <h3 className="text-left font-display text-xl font-semibold leading-snug">{it.title}</h3>
               <p className="mt-3 text-justify text-sm leading-relaxed text-muted-foreground">{it.body}</p>
             </motion.div>
           ))}
