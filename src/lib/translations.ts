@@ -218,10 +218,10 @@ export const ui = {
       rights: "All rights reserved.",
     },
     hero: {
-      line1: "More than lawyers,",
-      line2: "strategic allies.",
+      line1: "More than just lawyers,",
+      line2: "strategic partners.",
       paragraph:
-        "We support our domestic and international clients with multidisciplinary, strategic and close legal counsel. We combine experience, ethics and excellence to deliver tailored solutions that build trust and create sustainable value.",
+        "We support our clients both domestic and international with multidisciplinary, strategic, and personalized legal counsel. We combine experience, ethics, and excellence to offer tailored solutions that build trust and create sustainable value.",
       stats: [
         ["10", "years of experience"],
         ["13", "practice areas"],
