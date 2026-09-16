@@ -145,7 +145,7 @@ function ServicePage() {
             transition={{ duration: 0.5 }}
             className="text-xs font-semibold uppercase tracking-[0.25em] text-[color:var(--accent-orange)]"
           >
-            Servicios legales · Elemento Abogados
+            {t.servicesPage.heroEyebrow}
           </motion.span>
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
@@ -163,9 +163,9 @@ function ServicePage() {
         <div className="mx-auto grid max-w-7xl gap-14 px-6 lg:grid-cols-12">
           <article className="lg:col-span-8">
             <nav className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-              <Link to="/" className="hover:text-primary">Inicio</Link>
+              <Link to="/" className="hover:text-primary">{t.common.home}</Link>
               <span>/</span>
-              <Link to="/servicios" className="hover:text-primary">Servicios</Link>
+              <Link to="/servicios" className="hover:text-primary">{t.nav.services}</Link>
               <span>/</span>
             <span className="text-foreground">{service.title}</span>
             </nav>
@@ -186,11 +186,9 @@ function ServicePage() {
 
             <div className="mt-10 rounded-2xl border border-border bg-secondary/50 p-6 sm:p-8">
               <h2 className="font-display text-xl font-semibold">
-                ¿Necesitas asesoría en {service.title.toLowerCase()}?
+                {t.servicesPage.needHelpLead}{service.title.toLowerCase()}{t.servicesPage.needHelpTail}
               </h2>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Cuéntanos tu caso y te contactamos con el abogado indicado para esta área.
-              </p>
+              <p className="mt-2 text-sm text-muted-foreground">{t.servicesPage.needHelpDesc}</p>
               <div className="mt-6 flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <a
                   href="/#contact"
