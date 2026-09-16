@@ -88,17 +88,18 @@ export const Route = createFileRoute("/servicios/$slug")({
 
 
 function ServiceNotFound() {
+  const t = useUI();
   return (
     <main className="min-h-screen bg-background font-sans text-foreground">
       <Nav />
       <section className="mx-auto max-w-3xl px-6 py-40 text-center">
-        <h1 className="font-display text-4xl font-semibold">Área de práctica no encontrada</h1>
-        <p className="mt-4 text-muted-foreground">Revisa el listado completo de nuestras áreas de práctica.</p>
+        <h1 className="font-display text-4xl font-semibold">{t.servicesPage.notFoundTitle}</h1>
+        <p className="mt-4 text-muted-foreground">{t.servicesPage.notFoundDesc}</p>
         <Link
           to="/servicios"
           className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary-deep px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary"
         >
-          Ver áreas de práctica <ArrowRight className="h-4 w-4" />
+          {t.servicesPage.seeAreas} <ArrowRight className="h-4 w-4" />
         </Link>
       </section>
       <Footer />
@@ -108,7 +109,10 @@ function ServiceNotFound() {
 
 function ServicePage() {
   const { slug } = Route.useParams();
-  const service = getService(slug)!;
+  const { lang } = useLang();
+  const t = useUI();
+  const services = useServices();
+  const service = localizeService(getService(slug)!, lang);
   const related = services.filter((s) => s.slug !== slug).slice(0, 4);
   const Icon = service.icon;
 
