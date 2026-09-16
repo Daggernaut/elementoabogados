@@ -194,14 +194,14 @@ function ServicePage() {
                   href="/#contact"
                   className="group flex w-full items-center justify-center gap-2 rounded-full bg-primary-deep px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary sm:inline-flex sm:w-auto"
                 >
-                  Agenda una consulta
+                  {t.servicesPage.scheduleCta}
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </a>
                 <a
-                  href={`mailto:info@elementoabogados.com?subject=${encodeURIComponent(`Consulta: ${service.title}`)}`}
+                  href={`mailto:info@elementoabogados.com?subject=${encodeURIComponent(`${t.servicesPage.subjectPrefix} ${service.title}`)}`}
                   className="flex w-full items-center justify-center gap-2 rounded-full border border-border bg-card px-6 py-3.5 text-sm font-medium transition-colors hover:bg-secondary sm:inline-flex sm:w-auto"
                 >
-                  <Mail className="h-4 w-4 text-primary" /> Escríbenos
+                  <Mail className="h-4 w-4 text-primary" /> {t.common.writeUs}
                 </a>
               </div>
             </div>
@@ -211,7 +211,7 @@ function ServicePage() {
 
           <aside className="lg:col-span-4">
             <div className="rounded-2xl border border-border bg-card p-8">
-              <h2 className="font-display text-lg font-semibold">Hablemos de tu caso</h2>
+              <h2 className="font-display text-lg font-semibold">{t.servicesPage.talkTitle}</h2>
               <div className="mt-5 space-y-3 text-sm">
                 <a href="mailto:info@elementoabogados.com" className="flex items-center gap-3 text-muted-foreground hover:text-primary">
                   <Mail className="h-4 w-4 text-primary" /> info@elementoabogados.com
@@ -223,7 +223,7 @@ function ServicePage() {
             </div>
 
             <div className="mt-6 rounded-2xl border border-border bg-card p-8">
-              <h2 className="font-display text-lg font-semibold">Áreas relacionadas</h2>
+              <h2 className="font-display text-lg font-semibold">{t.servicesPage.related}</h2>
               <ul className="mt-4 space-y-2 text-sm">
                 {related.map((r) => (
                   <li key={r.slug}>
@@ -247,7 +247,7 @@ function ServicePage() {
                 to="/servicios"
                 className="group flex items-center justify-center gap-2 rounded-full border border-border bg-card px-6 py-3.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
               >
-                Ver todas las áreas
+                {t.servicesPage.seeAll}
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </Link>
             </div>
