@@ -2,7 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { ArrowUpRight, Mail, Phone } from "lucide-react";
 import { Nav, Footer } from "./index";
-import { partners, associates } from "@/lib/team";
+import { usePartners, useAssociates } from "@/lib/localize";
+import { useUI } from "@/lib/translations";
 import equipoHeader from "@/assets/equipo-header.jpg.asset.json";
 
 export const Route = createFileRoute("/equipo/")({
@@ -27,6 +28,10 @@ export const Route = createFileRoute("/equipo/")({
 });
 
 function EquipoPage() {
+  const t = useUI();
+  const partners = usePartners();
+  const associates = useAssociates();
+
   return (
     <main className="min-h-screen bg-background font-sans text-foreground">
       <Nav />
@@ -34,16 +39,16 @@ function EquipoPage() {
       <section className="relative isolate overflow-hidden bg-primary-deep pt-32 text-primary-foreground">
         <img
           src={equipoHeader.url}
-          alt="Ciudad de Guatemala"
+          alt={t.common.city}
           className="pointer-events-none absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-primary-deep/95 via-primary-deep/80 to-primary/60" aria-hidden />
         <div className="absolute inset-0 grid-pattern opacity-20 mix-blend-overlay" aria-hidden />
         <div className="relative mx-auto max-w-7xl px-6 pb-20 pt-14">
           <nav className="flex items-center gap-2 text-sm text-white/70">
-            <Link to="/" className="hover:text-white">Inicio</Link>
+            <Link to="/" className="hover:text-white">{t.common.home}</Link>
             <span>/</span>
-            <span className="text-white">Equipo</span>
+            <span className="text-white">{t.nav.team}</span>
           </nav>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -51,12 +56,9 @@ function EquipoPage() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="mt-6 max-w-4xl font-display text-5xl font-bold leading-[1.02] tracking-tight sm:text-6xl"
           >
-            Nuestro equipo
+            {t.team.pageTitle}
           </motion.h1>
-          <p className="mt-6 max-w-2xl text-lg text-white/80">
-            Un grupo multidisciplinario de abogados que combina experiencia, ética y cercanía para acompañar a
-            nuestros clientes en cada decisión.
-          </p>
+          <p className="mt-6 max-w-2xl text-lg text-white/80">{t.team.pageIntro}</p>
         </div>
       </section>
 
@@ -64,7 +66,7 @@ function EquipoPage() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-8 flex items-center gap-3">
             <span className="h-px w-8 bg-primary" />
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Socios</span>
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">{t.team.partners}</span>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {partners.map((p, i) => (
@@ -92,7 +94,7 @@ function EquipoPage() {
                     <h2 className="font-display text-xl font-semibold">{p.name}</h2>
                     <p className="text-sm text-muted-foreground">{p.role}</p>
                     <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary">
-                      Ver perfil <ArrowUpRight className="h-3.5 w-3.5" />
+                      {t.common.viewProfile} <ArrowUpRight className="h-3.5 w-3.5" />
                     </span>
                   </div>
                 </Link>
@@ -103,7 +105,7 @@ function EquipoPage() {
           <div className="mb-8 mt-20 flex items-center gap-3">
             <span className="h-px w-8 bg-primary" />
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-              ASOCIADOS
+              {t.team.associates}
             </span>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -134,20 +136,20 @@ function EquipoPage() {
 
           <div className="mt-20 flex flex-wrap items-center gap-4 rounded-3xl border border-border bg-gradient-soft p-10">
             <div className="min-w-0 flex-1">
-              <h2 className="font-display text-2xl font-semibold">¿Quieres hablar con uno de nuestros abogados?</h2>
-              <p className="mt-2 text-muted-foreground">Escríbenos y te contactamos en menos de 24 horas.</p>
+              <h2 className="font-display text-2xl font-semibold">{t.team.talkTitle}</h2>
+              <p className="mt-2 text-muted-foreground">{t.team.talkDesc}</p>
             </div>
             <a
               href="mailto:info@elementoabogados.com"
               className="inline-flex items-center gap-2 rounded-full bg-primary-deep px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary"
             >
-              <Mail className="h-4 w-4" /> Escríbenos
+              <Mail className="h-4 w-4" /> {t.common.writeUs}
             </a>
             <a
               href="tel:+50223391922"
               className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3.5 text-sm font-medium transition-colors hover:border-primary hover:text-primary"
             >
-              <Phone className="h-4 w-4" /> Llámanos
+              <Phone className="h-4 w-4" /> {t.common.callUs}
             </a>
           </div>
         </div>

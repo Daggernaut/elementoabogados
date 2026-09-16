@@ -3,7 +3,10 @@ import { motion } from "motion/react";
 import { ArrowRight, ArrowUpRight, Mail, Phone } from "lucide-react";
 
 import { Nav, Footer } from "./index";
-import { services, getService } from "@/lib/services";
+import { getService } from "@/lib/services";
+import { useServices, localizeService } from "@/lib/localize";
+import { useLang } from "@/lib/i18n";
+import { useUI } from "@/lib/translations";
 
 const SITE = "https://elementoabogados.lovable.app";
 

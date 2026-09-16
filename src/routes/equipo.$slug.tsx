@@ -4,6 +4,9 @@ import { motion } from "motion/react";
 import { ArrowLeft, ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import { Nav, Footer } from "./index";
 import { partners, type Partner } from "@/lib/team";
+import { localizePartner } from "@/lib/localize";
+import { useLang } from "@/lib/i18n";
+import { useUI } from "@/lib/translations";
 import isologo from "@/assets/isologo.png.asset.json";
 
 const practiceSlugMap: Record<string, string> = {
@@ -98,7 +101,10 @@ function InfoBlock({ title, items }: { title: string; items: string[] }) {
 }
 
 function PartnerPage() {
-  const { partner } = Route.useLoaderData() as { partner: Partner };
+  const { partner: esPartner } = Route.useLoaderData() as { partner: Partner };
+  const { lang } = useLang();
+  const t = useUI();
+  const partner = localizePartner(esPartner, lang);
   const index = partners.findIndex((p) => p.slug === partner.slug);
   const prev = partners[(index - 1 + partners.length) % partners.length];
   const next = partners[(index + 1) % partners.length];
@@ -122,9 +128,9 @@ function PartnerPage() {
             transition={{ duration: 0.5, ease, delay: 0.05 }}
             className="flex items-center gap-2 text-sm text-white/70"
           >
-            <Link to="/" className="hover:text-white">Inicio</Link>
+            <Link to="/" className="hover:text-white">{t.common.home}</Link>
             <span>/</span>
-            <Link to="/equipo" className="hover:text-white">Equipo</Link>
+            <Link to="/equipo" className="hover:text-white">{t.nav.team}</Link>
             <span>/</span>
             <span className="text-white">{partner.name}</span>
           </motion.nav>
@@ -198,7 +204,7 @@ function PartnerPage() {
                 className="relative -mt-6 rounded-3xl border border-border bg-card p-6 text-sm shadow-lg"
               >
                 <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                  Información de contacto
+                  {t.team.contactInfo}
                 </div>
                 <ul className="mt-3 space-y-3">
                   <li className="flex items-start gap-3">
@@ -211,7 +217,7 @@ function PartnerPage() {
                   </li>
                   <li className="flex items-start gap-3 text-muted-foreground">
                     <MapPin className="mt-0.5 h-4 w-4 flex-none text-primary" />
-                    6a. Calle 5-28, Zona 9, Edificio Torre Cristal, Oficina 802, Ciudad de Guatemala
+                    {t.common.officeAddress}
                   </li>
                 </ul>
 
@@ -219,11 +225,11 @@ function PartnerPage() {
                   <>
                     <div className="my-5 border-t border-border" />
                     <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                      Áreas de práctica
+                      {t.team.practiceAreas}
                     </div>
                     <ul className="mt-3 space-y-2">
-                      {partner.practice.map((area) => {
-                        const areaSlug = practiceSlugMap[area];
+                      {partner.practice.map((area, areaIndex) => {
+                        const areaSlug = practiceSlugMap[esPartner.practice?.[areaIndex] ?? area];
                         return (
                           <li key={area}>
                             {areaSlug ? (
@@ -270,13 +276,13 @@ function PartnerPage() {
 
             {partner.education.length > 0 && (
               <div className="mt-12">
-                <InfoBlock title="Formación profesional" items={partner.education} />
+                <InfoBlock title={t.team.education} items={partner.education} />
               </div>
             )}
 
             {!!partner.memberships?.length && (
               <div className="mt-12">
-                <InfoBlock title="Membresías" items={partner.memberships} />
+                <InfoBlock title={t.team.memberships} items={partner.memberships} />
               </div>
             )}
           </motion.div>
@@ -287,7 +293,7 @@ function PartnerPage() {
         <section className="relative overflow-x-clip py-16">
           <div className="relative mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-3">
             <Reveal>
-              <InfoBlock title="Idiomas" items={[partner.languages!.join(" / ")]} />
+              <InfoBlock title={t.team.languages} items={[partner.languages!.join(" / ")]} />
             </Reveal>
           </div>
         </section>

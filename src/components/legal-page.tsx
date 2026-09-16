@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { Nav, Footer } from "@/routes/index";
+import { useLang } from "@/lib/i18n";
 
 export type LegalSection = { title?: string; paragraphs: string[] };
 
@@ -17,6 +18,7 @@ export function LegalPage({
   sections: LegalSection[];
   updated?: string;
 }) {
+  const { lang } = useLang();
   return (
     <main className="min-h-screen bg-background font-sans text-foreground">
       <Nav />
@@ -30,7 +32,7 @@ export function LegalPage({
         <div className="relative mx-auto max-w-4xl px-6 pb-16 pt-12">
           <nav className="flex items-center gap-2 text-sm text-white/70">
             <Link to="/" className="hover:text-white">
-              Inicio
+              {lang === "es" ? "Inicio" : "Home"}
             </Link>
             <span>/</span>
             <span className="text-white">{breadcrumb}</span>
@@ -74,9 +76,11 @@ export function LegalPage({
           </div>
 
           <div className="mt-14 rounded-2xl border border-border bg-secondary/40 p-8">
-            <h2 className="font-display text-xl font-semibold">Contacto</h2>
+            <h2 className="font-display text-xl font-semibold">{lang === "es" ? "Contacto" : "Contact"}</h2>
             <p className="mt-2 text-sm text-muted-foreground">
-              Si tienes dudas sobre este documento, escríbenos y con gusto te atendemos.
+              {lang === "es"
+                ? "Si tienes dudas sobre este documento, escríbenos y con gusto te atendemos."
+                : "If you have questions about this document, write to us and we will be happy to help."}
             </p>
             <div className="mt-5 flex flex-col gap-3 sm:flex-row">
               <a
