@@ -12,6 +12,7 @@ import {
 import { Nav, Footer } from "./index";
 import aboutCity from "@/assets/about-city.jpg.asset.json";
 import teamGroup from "@/assets/equipo-contacto.png.asset.json";
+import { useLang } from "@/lib/i18n";
 
 export const Route = createFileRoute("/nosotros")({
   head: () => ({
@@ -35,53 +36,136 @@ export const Route = createFileRoute("/nosotros")({
   component: NosotrosPage,
 });
 
-const capabilities = [
-  {
-    icon: Award,
-    title: "Experiencia comprobada",
-    desc: "Más de 10 años asesorando a empresas, bancos y particulares en asuntos legales complejos dentro y fuera de Guatemala.",
+const content = {
+  es: {
+    breadcrumbHome: "Inicio",
+    breadcrumbCurrent: "Nosotros",
+    heroTitle: "Abogados de primer nivel con más de 10 años de experiencia",
+    heroDesc:
+      "Brindamos asesoría legal integral y personalizada, con soluciones claras, efectivas y orientadas a resultados. Defendemos tus intereses con ética, estrategia y compromiso para que tu tranquilidad legal esté siempre en manos de expertos.",
+    aboutCityAlt: "Ciudad de Guatemala",
+    stats: [
+      { value: "10", label: "años de experiencia" },
+      { value: "13", label: "áreas de práctica" },
+      { value: "500+", label: "casos resueltos" },
+    ],
+    capabilitiesEyebrow: "Lo que nos define",
+    capabilities: [
+      {
+        icon: Award,
+        title: "Experiencia comprobada",
+        desc: "Más de 10 años asesorando a empresas, bancos y particulares en asuntos legales complejos dentro y fuera de Guatemala.",
+      },
+      {
+        icon: GraduationCap,
+        title: "Equipo especializado",
+        desc: "Abogados con maestrías y certificaciones internacionales que cubren las áreas clave del derecho empresarial.",
+      },
+      {
+        icon: Globe2,
+        title: "Alcance internacional",
+        desc: "Alianzas con firmas regionales que nos permiten acompañar operaciones transfronterizas y cumplir normativas en varias jurisdicciones.",
+      },
+      {
+        icon: TrendingUp,
+        title: "Resultados demostrables",
+        desc: "Casos de éxito que incluyen cierres de financiamiento, litigios favorables y estructuración de proyectos de infraestructura de alto impacto.",
+      },
+      {
+        icon: UserCheck,
+        title: "Atención personalizada",
+        desc: "Asignamos un socio director a cada cliente para asegurar respuestas rápidas, soluciones a la medida y comunicación transparente.",
+      },
+      {
+        icon: Cpu,
+        title: "Innovación jurídica",
+        desc: "Usamos tecnología legal y procesos ágiles para documentos, firmas electrónicas y seguimiento en tiempo real de expedientes.",
+      },
+    ],
+    valuesEyebrow: "Nuestros valores",
+    valuesTitle: "Una práctica construida sobre principios, no sobre fórmulas",
+    valuesDesc:
+      "Diseñamos soluciones legales estratégicas que protegen los intereses de nuestros clientes, fortalecen sus decisiones y contribuyen al logro de sus objetivos.",
+    values: [
+      { title: "Ética", desc: "Cada decisión se toma con integridad y respeto por el marco legal." },
+      { title: "Excelencia", desc: "Rigor técnico y eficiencia en cada documento, audiencia y negociación." },
+      { title: "Confidencialidad", desc: "Discreción absoluta en todos los asuntos que se nos confían." },
+      { title: "Cercanía", desc: "Comunicación clara y constante con cada cliente, sin tecnicismos innecesarios." },
+    ],
+    teamCta: "Conoce al equipo",
+    teamAlt: "Equipo de Elemento Abogados",
+    ctaTitle: "Hablemos de tu caso",
+    ctaDesc: "Agenda una conversación inicial y define con nosotros la ruta legal más conveniente.",
+    ctaContact: "Contáctanos",
+    ctaServices: "Ver áreas de práctica",
   },
-  {
-    icon: GraduationCap,
-    title: "Equipo especializado",
-    desc: "Abogados con maestrías y certificaciones internacionales que cubren las áreas clave del derecho empresarial.",
+  en: {
+    breadcrumbHome: "Home",
+    breadcrumbCurrent: "About Us",
+    heroTitle: "Top-tier attorneys with over 10 years of experience",
+    heroDesc:
+      "We provide comprehensive, personalized legal counsel with clear, effective, results-oriented solutions. We defend your interests with ethics, strategy and commitment, so your legal peace of mind is always in expert hands.",
+    aboutCityAlt: "Guatemala City",
+    stats: [
+      { value: "10", label: "years of experience" },
+      { value: "13", label: "practice areas" },
+      { value: "500+", label: "cases resolved" },
+    ],
+    capabilitiesEyebrow: "What defines us",
+    capabilities: [
+      {
+        icon: Award,
+        title: "Proven experience",
+        desc: "Over 10 years advising companies, banks and individuals on complex legal matters within and beyond Guatemala.",
+      },
+      {
+        icon: GraduationCap,
+        title: "Specialized team",
+        desc: "Attorneys with master's degrees and international certifications covering the key areas of corporate law.",
+      },
+      {
+        icon: Globe2,
+        title: "International reach",
+        desc: "Alliances with regional firms that let us support cross-border transactions and comply with regulations across multiple jurisdictions.",
+      },
+      {
+        icon: TrendingUp,
+        title: "Demonstrable results",
+        desc: "Success stories that include closed financings, favorable litigation outcomes and structuring of high-impact infrastructure projects.",
+      },
+      {
+        icon: UserCheck,
+        title: "Personalized attention",
+        desc: "We assign a managing partner to each client to ensure fast responses, tailored solutions and transparent communication.",
+      },
+      {
+        icon: Cpu,
+        title: "Legal innovation",
+        desc: "We use legal technology and agile processes for documents, electronic signatures and real-time file tracking.",
+      },
+    ],
+    valuesEyebrow: "Our values",
+    valuesTitle: "A practice built on principles, not formulas",
+    valuesDesc:
+      "We design strategic legal solutions that protect our clients' interests, strengthen their decisions and help them achieve their goals.",
+    values: [
+      { title: "Ethics", desc: "Every decision is made with integrity and respect for the legal framework." },
+      { title: "Excellence", desc: "Technical rigor and efficiency in every document, hearing and negotiation." },
+      { title: "Confidentiality", desc: "Absolute discretion in every matter entrusted to us." },
+      { title: "Closeness", desc: "Clear, constant communication with every client, free of unnecessary jargon." },
+    ],
+    teamCta: "Meet the team",
+    teamAlt: "Elemento Abogados team",
+    ctaTitle: "Let's talk about your case",
+    ctaDesc: "Schedule an initial conversation and let's define the most convenient legal path together.",
+    ctaContact: "Contact us",
+    ctaServices: "View practice areas",
   },
-  {
-    icon: Globe2,
-    title: "Alcance internacional",
-    desc: "Alianzas con firmas regionales que nos permiten acompañar operaciones transfronterizas y cumplir normativas en varias jurisdicciones.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Resultados demostrables",
-    desc: "Casos de éxito que incluyen cierres de financiamiento, litigios favorables y estructuración de proyectos de infraestructura de alto impacto.",
-  },
-  {
-    icon: UserCheck,
-    title: "Atención personalizada",
-    desc: "Asignamos un socio director a cada cliente para asegurar respuestas rápidas, soluciones a la medida y comunicación transparente.",
-  },
-  {
-    icon: Cpu,
-    title: "Innovación jurídica",
-    desc: "Usamos tecnología legal y procesos ágiles para documentos, firmas electrónicas y seguimiento en tiempo real de expedientes.",
-  },
-];
-
-const stats = [
-  { value: "10", label: "años de experiencia" },
-  { value: "13", label: "áreas de práctica" },
-  { value: "500+", label: "casos resueltos" },
-];
-
-const values = [
-  { title: "Ética", desc: "Cada decisión se toma con integridad y respeto por el marco legal." },
-  { title: "Excelencia", desc: "Rigor técnico y eficiencia en cada documento, audiencia y negociación." },
-  { title: "Confidencialidad", desc: "Discreción absoluta en todos los asuntos que se nos confían." },
-  { title: "Cercanía", desc: "Comunicación clara y constante con cada cliente, sin tecnicismos innecesarios." },
-];
+} as const;
 
 function NosotrosPage() {
+  const { lang } = useLang();
+  const t = content[lang];
   return (
     <main className="min-h-screen bg-background font-sans text-foreground">
       <Nav />
@@ -89,7 +173,7 @@ function NosotrosPage() {
       <section className="relative isolate overflow-hidden bg-primary-deep pt-32 text-primary-foreground">
         <img
           src={aboutCity.url}
-          alt="Ciudad de Guatemala"
+          alt={t.aboutCityAlt}
           className="pointer-events-none absolute inset-0 h-full w-full object-cover"
         />
         <div
@@ -99,9 +183,9 @@ function NosotrosPage() {
         <div className="absolute inset-0 grid-pattern opacity-20 mix-blend-overlay" aria-hidden />
         <div className="relative mx-auto max-w-7xl px-6 pb-20 pt-14">
           <nav className="flex items-center gap-2 text-sm text-white/70">
-            <Link to="/" className="hover:text-white">Inicio</Link>
+            <Link to="/" className="hover:text-white">{t.breadcrumbHome}</Link>
             <span>/</span>
-            <span className="text-white">Nosotros</span>
+            <span className="text-white">{t.breadcrumbCurrent}</span>
           </nav>
           <motion.h1
             initial={{ opacity: 0, y: 28 }}
@@ -109,7 +193,7 @@ function NosotrosPage() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="mt-6 max-w-4xl font-display text-4xl font-bold leading-[1.03] tracking-tight sm:text-6xl"
           >
-            Abogados de primer nivel con más de 10 años de experiencia
+            {t.heroTitle}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 24 }}
@@ -117,16 +201,14 @@ function NosotrosPage() {
             transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="mt-6 max-w-2xl text-lg text-white/80"
           >
-            Brindamos asesoría legal integral y personalizada, con soluciones claras, efectivas y orientadas a
-            resultados. Defendemos tus intereses con ética, estrategia y compromiso para que tu tranquilidad legal
-            esté siempre en manos de expertos.
+            {t.heroDesc}
           </motion.p>
         </div>
       </section>
 
       <section className="border-b border-border bg-background">
         <div className="mx-auto grid max-w-7xl grid-cols-1 divide-y divide-border px-6 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-          {stats.map((s, i) => (
+          {t.stats.map((s, i) => (
             <motion.div
               key={s.label}
               initial={{ opacity: 0, y: 18 }}
@@ -147,11 +229,11 @@ function NosotrosPage() {
           <div className="mb-12 flex items-center gap-3">
             <span className="h-px w-8 bg-primary" />
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-              Lo que nos define
+              {t.capabilitiesEyebrow}
             </span>
           </div>
           <div className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
-            {capabilities.map((c, i) => (
+            {t.capabilities.map((c, i) => (
               <motion.article
                 key={c.title}
                 initial={{ opacity: 0, y: 24 }}
@@ -186,18 +268,17 @@ function NosotrosPage() {
             <div className="flex items-center gap-3">
               <span className="h-px w-8 bg-primary" />
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                Nuestros valores
+                {t.valuesEyebrow}
               </span>
             </div>
             <h2 className="mt-5 font-display text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
-              Una práctica construida sobre principios, no sobre fórmulas
+              {t.valuesTitle}
             </h2>
             <p className="mt-5 text-muted-foreground">
-              Diseñamos soluciones legales estratégicas que protegen los intereses de nuestros clientes, fortalecen
-              sus decisiones y contribuyen al logro de sus objetivos.
+              {t.valuesDesc}
             </p>
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {values.map((v) => (
+              {t.values.map((v) => (
                 <div key={v.title} className="rounded-xl border border-border bg-background p-5">
                   <div className="font-display text-base font-semibold">{v.title}</div>
                   <p className="mt-2 text-sm text-muted-foreground">{v.desc}</p>
@@ -208,7 +289,7 @@ function NosotrosPage() {
               to="/equipo"
               className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
             >
-              Conoce al equipo
+              {t.teamCta}
               <ArrowRight className="h-4 w-4" />
             </Link>
           </motion.div>
@@ -222,7 +303,7 @@ function NosotrosPage() {
           >
             <img
               src={teamGroup.url}
-              alt="Equipo de Elemento Abogados"
+              alt={t.teamAlt}
               className="h-full w-full object-cover"
               loading="lazy"
             />
@@ -235,24 +316,24 @@ function NosotrosPage() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="rounded-2xl bg-gradient-hero p-10 text-primary-foreground sm:p-14">
             <h2 className="max-w-2xl font-display text-3xl font-bold leading-tight sm:text-4xl">
-              Hablemos de tu caso
+              {t.ctaTitle}
             </h2>
             <p className="mt-4 max-w-xl text-primary-foreground/80">
-              Agenda una conversación inicial y define con nosotros la ruta legal más conveniente.
+              {t.ctaDesc}
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
                 href="/#contact"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-primary-deep transition-opacity hover:opacity-90"
               >
-                Contáctanos
+                {t.ctaContact}
                 <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="/servicios"
                 className="inline-flex items-center justify-center rounded-full border border-white/40 px-8 py-3.5 text-sm font-semibold transition-colors hover:bg-white/10"
               >
-                Ver áreas de práctica
+                {t.ctaServices}
               </a>
             </div>
           </div>

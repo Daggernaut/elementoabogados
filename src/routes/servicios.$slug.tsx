@@ -3,7 +3,10 @@ import { motion } from "motion/react";
 import { ArrowRight, ArrowUpRight, Mail, Phone } from "lucide-react";
 
 import { Nav, Footer } from "./index";
-import { services, getService } from "@/lib/services";
+import { getService } from "@/lib/services";
+import { useServices, localizeService } from "@/lib/localize";
+import { useLang } from "@/lib/i18n";
+import { useUI } from "@/lib/translations";
 
 const SITE = "https://elementoabogados.lovable.app";
 
@@ -85,17 +88,18 @@ export const Route = createFileRoute("/servicios/$slug")({
 
 
 function ServiceNotFound() {
+  const t = useUI();
   return (
     <main className="min-h-screen bg-background font-sans text-foreground">
       <Nav />
       <section className="mx-auto max-w-3xl px-6 py-40 text-center">
-        <h1 className="font-display text-4xl font-semibold">Área de práctica no encontrada</h1>
-        <p className="mt-4 text-muted-foreground">Revisa el listado completo de nuestras áreas de práctica.</p>
+        <h1 className="font-display text-4xl font-semibold">{t.servicesPage.notFoundTitle}</h1>
+        <p className="mt-4 text-muted-foreground">{t.servicesPage.notFoundDesc}</p>
         <Link
           to="/servicios"
           className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary-deep px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary"
         >
-          Ver áreas de práctica <ArrowRight className="h-4 w-4" />
+          {t.servicesPage.seeAreas} <ArrowRight className="h-4 w-4" />
         </Link>
       </section>
       <Footer />
@@ -105,7 +109,10 @@ function ServiceNotFound() {
 
 function ServicePage() {
   const { slug } = Route.useParams();
-  const service = getService(slug)!;
+  const { lang } = useLang();
+  const t = useUI();
+  const services = useServices();
+  const service = localizeService(getService(slug)!, lang);
   const related = services.filter((s) => s.slug !== slug).slice(0, 4);
   const Icon = service.icon;
 
@@ -138,7 +145,7 @@ function ServicePage() {
             transition={{ duration: 0.5 }}
             className="text-xs font-semibold uppercase tracking-[0.25em] text-[color:var(--accent-orange)]"
           >
-            Servicios legales · Elemento Abogados
+            {t.servicesPage.heroEyebrow}
           </motion.span>
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
@@ -156,9 +163,9 @@ function ServicePage() {
         <div className="mx-auto grid max-w-7xl gap-14 px-6 lg:grid-cols-12">
           <article className="lg:col-span-8">
             <nav className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-              <Link to="/" className="hover:text-primary">Inicio</Link>
+              <Link to="/" className="hover:text-primary">{t.common.home}</Link>
               <span>/</span>
-              <Link to="/servicios" className="hover:text-primary">Servicios</Link>
+              <Link to="/servicios" className="hover:text-primary">{t.nav.services}</Link>
               <span>/</span>
             <span className="text-foreground">{service.title}</span>
             </nav>
@@ -179,11 +186,9 @@ function ServicePage() {
 
             <div className="mt-10 rounded-2xl border border-border bg-secondary/50 p-6 sm:p-8">
               <h2 className="font-display text-xl font-semibold">
-                ¿Necesitas asesoría en {service.title.toLowerCase()}?
+                {t.servicesPage.needHelpLead}{service.title.toLowerCase()}{t.servicesPage.needHelpTail}
               </h2>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Cuéntanos tu caso y te contactamos con el abogado indicado para esta área.
-              </p>
+              <p className="mt-2 text-sm text-muted-foreground">{t.servicesPage.needHelpDesc}</p>
               <div className="mt-6 flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <a
                   href="/#contact"

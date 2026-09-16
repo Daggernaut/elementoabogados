@@ -11,7 +11,8 @@ import {
   Mail,
   MapPin,
   Linkedin,
-
+  Menu,
+  X,
   Download,
   ChevronDown,
 } from "lucide-react";
@@ -22,11 +23,11 @@ import headerHero from "@/assets/header-hero.jpg.asset.json";
 import contactTeam from "@/assets/equipo-contacto.png.asset.json";
 import deckEs from "@/assets/presentacion-es-pdf.asset.json";
 import deckEn from "@/assets/presentacion-en-pdf.asset.json";
-import { partners, associates } from "@/lib/team";
-import { services } from "@/lib/services";
+import { useServices, usePartners, useAssociates } from "@/lib/localize";
 import { cn } from "@/lib/utils";
 import { sendContactInquiry } from "@/lib/contact.functions";
-
+import { useLang, type Lang } from "@/lib/i18n";
+import { useUI } from "@/lib/translations";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -54,18 +55,67 @@ const fadeUp = {
   }),
 };
 
+export function LanguageSwitcher({ className }: { className?: string }) {
+  const { lang, setLang } = useLang();
+  const options: { code: Lang; flag: string; label: string }[] = [
+    { code: "es", flag: "🇪🇸", label: "ES" },
+    { code: "en", flag: "🇺🇸", label: "EN" },
+  ];
+
+  return (
+    <div
+      className={cn(
+        "flex items-center gap-0.5 rounded-full border border-border bg-background/70 p-0.5",
+        className
+      )}
+    >
+      {options.map((o) => (
+        <button
+          key={o.code}
+          type="button"
+          onClick={() => setLang(o.code)}
+          aria-pressed={lang === o.code}
+          aria-label={o.code === "es" ? "Español" : "English"}
+          className={cn(
+            "inline-flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-[13px] font-semibold transition-colors",
+            lang === o.code
+              ? "bg-primary text-primary-foreground"
+              : "text-muted-foreground hover:text-foreground"
+          )}
+        >
+          <span className="text-base leading-none">{o.flag}</span>
+          {o.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
 export function Nav() {
+  const t = useUI();
+  const services = useServices();
+  const [open, setOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3.5">
-        <Link to="/" className="flex items-center gap-2">
-          <img src={logoAsset.url} alt="Elemento Abogados" className="h-[57.6px] w-auto" />
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        <Link to="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
+          <img src={logoAsset.url} alt="Elemento Abogados" className="h-[63.4px] w-auto" />
         </Link>
-        <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
-          <Link to="/nosotros" className="transition-colors hover:text-foreground">Nosotros</Link>
+
+        <nav className="hidden items-center gap-9 text-[15.4px] text-muted-foreground md:flex">
+          <Link to="/nosotros" className="transition-colors hover:text-foreground">{t.nav.about}</Link>
           <div className="group relative">
             <a href="/servicios" className="inline-flex items-center gap-1 transition-colors hover:text-foreground">
-              Servicios
+              {t.nav.services}
               <svg className="h-3 w-3 transition-transform group-hover:rotate-180" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M2.5 4.5 6 8l3.5-3.5" /></svg>
             </a>
             <div className="invisible absolute left-1/2 top-full z-50 grid w-[38rem] -translate-x-1/2 translate-y-1 grid-cols-2 gap-1 rounded-xl border border-border bg-background/95 p-2 opacity-0 shadow-elegant backdrop-blur transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
@@ -80,29 +130,118 @@ export function Nav() {
                 </a>
               ))}
               <a href="/servicios" className="col-span-2 mt-1 block rounded-lg border-t border-border px-3 py-2 text-sm text-muted-foreground hover:bg-secondary">
-                Ver todas las áreas de práctica
+                {t.nav.allAreas}
               </a>
             </div>
 
           </div>
-          <Link to="/equipo" className="transition-colors hover:text-foreground">Equipo</Link>
-          <a href="/#contact" className="transition-colors hover:text-foreground">Contacto</a>
+          <Link to="/equipo" className="transition-colors hover:text-foreground">{t.nav.team}</Link>
+          <a href="/#contact" className="transition-colors hover:text-foreground">{t.nav.contact}</a>
         </nav>
-        <div className="flex items-center gap-2">
+
+        <div className="flex items-center gap-2 sm:gap-3">
           <a
             href="/#contact"
-            className="group inline-flex items-center gap-2 rounded-full bg-primary-deep px-5 py-2.5 text-sm font-medium text-primary-foreground transition-all hover:bg-primary"
+            className="group hidden items-center gap-2 rounded-full bg-primary-deep px-[22px] py-[11px] text-[15.4px] font-medium text-primary-foreground transition-all hover:bg-primary sm:inline-flex"
           >
-            Contáctanos
+            {t.nav.contactCta}
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </a>
+          <LanguageSwitcher />
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-label={open ? t.nav.close : t.nav.menu}
+            aria-expanded={open}
+            className="grid h-10 w-10 place-items-center rounded-full border border-border text-foreground transition-colors hover:bg-secondary md:hidden"
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
       </div>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            className="overflow-hidden border-t border-border bg-background md:hidden"
+          >
+            <nav className="max-h-[70vh] overflow-y-auto px-6 py-4 text-base">
+              <Link
+                to="/nosotros"
+                onClick={() => setOpen(false)}
+                className="block border-b border-border/60 py-3 font-medium"
+              >
+                {t.nav.about}
+              </Link>
+
+              <button
+                type="button"
+                onClick={() => setServicesOpen((v) => !v)}
+                className="flex w-full items-center justify-between border-b border-border/60 py-3 text-left font-medium"
+              >
+                {t.nav.services}
+                <ChevronDown className={cn("h-4 w-4 transition-transform", servicesOpen && "rotate-180")} />
+              </button>
+              {servicesOpen && (
+                <div className="border-b border-border/60 py-2">
+                  {services.map((s) => (
+                    <a
+                      key={s.slug}
+                      href={`/servicios/${s.slug}`}
+                      onClick={() => setOpen(false)}
+                      className="flex items-center gap-2 py-2 text-sm text-muted-foreground"
+                    >
+                      <s.icon className="h-4 w-4 shrink-0 text-primary" />
+                      {s.title}
+                    </a>
+                  ))}
+                  <a
+                    href="/servicios"
+                    onClick={() => setOpen(false)}
+                    className="block py-2 text-sm font-medium text-primary"
+                  >
+                    {t.nav.allAreas}
+                  </a>
+                </div>
+              )}
+
+              <Link
+                to="/equipo"
+                onClick={() => setOpen(false)}
+                className="block border-b border-border/60 py-3 font-medium"
+              >
+                {t.nav.team}
+              </Link>
+              <a
+                href="/#contact"
+                onClick={() => setOpen(false)}
+                className="block border-b border-border/60 py-3 font-medium"
+              >
+                {t.nav.contact}
+              </a>
+
+              <a
+                href="/#contact"
+                onClick={() => setOpen(false)}
+                className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary-deep px-6 py-3 text-sm font-semibold text-primary-foreground"
+              >
+                {t.nav.contactCta}
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
 
 function DownloadDropdown({ className }: { className?: string }) {
+  const t = useUI();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -126,7 +265,7 @@ function DownloadDropdown({ className }: { className?: string }) {
         className="group flex w-full items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 px-8 py-3.5 text-center text-sm font-medium text-white transition-colors hover:bg-white/10 sm:w-auto sm:px-6"
       >
         <Download className="h-4 w-4 shrink-0 transition-transform group-hover:-translate-y-0.5" />
-        Descargar presentación
+        {t.common.downloadDeck}
         <ChevronDown
           className={cn(
             "h-4 w-4 shrink-0 transition-transform",
@@ -143,7 +282,7 @@ function DownloadDropdown({ className }: { className?: string }) {
             className="flex items-center gap-2 px-4 py-3 text-sm text-white/90 transition-colors hover:bg-white/10"
           >
             <span className="text-base">🇪🇸</span>
-            Versión en español
+            {t.common.spanishVersion}
           </a>
           <a
             href={deckEn.url}
@@ -152,7 +291,7 @@ function DownloadDropdown({ className }: { className?: string }) {
             className="flex items-center gap-2 px-4 py-3 text-sm text-white/90 transition-colors hover:bg-white/10"
           >
             <span className="text-base">🇺🇸</span>
-            English version
+            {t.common.englishVersion}
           </a>
         </div>
       )}
@@ -161,6 +300,7 @@ function DownloadDropdown({ className }: { className?: string }) {
 }
 
 function Hero() {
+  const t = useUI();
   return (
     <section id="top" className="relative isolate overflow-hidden bg-gradient-hero pt-32 text-primary-foreground">
       <img
@@ -177,9 +317,9 @@ function Hero() {
       <div className="relative mx-auto grid max-w-7xl gap-12 px-6 pb-24 pt-12 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-8">
           <h1 className="font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-[5rem]">
-            {"Más que abogados,".split(" ").map((w, i) => (
+            {t.hero.line1.split(" ").map((w, i) => (
               <motion.span
-                key={i}
+                key={`${w}-${i}`}
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.15 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
@@ -195,7 +335,7 @@ function Hero() {
               transition={{ duration: 0.8, delay: 0.45 }}
               className="mt-2 inline-block text-white/60"
             >
-              aliados estratégicos.
+              {t.hero.line2}
             </motion.span>
           </h1>
 
@@ -205,7 +345,7 @@ function Hero() {
             transition={{ duration: 0.7, delay: 0.7 }}
             className="mt-8 max-w-xl text-justify text-lg text-white/75"
           >
-            Acompañando a nuestros clientes, nacionales e internacionales, con asesoría legal multidisciplinaria, estratégica y cercana. Integramos experiencia, ética y excelencia para ofrecer soluciones personalizadas que generan confianza y valor sostenible.
+            {t.hero.paragraph}
           </motion.p>
 
           <motion.div
@@ -218,7 +358,7 @@ function Hero() {
               href="#contact"
               className="group flex w-full items-center justify-center gap-2 rounded-full bg-[color:var(--accent-orange)] px-8 py-3.5 text-center text-sm font-semibold text-primary-deep shadow-lg transition-all hover:-translate-y-0.5 hover:shadow-glow sm:inline-flex sm:w-auto sm:px-6"
             >
-              Contáctanos
+              {t.nav.contactCta}
               <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" />
             </a>
             <DownloadDropdown />
@@ -232,13 +372,9 @@ function Hero() {
           className="self-end lg:col-span-4"
         >
           <div className="grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-md">
-            {[
-              ["10", "años de experiencia"],
-              ["13", "áreas de práctica"],
-              ["500+", "casos resueltos"],
-            ].map(([k, v], i) => (
+            {t.hero.stats.map(([k, v], i) => (
               <motion.div
-                key={k}
+                key={v}
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.75 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
@@ -258,15 +394,11 @@ function Hero() {
 }
 
 function Pillars() {
-  const items = [
-    { title: "Asesoría legal integral", desc: "Contratos, acuerdos y documentos con plena seguridad jurídica." },
-    { title: "Equipo de alto nivel", desc: "Experiencia y conocimiento especializado para abordar asuntos complejos y decisiones estratégicas." },
-    { title: "Resolución de conflictos", desc: "Soluciones rápidas y favorables que priorizan tus intereses." },
-  ];
+  const t = useUI();
   return (
     <section className="border-b border-border bg-background">
       <div className="mx-auto grid max-w-7xl gap-px overflow-hidden md:grid-cols-3">
-        {items.map((it, i) => (
+        {t.pillars.map((it, i) => (
           <motion.div
             key={it.title}
             initial="hidden"
@@ -285,26 +417,8 @@ function Pillars() {
   );
 }
 
-const pillars = [
-  {
-    title: "Excelencia",
-    body: "Los más altos estándares de calidad, rigor y criterio jurídico orientan cada asunto que asumimos y cada solución que desarrollamos.",
-  },
-  {
-    title: "Talento",
-    body: "Reunimos profesionales de primer nivel y distintas áreas de práctica para ofrecer una asesoría integral, sofisticada y consistente.",
-  },
-  {
-    title: "Compromiso con el cliente",
-    body: "Conocemos el negocio, entendemos sus desafíos y trabajamos junto a nuestros clientes para alcanzar sus objetivos y proteger sus intereses.",
-  },
-  {
-    title: "Innovación",
-    body: "Integramos conocimiento, tecnología y nuevas formas de trabajo para anticiparnos a los desafíos y ofrecer soluciones eficientes en un entorno en constante evolución.",
-  },
-];
-
 function PracticePillars() {
+  const t = useUI();
   return (
     <section className="relative border-b border-border bg-background py-24 sm:py-28">
       <div className="mx-auto max-w-7xl px-6">
@@ -316,7 +430,7 @@ function PracticePillars() {
             viewport={{ once: true }}
             className="text-justify text-xs font-semibold uppercase tracking-[0.25em] text-primary"
           >
-            Los pilares de nuestra práctica
+            {t.practicePillars.eyebrow}
           </motion.span>
           <motion.h2
             variants={fadeUp}
@@ -326,12 +440,12 @@ function PracticePillars() {
             viewport={{ once: true }}
             className="mt-4 text-justify font-display text-4xl font-semibold leading-tight sm:text-5xl"
           >
-            Principios que orientan cada asesoría
+            {t.practicePillars.title}
           </motion.h2>
         </div>
 
         <div className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
-          {pillars.map((it, i) => (
+          {t.practicePillars.items.map((it, i) => (
             <motion.div
               key={it.title}
               variants={fadeUp}
@@ -355,15 +469,7 @@ function PracticePillars() {
 }
 
 function About() {
-  const bullets = [
-    "Equipo legal especializado",
-    "Estrategias de litigio con resultados ampliamente satisfactorios",
-    "La confianza de nuestros clientes respalda nuestra trayectoria",
-    "Honorarios claros y transparentes",
-    "Excelencia jurídica sustentada en eficiencia, eficacia y ética.",
-    "Soluciones Ágiles y eficientes",
-    "Asistencia rápida y oportuna",
-  ];
+  const t = useUI();
   return (
     <section id="about" className="relative bg-gradient-soft py-28">
       <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-12 lg:items-center">
@@ -378,7 +484,7 @@ function About() {
             <div className="relative overflow-hidden rounded-3xl shadow-elegant">
               <img
                 src={aboutCity.url}
-                alt="Vista panorámica de la ciudad donde opera Elemento Abogados"
+                alt={t.about.imageAlt}
                 loading="lazy"
                 decoding="async"
                 className="aspect-[16/9] w-full object-cover lg:aspect-[4/3] lg:min-h-[420px]"
@@ -387,11 +493,7 @@ function About() {
             </div>
             <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 -bottom-8 w-[92%] max-w-[20rem] sm:-bottom-10 lg:-bottom-12">
               <div className="pointer-events-auto grid w-full grid-cols-3 gap-px overflow-hidden rounded-2xl border border-white/10 bg-primary-deep text-primary-foreground shadow-elegant">
-                {[
-                  ["10", "años de experiencia"],
-                  ["13", "áreas de práctica"],
-                  ["500+", "casos resueltos"],
-                ].map(([k, v]) => (
+                {t.hero.stats.map(([k, v]) => (
                   <div key={v} className="bg-primary-deep px-3 py-4 text-center sm:px-4">
                     <div className="font-display text-2xl font-semibold leading-none sm:text-3xl">{k}</div>
                     <div className="mt-1.5 text-[10px] uppercase tracking-[0.18em] text-white/60">{v}</div>
@@ -404,7 +506,7 @@ function About() {
 
         <div className="mt-10 lg:col-span-7 lg:mt-0">
           <motion.span variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">
-            Acerca de nosotros
+            {t.about.eyebrow}
           </motion.span>
           <motion.h2
             variants={fadeUp}
@@ -413,14 +515,15 @@ function About() {
             viewport={{ once: true }}
             className="mt-4 font-display text-4xl font-semibold leading-tight sm:text-5xl"
           >
-            Somos <span className="text-primary">Elemento Abogados</span>, con más de 10 años de experiencia.
+            {t.about.titleLead}
+            <span className="text-primary">Elemento Abogados</span>
+            {t.about.titleTail}
           </motion.h2>
           <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-6 text-muted-foreground">
-            Diseñamos soluciones legales estratégicas que protegen los intereses de nuestros clientes,
-            fortalecen sus decisiones y contribuyen al logro de sus objetivos.
+            {t.about.paragraph}
           </motion.p>
           <ul className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
-            {bullets.map((b, i) => (
+            {t.about.bullets.map((b, i) => (
               <motion.li
                 key={b}
                 variants={fadeUp}
@@ -444,25 +547,27 @@ function About() {
 }
 
 function Services() {
+  const t = useUI();
+  const services = useServices();
   return (
     <section id="services" className="relative bg-background py-28">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-16 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">Nuestros servicios</span>
+            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">{t.services.eyebrow}</span>
             <h2 className="mt-4 max-w-3xl font-display text-4xl font-semibold leading-tight sm:text-6xl">
-              Áreas de práctica con <span className="text-primary">resultados comprobados</span>.
+              {t.services.titleLead}
+              <span className="text-primary">{t.services.titleHighlight}</span>
+              {t.services.titleTail}
             </h2>
           </div>
-          <p className="max-w-sm text-justify text-muted-foreground">
-            Áreas de práctica respaldadas por un equipo experto, alineadas a las necesidades reales de tu caso.
-          </p>
+          <p className="max-w-sm text-justify text-muted-foreground">{t.services.note}</p>
         </div>
 
         <div className="grid overflow-hidden rounded-2xl border border-border sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => (
             <motion.a
-              key={s.title}
+              key={s.slug}
               href={`/servicios/${s.slug}`}
               initial="hidden"
               whileInView="visible"
@@ -499,11 +604,7 @@ function Services() {
 }
 
 function WhyUs() {
-  const items = [
-    { title: "Asesoría personalizada", desc: "Atención única, entendiendo a fondo tu situación y objetivos." },
-    { title: "Comprometidos con el logro de sus objetivos", desc: "Buscamos siempre la mejor resolución, defendiendo tus derechos." },
-    { title: "Especialización en cada área de práctica", desc: "Expertos en distintas ramas, preparados para cada desafío." },
-  ];
+  const t = useUI();
   return (
     <section className="relative overflow-hidden bg-primary-deep py-28 text-primary-foreground">
       <div className="absolute inset-0 grid-pattern opacity-20" aria-hidden />
@@ -521,14 +622,14 @@ function WhyUs() {
       />
       <div className="relative mx-auto max-w-7xl px-6">
         <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[color:var(--accent-orange)]">
-          ¿Por qué colaborar con nosotros?
+          {t.whyUs.eyebrow}
         </span>
         <h2 className="mt-4 max-w-3xl font-display text-4xl font-semibold leading-tight sm:text-6xl">
-          Soluciones legales con visión estratégica
+          {t.whyUs.title}
         </h2>
 
         <div className="mt-16 grid gap-8 md:grid-cols-3">
-          {items.map((it, i) => (
+          {t.whyUs.items.map((it, i) => (
             <motion.div
               key={it.title}
               initial="hidden"
@@ -538,7 +639,7 @@ function WhyUs() {
               variants={fadeUp}
               className="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur transition-colors hover:bg-white/10"
             >
-              
+
               <h3 className="mt-4 font-display text-xl font-semibold">{it.title}</h3>
               <p className="mt-2 text-sm text-white/70">{it.desc}</p>
             </motion.div>
@@ -550,6 +651,7 @@ function WhyUs() {
 }
 
 function PersonCard({ name, role, photo, slug }: { name: string; role: string; photo?: string; slug?: string }) {
+  const t = useUI();
   const initials = name.split(" ").map((n) => n[0]).slice(0, 2).join("");
   const card = (
     <div className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all hover:-translate-y-1 hover:shadow-elegant">
@@ -569,7 +671,7 @@ function PersonCard({ name, role, photo, slug }: { name: string; role: string; p
               <span className="font-display text-6xl font-semibold text-white/80">{initials}</span>
             </div>
             <span className="absolute right-3 top-3 rounded-full bg-white/15 px-2.5 py-1 text-[10px] uppercase tracking-wider text-white backdrop-blur">
-              Foto pendiente
+              {t.team.photoPending}
             </span>
           </>
         )}
@@ -580,7 +682,7 @@ function PersonCard({ name, role, photo, slug }: { name: string; role: string; p
           <p className="text-sm text-muted-foreground">{role}</p>
           {slug && (
             <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-primary">
-              Ver perfil <ArrowUpRight className="h-3.5 w-3.5" />
+              {t.common.viewProfile} <ArrowUpRight className="h-3.5 w-3.5" />
             </span>
           )}
         </div>
@@ -598,28 +700,33 @@ function PersonCard({ name, role, photo, slug }: { name: string; role: string; p
 }
 
 function Team() {
+  const t = useUI();
+  const partners = usePartners();
+  const associates = useAssociates();
   return (
     <section id="team" className="bg-background py-28">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-14 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
-            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">Nuestro equipo</span>
+            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">{t.team.eyebrow}</span>
             <h2 className="mt-4 font-display text-4xl font-semibold leading-tight sm:text-6xl">
-              Los <span className="text-primary">profesionales</span> detrás de cada decisión.
+              {t.team.titleLead}
+              <span className="text-primary">{t.team.titleHighlight}</span>
+              {t.team.titleTail}
             </h2>
           </div>
           <Link
             to="/equipo"
             className="group inline-flex flex-none items-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-medium transition-colors hover:border-primary hover:text-primary"
           >
-            Conocer al equipo
+            {t.team.cta}
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </Link>
         </div>
 
         <div className="mb-4 flex items-center gap-3">
           <span className="h-px w-8 bg-primary" />
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Socios</span>
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">{t.team.partners}</span>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {partners.map((m) => (
@@ -629,7 +736,7 @@ function Team() {
 
         <div className="mb-4 mt-16 flex items-center gap-3">
           <span className="h-px w-8 bg-primary" />
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Abogados asociados</span>
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">{t.team.associates}</span>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {associates.map((m) => (
@@ -642,6 +749,7 @@ function Team() {
 }
 
 function AskUs() {
+  const t = useUI();
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -665,17 +773,15 @@ function AskUs() {
       <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <h2 className="font-display text-4xl font-semibold leading-tight sm:text-5xl">
-            ¿Tienes alguna pregunta adicional?
+            {t.askUs.title}
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
-            Un abogado te responderá directamente por correo.
-          </p>
+          <p className="mt-4 text-lg text-muted-foreground">{t.askUs.subtitle}</p>
           <div className="mt-6 flex items-center gap-3 rounded-2xl border border-border bg-secondary/60 p-4 text-sm">
             <span className="grid h-9 w-9 place-items-center rounded-full bg-primary/10 text-primary">
               <Mail className="h-4 w-4" />
             </span>
             <div>
-              <div className="text-xs uppercase tracking-wider text-muted-foreground">Escríbenos a</div>
+              <div className="text-xs uppercase tracking-wider text-muted-foreground">{t.askUs.writeTo}</div>
               <div className="font-medium">info@elementoabogados.com</div>
             </div>
           </div>
@@ -683,52 +789,52 @@ function AskUs() {
         <form onSubmit={onSubmit} className="lg:col-span-7 rounded-2xl border border-border bg-card p-8 shadow-sm">
           <div className="grid gap-4 sm:grid-cols-2">
             <label className="flex flex-col gap-2 text-sm">
-              <span className="font-medium">Nombre</span>
+              <span className="font-medium">{t.askUs.name}</span>
               <input
                 required
                 maxLength={100}
                 name="name"
                 className="rounded-lg border border-input bg-background px-3 py-2.5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
-                placeholder="Tu nombre completo"
+                placeholder={t.askUs.namePlaceholder}
               />
             </label>
             <label className="flex flex-col gap-2 text-sm">
-              <span className="font-medium">Correo</span>
+              <span className="font-medium">{t.askUs.email}</span>
               <input
                 required
                 type="email"
                 maxLength={200}
                 name="email"
                 className="rounded-lg border border-input bg-background px-3 py-2.5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
-                placeholder="tu@correo.com"
+                placeholder={t.askUs.emailPlaceholder}
               />
             </label>
           </div>
           <label className="mt-4 flex flex-col gap-2 text-sm">
-            <span className="font-medium">Tu pregunta</span>
+            <span className="font-medium">{t.askUs.question}</span>
             <textarea
               required
               maxLength={2000}
               name="message"
               rows={5}
               className="resize-none rounded-lg border border-input bg-background px-3 py-2.5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
-              placeholder="Escribe tu pregunta aquí..."
+              placeholder={t.askUs.questionPlaceholder}
             />
           </label>
           <div className="mt-6 flex items-center justify-between gap-4">
             <p className="text-xs text-muted-foreground">
               {status === "sent"
-                ? "¡Gracias! Recibimos tu mensaje y te responderemos por correo."
+                ? t.askUs.sent
                 : status === "error"
-                  ? "No pudimos enviar tu mensaje. Escríbenos a info@elementoabogados.com."
-                  : "Te responderemos directamente por correo."}
+                  ? t.askUs.error
+                  : t.askUs.idle}
             </p>
             <button
               type="submit"
               disabled={status === "sending"}
               className="group inline-flex items-center gap-2 rounded-full bg-primary-deep px-6 py-3 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary disabled:opacity-60"
             >
-              {status === "sending" ? "Enviando..." : "Enviar pregunta"}
+              {status === "sending" ? t.askUs.sending : t.askUs.submit}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </button>
           </div>
@@ -740,6 +846,7 @@ function AskUs() {
 }
 
 function Contact() {
+  const t = useUI();
   return (
     <section id="contact" className="relative overflow-hidden bg-gradient-hero py-28 text-primary-foreground">
       <div className="absolute inset-0 grid-pattern opacity-20" aria-hidden />
@@ -747,20 +854,18 @@ function Contact() {
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-6">
-            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[color:var(--accent-orange)]">Contacto</span>
+            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[color:var(--accent-orange)]">{t.contact.eyebrow}</span>
             <h2 className="mt-4 font-display text-4xl font-semibold leading-[1.05] sm:text-6xl">
-              Estamos a una<br />conversación de distancia.
+              {t.contact.titleLine1}<br />{t.contact.titleLine2}
             </h2>
-            <p className="mt-6 max-w-md text-white/70">
-              Agenda una primera consulta o visítanos en nuestra oficina en la Ciudad de Guatemala.
-            </p>
+            <p className="mt-6 max-w-md text-white/70">{t.contact.paragraph}</p>
 
             <div className="mt-10 grid gap-4 sm:grid-cols-2">
               {[
-                { Icon: Phone, k: "Teléfono", v: "+(502) 2339 - 1922", href: "tel:+50223391922" },
-                { Icon: Mail, k: "Correo", v: "info@elementoabogados.com", href: "mailto:info@elementoabogados.com" },
-                { Icon: MapPin, k: "Oficina", v: "Ciudad de Guatemala" },
-              { Icon: Users, k: "Horario", v: "Lunes a viernes, 8:00 a 17:00" },
+                { Icon: Phone, k: t.contact.phone, v: "+(502) 2339 - 1922", href: "tel:+50223391922" },
+                { Icon: Mail, k: t.contact.email, v: "info@elementoabogados.com", href: "mailto:info@elementoabogados.com" },
+                { Icon: MapPin, k: t.contact.office, v: t.common.city },
+                { Icon: Users, k: t.contact.hours, v: t.contact.hoursValue },
               ].map(({ Icon, k, v, href }) => {
                 const content = (
                   <>
@@ -790,7 +895,7 @@ function Contact() {
                 href="mailto:info@elementoabogados.com"
                 className="group flex w-full items-center justify-center gap-2 rounded-full bg-[color:var(--accent-orange)] px-6 py-3.5 text-sm font-semibold text-primary-deep transition-all hover:-translate-y-0.5 hover:shadow-glow sm:inline-flex sm:w-auto"
               >
-                <Mail className="h-4 w-4" /> Escríbenos
+                <Mail className="h-4 w-4" /> {t.common.writeUs}
               </a>
               <DownloadDropdown />
             </div>
@@ -801,7 +906,7 @@ function Contact() {
             <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-1 backdrop-blur">
               <img
                 src={contactTeam.url}
-                alt="Equipo de Elemento Abogados"
+                alt={t.contact.teamAlt}
                 loading="lazy"
                 decoding="async"
                 className="h-[420px] w-full rounded-[22px] object-cover object-top"
@@ -815,6 +920,7 @@ function Contact() {
 }
 
 export function Footer() {
+  const t = useUI();
   return (
     <footer className="border-t border-border bg-background py-12">
       <div className="mx-auto grid max-w-7xl gap-8 px-6 md:grid-cols-4">
@@ -822,23 +928,23 @@ export function Footer() {
           <img src={logoAsset.url} alt="Elemento Abogados" loading="lazy" decoding="async" className="h-16 w-auto" />
         </div>
         <div className="text-sm">
-          <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Legal</div>
+          <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">{t.footer.legal}</div>
           <ul className="mt-3 space-y-2">
-            <li><Link className="hover:text-primary" to="/nosotros">Nosotros</Link></li>
-            <li><Link className="hover:text-primary" to="/politica-de-privacidad">Políticas de privacidad</Link></li>
-            <li><Link className="hover:text-primary" to="/terminos-y-condiciones">Términos y condiciones</Link></li>
+            <li><Link className="hover:text-primary" to="/nosotros">{t.footer.about}</Link></li>
+            <li><Link className="hover:text-primary" to="/politica-de-privacidad">{t.footer.privacy}</Link></li>
+            <li><Link className="hover:text-primary" to="/terminos-y-condiciones">{t.footer.terms}</Link></li>
           </ul>
         </div>
         <div className="text-sm">
-          <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Contacto</div>
+          <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">{t.footer.contact}</div>
           <ul className="mt-3 space-y-2">
             <li><a className="hover:text-primary" href="mailto:info@elementoabogados.com">info@elementoabogados.com</a></li>
             <li><a className="hover:text-primary" href="tel:+50223391922">+(502) 2339 - 1922</a></li>
-            <li>Ciudad de Guatemala</li>
+            <li>{t.common.city}</li>
           </ul>
         </div>
         <div className="text-sm">
-          <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Síguenos</div>
+          <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">{t.footer.follow}</div>
           <div className="mt-3 flex items-center gap-2">
             <a href="#" aria-label="LinkedIn" className="grid h-9 w-9 place-items-center rounded-full border border-border transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground">
               <Linkedin className="h-4 w-4" />
@@ -847,7 +953,7 @@ export function Footer() {
         </div>
       </div>
       <div className="mx-auto mt-10 max-w-7xl px-6 text-xs text-muted-foreground">
-        © {new Date().getFullYear()} Elemento Abogados. Todos los derechos reservados.
+        © {new Date().getFullYear()} Elemento Abogados. {t.common.rights}
       </div>
     </footer>
   );

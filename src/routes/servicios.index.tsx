@@ -3,6 +3,8 @@ import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import { Nav, Footer } from "./index";
 import { services } from "@/lib/services";
+import { useServices } from "@/lib/localize";
+import { useUI } from "@/lib/translations";
 
 const SITE = "https://elementoabogados.lovable.app";
 
@@ -47,6 +49,8 @@ export const Route = createFileRoute("/servicios/")({
 
 
 function ServiciosIndex() {
+  const t = useUI();
+  const services = useServices();
   return (
     <main className="min-h-screen bg-background font-sans text-foreground">
       <Nav />
@@ -56,15 +60,12 @@ function ServiciosIndex() {
         <div className="absolute -right-32 top-1/3 h-96 w-96 rounded-full bg-primary-glow/25 blur-[120px]" aria-hidden />
         <div className="relative mx-auto max-w-7xl px-6">
           <span className="text-xs font-semibold uppercase tracking-[0.25em] text-primary-foreground/70">
-            Áreas de práctica
+            {t.servicesPage.eyebrow}
           </span>
           <h1 className="mt-4 max-w-3xl font-display text-4xl font-semibold leading-tight sm:text-6xl">
-            Asesoría legal multidisciplinaria, estratégica y cercana.
+            {t.servicesPage.title}
           </h1>
-          <p className="mt-6 max-w-2xl text-primary-foreground/80">
-            Trece áreas de práctica que se integran entre sí para resolver asuntos corporativos,
-            regulatorios y litigiosos con una sola visión de estrategia.
-          </p>
+          <p className="mt-6 max-w-2xl text-primary-foreground/80">{t.servicesPage.intro}</p>
         </div>
       </section>
 
