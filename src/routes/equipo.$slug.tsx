@@ -285,19 +285,15 @@ function PartnerPage() {
                 <InfoBlock title={t.team.memberships} items={partner.memberships} />
               </div>
             )}
+
+            {!!partner.languages?.length && (
+              <div className="mt-12">
+                <InfoBlock title={t.team.languages} items={[partner.languages.join(" / ")]} />
+              </div>
+            )}
           </motion.div>
         </div>
       </section>
-
-      {!!partner.languages?.length && (
-        <section className="relative overflow-x-clip py-16">
-          <div className="relative mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-3">
-            <Reveal>
-              <InfoBlock title={t.team.languages} items={[partner.languages!.join(" / ")]} />
-            </Reveal>
-          </div>
-        </section>
-      )}
 
       <section className="pb-20">
         <div className="mx-auto max-w-7xl px-6">
