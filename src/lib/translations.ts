@@ -225,7 +225,7 @@ export const ui = {
       stats: [
         ["10", "years of experience"],
         ["13", "practice areas"],
-        ["500+", "matters resolved"],
+        ["500+", "CASES RESOLVED"],
       ] as [string, string][],
     },
     pillars: [
