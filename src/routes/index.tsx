@@ -428,7 +428,7 @@ function PracticePillars() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="text-justify text-xs font-semibold uppercase tracking-[0.25em] text-primary"
+            className="text-left text-xs font-semibold uppercase tracking-[0.25em] text-primary"
           >
             {t.practicePillars.eyebrow}
           </motion.span>
@@ -561,7 +561,7 @@ function Services() {
               {t.services.titleTail}
             </h2>
           </div>
-          <p className="max-w-sm text-justify text-muted-foreground">{t.services.note}</p>
+          <p className="max-w-sm text-left text-muted-foreground">{t.services.note}</p>
         </div>
 
         <div className="grid overflow-hidden rounded-2xl border border-border sm:grid-cols-2 lg:grid-cols-3">
