@@ -22,7 +22,7 @@ const LangContext = createContext<LangContextValue>({
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   // SSR always renders Spanish so hydration matches; the stored preference is
-  // applied right after mount.
+  // applied right after mount and persists across all pages.
   const [lang, setLangState] = useState<Lang>("es");
 
   useEffect(() => {
