@@ -438,7 +438,7 @@ function PracticePillars() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="mt-4 text-justify font-display text-4xl font-semibold leading-tight sm:text-5xl"
+            className="mt-4 text-left font-display text-4xl font-semibold leading-tight sm:text-5xl"
           >
             {t.practicePillars.title}
           </motion.h2>
