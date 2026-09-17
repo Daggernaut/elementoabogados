@@ -20,19 +20,21 @@ const LangContext = createContext<LangContextValue>({
   setLang: () => {},
 });
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  // SSR always renders Spanish so hydration matches; the stored preference is
-  // applied right after mount.
-  const [lang, setLangState] = useState<Lang>("es");
+function readStoredLang(): Lang {
+  if (typeof window === "undefined") return "es";
+  try {
+    const stored = window.localStorage.getItem(STORAGE_KEY);
+    if (stored === "en" || stored === "es") return stored;
+  } catch {
+    /* ignore */
+  }
+  return "es";
+}
 
-  useEffect(() => {
-    try {
-      const stored = window.localStorage.getItem(STORAGE_KEY);
-      if (stored === "en" || stored === "es") setLangState(stored);
-    } catch {
-      /* ignore */
-    }
-  }, []);
+export function LanguageProvider({ children }: { children: ReactNode }) {
+  // Initialize from the stored preference on the client so the chosen language
+  // survives navigation and reloads without flashing Spanish first.
+  const [lang, setLangState] = useState<Lang>(readStoredLang);
 
   useEffect(() => {
     document.documentElement.lang = lang;
