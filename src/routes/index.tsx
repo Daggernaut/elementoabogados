@@ -343,7 +343,7 @@ function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.7 }}
-            className="mt-8 max-w-xl text-justify text-lg text-white/75"
+            className="mt-8 max-w-xl text-left text-lg text-white/75"
           >
             {t.hero.paragraph}
           </motion.p>
@@ -409,7 +409,7 @@ function Pillars() {
             className="group relative bg-background p-10 transition-colors hover:bg-secondary"
           >
             <h3 className="font-display text-xl font-semibold">{it.title}</h3>
-            <p className="mt-2 text-justify text-sm leading-relaxed text-muted-foreground">{it.desc}</p>
+            <p className="mt-2 text-left text-sm leading-relaxed text-muted-foreground">{it.desc}</p>
           </motion.div>
         ))}
       </div>
@@ -428,7 +428,7 @@ function PracticePillars() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="text-justify text-xs font-semibold uppercase tracking-[0.25em] text-primary"
+            className="text-left text-xs font-semibold uppercase tracking-[0.25em] text-primary"
           >
             {t.practicePillars.eyebrow}
           </motion.span>
@@ -459,7 +459,7 @@ function PracticePillars() {
                 <span className="font-display text-sm font-bold">{String(i + 1).padStart(2, "0")}</span>
               </div>
               <h3 className="text-left font-display text-xl font-semibold leading-snug">{it.title}</h3>
-              <p className="mt-3 text-justify text-sm leading-relaxed text-muted-foreground">{it.body}</p>
+              <p className="mt-3 text-left text-sm leading-relaxed text-muted-foreground">{it.body}</p>
             </motion.div>
           ))}
         </div>
@@ -561,7 +561,7 @@ function Services() {
               {t.services.titleTail}
             </h2>
           </div>
-          <p className="max-w-sm text-justify text-muted-foreground">{t.services.note}</p>
+          <p className="max-w-sm text-left text-muted-foreground">{t.services.note}</p>
         </div>
 
         <div className="grid overflow-hidden rounded-2xl border border-border sm:grid-cols-2 lg:grid-cols-3">
