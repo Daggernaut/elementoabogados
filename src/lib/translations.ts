@@ -376,7 +376,7 @@ export const ui = {
       needHelpTail: "?",
       needHelpDesc: "Tell us about your matter and we will connect you with the right lawyer for this area.",
       scheduleCta: "Book a consultation",
-      talkTitle: "Let's talk about your matter",
+      talkTitle: "Let's talk about your case",
       related: "Related areas",
       seeAll: "See all practice areas",
       subjectPrefix: "Inquiry:",
