@@ -138,9 +138,43 @@ export const partners: Partner[] = [
   },
 ];
 
-export type Associate = { name: string; role: string; photo: string; photoCutout?: string };
+export type Associate = {
+  slug?: string;
+  name: string;
+  role: string;
+  headline?: string;
+  photo: string;
+  photoCutout?: string;
+  email?: string;
+  phone?: string;
+  bio?: string[];
+  education?: string[];
+  memberships?: string[];
+  practice?: string[];
+  languages?: string[];
+};
 
 export const associates: Associate[] = [
   { name: "Claudia Molina", role: "Asociada", photo: photoClaudia.url, photoCutout: photoClaudiaCutout.url },
-  { name: "Rodrigo Anleu", role: "Asociado", photo: photoRodrigo.url, photoCutout: photoRodrigoCutout.url },
+  {
+    slug: "rodrigo-anleu",
+    name: "Rodrigo Anleu",
+    role: "Asociado",
+    headline: "Corporativo",
+    photo: photoRodrigo.url,
+    photoCutout: photoRodrigoCutout.url,
+    email: "ranleu@elementoabogados.com",
+    phone: "+(502) 5323 3882",
+    bio: [
+      "Rodrigo Anleu es asociado de la firma y desarrolló su carrera como asistente legal, acumulando más de cuatro años de experiencia en la atención de asuntos corporativos para clientes locales y extranjeros. Su trayectoria incluye la participación en procesos complejos de derecho inmobiliario y la revisión de contratos.",
+      "Su práctica se enfoca en la planificación e implementación de estrategias legales orientadas a proteger los intereses de sus clientes y respaldar sus objetivos empresariales. Combina el análisis jurídico con una comprensión de las necesidades de cada negocio para brindar asesoría práctica en la toma de decisiones, la evaluación de riesgos y la gestión de asuntos corporativos e inmobiliarios.",
+      "Asimismo, cuenta con experiencia en el ámbito notarial y en la tramitación de asuntos de jurisdicción voluntaria, lo que le permite brindar una asesoría integral en operaciones legales y estructuración de negocios.",
+    ],
+    education: [
+      "Licenciatura en Ciencias Jurídicas y Sociales – Universidad Rafael Landívar, Guatemala, 2026",
+    ],
+    memberships: ["Colegio de Abogados y Notarios de Guatemala (CANG)"],
+    languages: ["Español", "Inglés"],
+    practice: ["Corporativo", "Inmobiliario", "Notariado"],
+  },
 ];
