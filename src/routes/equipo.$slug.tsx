@@ -3,8 +3,8 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { ArrowLeft, ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import { Nav, Footer } from "./index";
-import { partners, type Partner } from "@/lib/team";
-import { localizePartner } from "@/lib/localize";
+import { partners, associates, type Partner, type Associate } from "@/lib/team";
+import { partnersEn, associateProfilesEn } from "@/lib/team.en";
 import { useLang } from "@/lib/i18n";
 import { useUI } from "@/lib/translations";
 import isologo from "@/assets/isologo.png.asset.json";
@@ -26,9 +26,33 @@ const practiceSlugMap: Record<string, string> = {
   Cumplimiento: "compliance-y-gobierno-corporativo",
 };
 
+const toProfile = (a: Associate): Partner => ({
+  slug: a.slug ?? "",
+  name: a.name,
+  role: a.role,
+  headline: a.headline ?? "",
+  photo: a.photo,
+  photoCutout: a.photoCutout,
+  email: a.email ?? "info@elementoabogados.com",
+  phone: a.phone ?? "+(502) 2339 - 1922",
+  bio: a.bio ?? [],
+  education: a.education ?? [],
+  memberships: a.memberships,
+  practice: a.practice,
+  languages: a.languages,
+});
+
+const profiles: Partner[] = [...partners, ...associates.filter((a) => a.slug).map(toProfile)];
+
+const localizeProfile = (profile: Partner, lang: "es" | "en"): Partner => {
+  if (lang !== "en") return profile;
+  const en = partnersEn[profile.slug] ?? associateProfilesEn[profile.slug];
+  return en ? { ...profile, ...en } : profile;
+};
+
 export const Route = createFileRoute("/equipo/$slug")({
   loader: ({ params }) => {
-    const partner = partners.find((p) => p.slug === params.slug);
+    const partner = profiles.find((p) => p.slug === params.slug);
     if (!partner) throw notFound();
     return { partner };
   },
@@ -104,10 +128,10 @@ function PartnerPage() {
   const { partner: esPartner } = Route.useLoaderData() as { partner: Partner };
   const { lang } = useLang();
   const t = useUI();
-  const partner = localizePartner(esPartner, lang);
-  const index = partners.findIndex((p) => p.slug === partner.slug);
-  const prev = partners[(index - 1 + partners.length) % partners.length];
-  const next = partners[(index + 1) % partners.length];
+  const partner = localizeProfile(esPartner, lang);
+  const index = profiles.findIndex((p) => p.slug === partner.slug);
+  const prev = profiles[(index - 1 + profiles.length) % profiles.length];
+  const next = profiles[(index + 1) % profiles.length];
 
   const cutout = partner.photoCutout;
 
@@ -209,7 +233,7 @@ function PartnerPage() {
                 <ul className="mt-3 space-y-3">
                   <li className="flex items-start gap-3">
                     <Phone className="mt-0.5 h-4 w-4 flex-none text-primary" />
-                    <a href="tel:+50223391922" className="hover:text-primary">{partner.phone}</a>
+                    <a href={`tel:+${partner.phone.replace(/\D/g, "")}`} className="hover:text-primary">{partner.phone}</a>
                   </li>
                   <li className="flex items-start gap-3">
                     <Mail className="mt-0.5 h-4 w-4 flex-none text-primary" />

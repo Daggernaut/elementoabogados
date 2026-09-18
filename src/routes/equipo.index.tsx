@@ -109,29 +109,48 @@ function EquipoPage() {
             </span>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {associates.map((a, i) => (
-              <motion.div
-                key={a.name}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
-                className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all hover:-translate-y-1 hover:shadow-elegant"
-              >
-                <div className="relative aspect-[4/5] overflow-hidden bg-gradient-primary">
-                  <img
-                    src={a.photo}
-                    alt={a.name}
-                    loading="lazy"
-                    className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
-                  />
-                </div>
-                <div className="p-6">
-                  <h2 className="font-display text-xl font-semibold">{a.name}</h2>
-                  <p className="text-sm text-muted-foreground">{a.role}</p>
-                </div>
-              </motion.div>
-            ))}
+            {associates.map((a, i) => {
+              const cardInner = (
+                <>
+                  <div className="relative aspect-[4/5] overflow-hidden bg-gradient-primary">
+                    <img
+                      src={a.photo}
+                      alt={a.name}
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col p-6">
+                    <h2 className="font-display text-xl font-semibold">{a.name}</h2>
+                    <p className="text-sm text-muted-foreground">{a.role}</p>
+                    {a.slug && (
+                      <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary">
+                        {t.common.viewProfile} <ArrowUpRight className="h-3.5 w-3.5" />
+                      </span>
+                    )}
+                  </div>
+                </>
+              );
+              const cardClass =
+                "group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all hover:-translate-y-1 hover:shadow-elegant";
+              return (
+                <motion.div
+                  key={a.name}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.6, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  {a.slug ? (
+                    <Link to="/equipo/$slug" params={{ slug: a.slug }} className={cardClass}>
+                      {cardInner}
+                    </Link>
+                  ) : (
+                    <div className={cardClass}>{cardInner}</div>
+                  )}
+                </motion.div>
+              );
+            })}
           </div>
 
           <div className="mt-20 flex flex-wrap items-center gap-4 rounded-3xl border border-border bg-gradient-soft p-10">

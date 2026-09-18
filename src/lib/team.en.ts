@@ -99,3 +99,22 @@ export const associatesEn: Record<string, { role: string }> = {
   "Claudia Molina": { role: "Associate" },
   "Rodrigo Anleu": { role: "Associate" },
 };
+
+// English localization for associates with full profiles, keyed by slug
+export const associateProfilesEn: Record<string, PartnerEn> = {
+  "rodrigo-anleu": {
+    role: "Associate",
+    headline: "Corporate",
+    bio: [
+      "Rodrigo Anleu is an associate at the firm and developed his career as a legal assistant, accumulating more than four years of experience handling corporate matters for local and foreign clients. His track record includes participating in complex real estate law processes and contract review.",
+      "His practice focuses on planning and implementing legal strategies aimed at protecting his clients' interests and supporting their business objectives. He combines legal analysis with an understanding of each business's needs to provide practical advice on decision making, risk assessment, and the management of corporate and real estate matters.",
+      "He also has experience in notarial practice and voluntary jurisdiction proceedings, which allows him to provide comprehensive advice on legal transactions and business structuring.",
+    ],
+    education: [
+      "Law Degree (Licenciatura en Ciencias Jurídicas y Sociales) – Universidad Rafael Landívar, Guatemala, 2026",
+    ],
+    memberships: ["Bar Association of Guatemala (CANG)"],
+    languages: ["Spanish", "English"],
+    practice: ["Corporate", "Real Estate", "Notarial Practice"],
+  },
+};
