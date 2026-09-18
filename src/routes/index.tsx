@@ -740,7 +740,7 @@ function Team() {
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {associates.map((m) => (
-            <PersonCard key={m.name} name={m.name} role={m.role} photo={m.photo} />
+            <PersonCard key={m.name} name={m.name} role={m.role} photo={m.photo} slug={m.slug} />
           ))}
         </div>
       </div>
