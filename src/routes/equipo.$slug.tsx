@@ -5,7 +5,6 @@ import { ArrowLeft, ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import { Nav, Footer } from "./index";
 import { partners, associates, type Partner, type Associate } from "@/lib/team";
 import { partnersEn, associateProfilesEn } from "@/lib/team.en";
-import { localizePartner } from "@/lib/localize";
 import { useLang } from "@/lib/i18n";
 import { useUI } from "@/lib/translations";
 import isologo from "@/assets/isologo.png.asset.json";
@@ -129,10 +128,10 @@ function PartnerPage() {
   const { partner: esPartner } = Route.useLoaderData() as { partner: Partner };
   const { lang } = useLang();
   const t = useUI();
-  const partner = localizePartner(esPartner, lang);
-  const index = partners.findIndex((p) => p.slug === partner.slug);
-  const prev = partners[(index - 1 + partners.length) % partners.length];
-  const next = partners[(index + 1) % partners.length];
+  const partner = localizeProfile(esPartner, lang);
+  const index = profiles.findIndex((p) => p.slug === partner.slug);
+  const prev = profiles[(index - 1 + profiles.length) % profiles.length];
+  const next = profiles[(index + 1) % profiles.length];
 
   const cutout = partner.photoCutout;
 
@@ -234,7 +233,7 @@ function PartnerPage() {
                 <ul className="mt-3 space-y-3">
                   <li className="flex items-start gap-3">
                     <Phone className="mt-0.5 h-4 w-4 flex-none text-primary" />
-                    <a href="tel:+50223391922" className="hover:text-primary">{partner.phone}</a>
+                    <a href={`tel:+${partner.phone.replace(/\D/g, "")}`} className="hover:text-primary">{partner.phone}</a>
                   </li>
                   <li className="flex items-start gap-3">
                     <Mail className="mt-0.5 h-4 w-4 flex-none text-primary" />
