@@ -3,7 +3,8 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { ArrowLeft, ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import { Nav, Footer } from "./index";
-import { partners, type Partner } from "@/lib/team";
+import { partners, associates, type Partner, type Associate } from "@/lib/team";
+import { partnersEn, associateProfilesEn } from "@/lib/team.en";
 import { localizePartner } from "@/lib/localize";
 import { useLang } from "@/lib/i18n";
 import { useUI } from "@/lib/translations";
@@ -26,9 +27,33 @@ const practiceSlugMap: Record<string, string> = {
   Cumplimiento: "compliance-y-gobierno-corporativo",
 };
 
+const toProfile = (a: Associate): Partner => ({
+  slug: a.slug ?? "",
+  name: a.name,
+  role: a.role,
+  headline: a.headline ?? "",
+  photo: a.photo,
+  photoCutout: a.photoCutout,
+  email: a.email ?? "info@elementoabogados.com",
+  phone: a.phone ?? "+(502) 2339 - 1922",
+  bio: a.bio ?? [],
+  education: a.education ?? [],
+  memberships: a.memberships,
+  practice: a.practice,
+  languages: a.languages,
+});
+
+const profiles: Partner[] = [...partners, ...associates.filter((a) => a.slug).map(toProfile)];
+
+const localizeProfile = (profile: Partner, lang: "es" | "en"): Partner => {
+  if (lang !== "en") return profile;
+  const en = partnersEn[profile.slug] ?? associateProfilesEn[profile.slug];
+  return en ? { ...profile, ...en } : profile;
+};
+
 export const Route = createFileRoute("/equipo/$slug")({
   loader: ({ params }) => {
-    const partner = partners.find((p) => p.slug === params.slug);
+    const partner = profiles.find((p) => p.slug === params.slug);
     if (!partner) throw notFound();
     return { partner };
   },
