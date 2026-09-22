@@ -20,7 +20,7 @@ import logoAsset from "@/assets/logo-nav.png.asset.json";
 import isologo from "@/assets/isologo.png.asset.json";
 import aboutCity from "@/assets/about-city.jpg.asset.json";
 import headerHero from "@/assets/header-hero.jpg.asset.json";
-import contactTeam from "@/assets/equipo-contacto.png.asset.json";
+import contactCityDusk from "@/assets/contacto-ciudad-dusk.jpg.asset.json";
 import deckEs from "@/assets/presentacion-es-pdf.asset.json";
 import deckEn from "@/assets/presentacion-en-pdf.asset.json";
 import { useServices, usePartners, useAssociates } from "@/lib/localize";
@@ -905,7 +905,7 @@ function Contact() {
           <div className="lg:col-span-6">
             <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-1 backdrop-blur">
               <img
-                src={contactTeam.url}
+                src={contactCityDusk.url}
                 alt={t.contact.teamAlt}
                 loading="lazy"
                 decoding="async"
