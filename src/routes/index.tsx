@@ -902,8 +902,8 @@ function Contact() {
 
           </div>
 
-          <div className="lg:col-span-6">
-            <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-1 backdrop-blur">
+          <div className="flex h-full items-center lg:col-span-6">
+            <div className="w-full overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-1 backdrop-blur">
               <img
                 src={contactCityDusk.url}
                 alt={t.contact.teamAlt}
