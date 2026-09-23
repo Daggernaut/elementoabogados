@@ -78,21 +78,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Elemento Abogados — Asesoría legal estratégica" },
-      { name: "description", content: "Firma legal en Guatemala. Asesoría corporativa, inmobiliaria, tributaria y resolución de controversias con resultados comprobados." },
       { name: "author", content: "Elemento Abogados" },
-      { property: "og:title", content: "Elemento Abogados — Asesoría legal estratégica" },
-      { property: "og:description", content: "Más que abogados, aliados estratégicos en tu causa." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", type: "image/png", href: "/favicon.png" },
+      { rel: "icon", type: "image/png", sizes: "64x64", href: "/favicon.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700;800&display=swap" },

@@ -38,8 +38,14 @@ export const Route = createFileRoute("/")({
         content:
           "Firma legal con más de 10 años de experiencia. Derecho corporativo, inmobiliario, tributario, M&A y resolución de controversias.",
       },
-      { property: "og:title", content: "Elemento Abogados" },
-      { property: "og:description", content: "Más que abogados, aliados estratégicos en tu causa." },
+      { property: "og:title", content: "Elemento Abogados | Asesoría legal estratégica en Guatemala" },
+      {
+        property: "og:description",
+        content: "Asesoría legal multidisciplinaria, estratégica y cercana para clientes nacionales e internacionales.",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://elementoabogados.lovable.app/" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: Index,

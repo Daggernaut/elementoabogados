@@ -61,14 +61,18 @@ export const Route = createFileRoute("/equipo/$slug")({
       return { meta: [{ title: "Perfil no encontrado | Elemento Abogados" }, { name: "robots", content: "noindex" }] };
     }
     const { partner } = loaderData;
+    const title = `${partner.name} | Elemento Abogados`;
+    const description = `${partner.name}, ${partner.role} en Elemento Abogados. ${partner.headline}`;
+    const url = `https://elementoabogados.lovable.app/equipo/${partner.slug}`;
     return {
       meta: [
-        { title: `${partner.name} | Elemento Abogados` },
-        { name: "description", content: `${partner.name}, ${partner.role}.` },
-        { property: "og:title", content: `${partner.name} | Elemento Abogados` },
-        { property: "og:description", content: `${partner.name}, ${partner.role}.` },
+        { title },
+        { name: "description", content: description },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
         { property: "og:type", content: "profile" },
-        { name: "twitter:card", content: "summary_large_image" },
+        { property: "og:url", content: url },
+        { name: "twitter:card", content: "summary" },
       ],
     };
   },
