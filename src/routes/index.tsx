@@ -111,7 +111,7 @@ export function Nav() {
           <img src={logoAsset.url} alt="Elemento Abogados" className="h-[63.4px] w-auto" />
         </Link>
 
-        <nav className="hidden items-center gap-9 text-[15.4px] text-muted-foreground md:flex">
+        <nav className="hidden items-center gap-9 text-[15.4px] text-muted-foreground lg:flex">
           <Link to="/nosotros" className="transition-colors hover:text-foreground">{t.nav.about}</Link>
           <div className="group relative">
             <a href="/servicios" className="inline-flex items-center gap-1 transition-colors hover:text-foreground">
@@ -142,7 +142,7 @@ export function Nav() {
         <div className="flex items-center gap-2 sm:gap-3">
           <a
             href="/#contact"
-            className="group hidden items-center gap-2 rounded-full bg-primary-deep px-[22px] py-[11px] text-[15.4px] font-medium text-primary-foreground transition-all hover:bg-primary sm:inline-flex"
+            className="group hidden items-center gap-2 rounded-full bg-primary-deep px-[22px] py-[11px] text-[15.4px] font-medium text-primary-foreground transition-all hover:bg-primary lg:inline-flex"
           >
             {t.nav.contactCta}
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -153,7 +153,7 @@ export function Nav() {
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? t.nav.close : t.nav.menu}
             aria-expanded={open}
-            className="grid h-10 w-10 place-items-center rounded-full border border-border text-foreground transition-colors hover:bg-secondary md:hidden"
+            className="grid h-10 w-10 place-items-center rounded-full border border-border text-foreground transition-colors hover:bg-secondary lg:hidden"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -167,7 +167,7 @@ export function Nav() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden border-t border-border bg-background md:hidden"
+            className="overflow-hidden border-t border-border bg-background lg:hidden"
           >
             <nav className="max-h-[70vh] overflow-y-auto px-6 py-4 text-base">
               <Link
