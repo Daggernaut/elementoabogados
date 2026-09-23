@@ -42,7 +42,7 @@ export const Route = createFileRoute("/servicios/$slug")({
         { property: "og:description", content: description },
         { property: "og:type", content: "article" },
         { property: "og:url", content: url },
-        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:card", content: "summary" },
       ],
       links: [
         { rel: "canonical", href: url },
