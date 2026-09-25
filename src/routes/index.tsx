@@ -23,6 +23,8 @@ import headerHero from "@/assets/header-hero.jpg.asset.json";
 import contactCityDusk from "@/assets/contacto-ciudad-dusk.jpg.asset.json";
 import deckEs from "@/assets/presentacion-es-pdf.asset.json";
 import deckEn from "@/assets/presentacion-en-pdf.asset.json";
+import flagEs from "@/assets/flag-es.svg";
+import flagUs from "@/assets/flag-us.svg";
 import { useServices, usePartners, useAssociates } from "@/lib/localize";
 import { cn } from "@/lib/utils";
 import { sendContactInquiry } from "@/lib/contact.functions";
@@ -64,8 +66,8 @@ const fadeUp = {
 export function LanguageSwitcher({ className }: { className?: string }) {
   const { lang, setLang } = useLang();
   const options: { code: Lang; flag: string; label: string }[] = [
-    { code: "es", flag: "🇪🇸", label: "ES" },
-    { code: "en", flag: "🇺🇸", label: "EN" },
+    { code: "es", flag: flagEs, label: "ES" },
+    { code: "en", flag: flagUs, label: "EN" },
   ];
 
   return (
@@ -89,7 +91,12 @@ export function LanguageSwitcher({ className }: { className?: string }) {
               : "text-muted-foreground hover:text-foreground"
           )}
         >
-          <span className="text-base leading-none">{o.flag}</span>
+          <img
+            src={o.flag}
+            alt=""
+            aria-hidden="true"
+            className="h-3.5 w-[21px] shrink-0 rounded-[2px] object-cover shadow-sm"
+          />
           {o.label}
         </button>
       ))}
@@ -287,7 +294,7 @@ function DownloadDropdown({ className }: { className?: string }) {
             onClick={() => setOpen(false)}
             className="flex items-center gap-2 px-4 py-3 text-sm text-white/90 transition-colors hover:bg-white/10"
           >
-            <span className="text-base">🇪🇸</span>
+            <img src={flagEs} alt="" aria-hidden="true" className="h-3.5 w-[21px] shrink-0 rounded-[2px] object-cover" />
             {t.common.spanishVersion}
           </a>
           <a
@@ -296,7 +303,7 @@ function DownloadDropdown({ className }: { className?: string }) {
             onClick={() => setOpen(false)}
             className="flex items-center gap-2 px-4 py-3 text-sm text-white/90 transition-colors hover:bg-white/10"
           >
-            <span className="text-base">🇺🇸</span>
+            <img src={flagUs} alt="" aria-hidden="true" className="h-3.5 w-[21px] shrink-0 rounded-[2px] object-cover" />
             {t.common.englishVersion}
           </a>
         </div>
